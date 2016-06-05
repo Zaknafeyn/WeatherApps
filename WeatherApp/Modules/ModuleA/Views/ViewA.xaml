@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:ModuleA.Converters"
+             mc:Ignorable="d" 
+             x:Class="ModuleA.Views.ViewA"
+             prism:ViewModelLocator.AutoWireViewModel="True" 
+             MinHeight="700"
+             d:DesignWidth="500" d:DesignHeight="700">
+    <UserControl.Resources>
+        <converters:BooleanInvertedConverter x:Key="BooleanInvertedConverter"/>
+    </UserControl.Resources>
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Vertical">
+        <TextBlock Text="{Binding Title}" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Calibri" FontSize="24" FontWeight="Bold"/>
+
+        <StackPanel MinHeight="20">
+
+            <TextBlock>Playback items</TextBlock>
+            <ListBox ItemsSource="{Binding ItemsPlayback, Mode=OneWay}" Margin="10"/>
+            <TextBlock>Record items</TextBlock>
+            <ListBox ItemsSource="{Binding ItemsRecord, Mode=OneWay}" Margin="10"/>
+
+        </StackPanel>
+        <Button Content="Capture sound" IsEnabled="{Binding IsRecording, Mode=OneWay, Converter={StaticResource BooleanInvertedConverter}}" Width="85" Command="{Binding CaptureSoundCommand, Mode=OneTime}" Margin="10"/>
+        <Button Content="Stop capturing" IsEnabled="{Binding IsRecording, Mode=OneWay}" Width="85" Command="{Binding StopCapturingSoundCommand, Mode=OneTime}" Margin="10"/>
+        
+        <TextBlock >
+            <Run Text="Temperature in "/>
+            <Run Text="{Binding Weather.Name}"/>
+            <Run Text=" is "/>
+            <Run Text="{Binding Weather.Main.Temp}"/>
+        </TextBlock>
+
+        <!--<Button Content="Switch device" Width="85" Command="{Binding SwitchDeviceCommand, Mode=OneTime}" Margin="10"/>-->
+    </StackPanel>
+
+</UserControl>
+
