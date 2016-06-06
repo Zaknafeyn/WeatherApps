@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WeatherModule">
+    <Image x:Key="BrightMoon" Source="Resources/Icons/Weather/Bright Moon.png"/>
+    <Image x:Key="ChanceOfStorm" Source="Resources/Icons/Weather/Chance of Storm.png"/>
+    <Image x:Key="CloudLighting" Source="Resources/Icons/Weather/Cloud Lighting.png"/>
+    <Image x:Key="Clouds" Source="Resources/Icons/Weather/Clouds.png"/>
+    <Image x:Key="Downpour" Source="Resources/Icons/Weather/Downpour.png"/>
+    <Image x:Key="Dry" Source="Resources/Icons/Weather/Dry.png"/>
+    <Image x:Key="Dust" Source="Resources/Icons/Weather/Dust.png"/>
+    <Image x:Key="FogDay" Source="Resources/Icons/Weather/Fog Day.png"/>
+    <Image x:Key="FogNight" Source="Resources/Icons/Weather/Fog Night.png"/>
+    <Image x:Key="Hail" Source="Resources/Icons/Weather/Hail.png"/>
+    <Image x:Key="HeavyRain" Source="Resources/Icons/Weather/Heavy Rain.png"/>
+    <Image x:Key="HighTide" Source="Resources/Icons/Weather/High Tide.png"/>
+    <Image x:Key="Icy" Source="Resources/Icons/Weather/Icy.png"/>
+    <Image x:Key="IntenseRain" Source="Resources/Icons/Weather/Intense Rain.png"/>
+    <Image x:Key="LightRain2" Source="Resources/Icons/Weather/Light Rain 2.png"/>
+    <Image x:Key="LightRain" Source="Resources/Icons/Weather/Light Rain.png"/>
+    <Image x:Key="LightSnow" Source="Resources/Icons/Weather/Light Snow.png"/>
+    <Image x:Key="LightningBolt" Source="Resources/Icons/Weather/Lightning Bolt.png"/>
+    <Image x:Key="LowTide" Source="Resources/Icons/Weather/Low Tide.png"/>
+    <Image x:Key="ModerateRain" Source="Resources/Icons/Weather/Moderate Rain.png"/>
+    <Image x:Key="Moisture" Source="Resources/Icons/Weather/Moisture.png"/>
+    <Image x:Key="NoRain" Source="Resources/Icons/Weather/No Rain.png"/>
+    <Image x:Key="PartlyCloudyDay" Source="Resources/Icons/Weather/Partly Cloudy Day.png"/>
+    <Image x:Key="PartlyCloudyNight" Source="Resources/Icons/Weather/Partly Cloudy Night.png"/>
+    <Image x:Key="PartlyCloudyRain" Source="Resources/Icons/Weather/Partly Cloudy Rain.png"/>
+    <Image x:Key="Rain" Source="Resources/Icons/Weather/Rain.png"/>
+    <Image x:Key="RainyWeather" Source="Resources/Icons/Weather/Rainy Weather.png"/>
+    <Image x:Key="Sleet" Source="Resources/Icons/Weather/Sleet.png"/>
+    <Image x:Key="SnowStorm" Source="Resources/Icons/Weather/Snow Storm.png"/>
+    <Image x:Key="Snow" Source="Resources/Icons/Weather/Snow.png"/>
+    <Image x:Key="Storm" Source="Resources/Icons/Weather/Storm.png"/>
+    <Image x:Key="Sun" Source="Resources/Icons/Weather/Sun.png"/>
+    <Image x:Key="Sunrise" Source="Resources/Icons/Weather/Sunrise.png"/>
+    <Image x:Key="Sunset" Source="Resources/Icons/Weather/Sunset.png"/>
+    <Image x:Key="TorrentialRain" Source="Resources/Icons/Weather/Torrential Rain.png"/>
+
+</ResourceDictionary>

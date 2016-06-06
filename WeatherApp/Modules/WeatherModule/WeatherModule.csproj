@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\KelvinToCelsiumDegreesConverter.cs" />
+    <Compile Include="Converters\WeatherToImageUriConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,6 +76,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Resources\ImageSources.cs" />
     <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="Views\WeatherView.xaml.cs">
       <DependentUpon>WeatherView.xaml</DependentUpon>
@@ -92,17 +94,66 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\GenericDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WeatherView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Services\Services.csproj">
       <Project>{EA9242A7-1B5C-47EB-9A66-36C36B093923}</Project>
       <Name>Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Weather\Bright Moon.png" />
+    <Resource Include="Resources\Icons\Weather\Chance of Storm.png" />
+    <Resource Include="Resources\Icons\Weather\Cloud Lighting.png" />
+    <Resource Include="Resources\Icons\Weather\Clouds.png" />
+    <Resource Include="Resources\Icons\Weather\Downpour.png" />
+    <Resource Include="Resources\Icons\Weather\Dry.png" />
+    <Resource Include="Resources\Icons\Weather\Dust.png" />
+    <Resource Include="Resources\Icons\Weather\Fog Day.png" />
+    <Resource Include="Resources\Icons\Weather\Fog Night.png" />
+    <Resource Include="Resources\Icons\Weather\Hail.png" />
+    <Resource Include="Resources\Icons\Weather\Heavy Rain.png" />
+    <Resource Include="Resources\Icons\Weather\High Tide.png" />
+    <Resource Include="Resources\Icons\Weather\Icy.png" />
+    <Resource Include="Resources\Icons\Weather\Intense Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Light Rain 2.png" />
+    <Resource Include="Resources\Icons\Weather\Light Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Light Snow.png" />
+    <Resource Include="Resources\Icons\Weather\Lightning Bolt.png" />
+    <Resource Include="Resources\Icons\Weather\Low Tide.png" />
+    <Resource Include="Resources\Icons\Weather\Moderate Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Moisture.png" />
+    <Resource Include="Resources\Icons\Weather\No Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Partly Cloudy Day.png" />
+    <Resource Include="Resources\Icons\Weather\Partly Cloudy Night.png" />
+    <Resource Include="Resources\Icons\Weather\Partly Cloudy Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Rainy Weather.png" />
+    <Resource Include="Resources\Icons\Weather\Sleet.png" />
+    <Resource Include="Resources\Icons\Weather\Snow Storm.png" />
+    <Resource Include="Resources\Icons\Weather\Snow.png" />
+    <Resource Include="Resources\Icons\Weather\Storm.png" />
+    <Resource Include="Resources\Icons\Weather\Sun.png" />
+    <Resource Include="Resources\Icons\Weather\Sunrise.png" />
+    <Resource Include="Resources\Icons\Weather\Sunset.png" />
+    <Resource Include="Resources\Icons\Weather\Torrential Rain.png" />
+    <Resource Include="Resources\Icons\Weather\Wet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,9 +8,11 @@
              mc:Ignorable="d" 
              mvvm:ViewModelLocator.AutoWireViewModel="True" 
              d:DesignHeight="300" d:DesignWidth="300">
+    
     <UserControl.Resources>
-        <converters:KelvinToCelsiumDegreesConverter x:Key="KelvinToCelsiumDegreesConverter"/>
+        <ResourceDictionary Source="../Themes/GenericDictionary.xaml"/>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -28,11 +30,17 @@
             <TextBox Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+
+            <Image Source="{Binding Weather, Converter={StaticResource WeatherToImageUriConverter}}" Height="100" Width="100" Stretch="Uniform"/>
+            <!--<Image Source="../Resources/Icons/Weather/Bright Moon.png" Height="100" Width="100" Stretch="Uniform"/>-->
+            
+            <TextBlock >
             <Run Text="Temperature in "/>
             <Run Text="{Binding Weather.Name}"/>
             <Run Text=" is "/>
             <Run Text="{Binding Weather.Main.Temp, Converter={StaticResource KelvinToCelsiumDegreesConverter}}"/>
         </TextBlock>
+        </StackPanel>
     </Grid>
 </UserControl>
