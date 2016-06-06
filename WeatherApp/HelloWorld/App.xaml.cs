@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.IO.IsolatedStorage;
+using System.Windows;
+using Microsoft.Practices.Unity;
+using Services.Interfaces;
 
 namespace HelloWorld
 {
@@ -7,6 +10,8 @@ namespace HelloWorld
     /// </summary>
     public partial class App : Application
     {
+        Bootstrapper _bootstrapper = new Bootstrapper();
+
         public App()
         {
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
@@ -14,16 +19,22 @@ namespace HelloWorld
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("Error happened");
+            MessageBox.Show("Ooops. Something went wrong.");
             e.Handled = true;
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            var localStorage = _bootstrapper.Container.Resolve<ILocalStorageService>();
+            localStorage.Save();
+            base.OnExit(e);
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            Bootstrapper bs = new Bootstrapper();
-            bs.Run();
+            _bootstrapper.Run();
         }
     }
 }

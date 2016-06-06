@@ -1,8 +1,8 @@
 ﻿using Prism.Modularity;
 using Prism.Regions;
-using WpfApplication1.Views;
+using WeatherModule.Views;
 
-namespace WpfApplication1
+namespace WeatherModule
 {
     public class WeatherModuleModule : IModule
     {

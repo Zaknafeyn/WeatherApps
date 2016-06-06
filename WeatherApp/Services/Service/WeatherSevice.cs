@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Services.DTO.WeatherInCity;
 using Services.Interfaces;
 
-namespace Services
+namespace Services.Service
 {
     public class WeatherSevice : IWeatherSevice
     {

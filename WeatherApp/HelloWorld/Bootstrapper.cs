@@ -5,7 +5,7 @@ using Prism.Modularity;
 using ModuleA;
 using HelloWorld.Views;
 using Services;
-using WpfApplication1;
+using WeatherModule;
 
 namespace HelloWorld
 {

@@ -80,7 +80,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\RecentCitiesViewModel.cs" />
     <Compile Include="ViewModels\ViewAViewModel.cs" />
+    <Compile Include="Views\RecentCitiesView.xaml.cs">
+      <DependentUpon>RecentCitiesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewA.xaml.cs">
       <DependentUpon>ViewA.xaml</DependentUpon>
     </Compile>
@@ -96,6 +100,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\RecentCitiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
