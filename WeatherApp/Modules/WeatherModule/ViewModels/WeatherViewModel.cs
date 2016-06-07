@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using System;
+using System.Linq;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Services.DTO.WeatherInCity;
@@ -13,6 +15,7 @@ namespace WeatherModule.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalStorageService _localStorage;
         private CityWeatherStatus _weather;
+        private Uri _iconUri;
         private string _city;
 
         public WeatherViewModel(IWeatherSevice weatherSevice, IEventAggregator eventAggregator, ILocalStorageService localStorage)
@@ -51,6 +54,12 @@ namespace WeatherModule.ViewModels
             }
         }
 
+        public Uri IconUri
+        {
+            get { return _iconUri; }
+            set { SetProperty( ref _iconUri, value); }
+        }
+
         private bool LoadWeatherCommandCanExecute()
         {
             return !string.IsNullOrEmpty(City);
@@ -59,6 +68,11 @@ namespace WeatherModule.ViewModels
         private async void LoadWeatherCommandExecuted()
         {
             Weather = await _weatherSevice.GetWeatherByCityNameAsync(City);
+
+            var weatherStatus = Weather.Weather.First();
+            var dayOrNight = weatherStatus.Icon.EndsWith("d") ? "d" : "n";
+            IconUri = new Uri($"pack://application:,,,/WeatherModule;component/Resources/Icons/WeatherIcons/{weatherStatus.Id}{dayOrNight}.png");
+
             DoCityWeatherRequestSend(City);
         }
     }

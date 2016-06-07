@@ -14,7 +14,6 @@ namespace Services
                 Cities.Remove(city);
             }
 
-
             while (Cities.Count >= MaxCount)
             {
                 Cities.RemoveAt(0);

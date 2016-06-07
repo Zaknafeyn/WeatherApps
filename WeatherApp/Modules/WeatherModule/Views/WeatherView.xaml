@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              mvvm:ViewModelLocator.AutoWireViewModel="True" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/GenericDictionary.xaml"/>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -32,15 +32,20 @@
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
 
-            <Image Source="{Binding Weather, Converter={StaticResource WeatherToImageUriConverter}}" Height="100" Width="100" Stretch="Uniform"/>
+            <!--<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageUriConverter}}" Height="100" Width="100" Stretch="Uniform"/>-->
             <!--<Image Source="../Resources/Icons/Weather/Bright Moon.png" Height="100" Width="100" Stretch="Uniform"/>-->
-            
+            <Image Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
+
             <TextBlock >
-            <Run Text="Temperature in "/>
-            <Run Text="{Binding Weather.Name}"/>
-            <Run Text=" is "/>
-            <Run Text="{Binding Weather.Main.Temp, Converter={StaticResource KelvinToCelsiumDegreesConverter}}"/>
-        </TextBlock>
+                <Run Text="Temperature in "/>
+                <Run Text="{Binding Weather.Name}"/>
+                <Run Text=" is "/>
+                <Run Text="{Binding Weather.Main.Temp, Converter={StaticResource KelvinToCelsiumDegreesConverter}}"/>
+            </TextBlock>
+
+            <TextBlock FontFamily="{StaticResource WeatherIconsFontAbsolute}" Text="\uf002"/>
+
+
         </StackPanel>
     </Grid>
 </UserControl>

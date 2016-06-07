@@ -78,8 +78,10 @@
     <Compile Include="DTO\WeatherInCity\Wind.cs" />
     <Compile Include="Events\CityWeatherRequestSentEvent.cs" />
     <Compile Include="Interfaces\ILocalStorageService.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IWeatherSevice.cs" />
     <Compile Include="RecentCities.cs" />
+    <Compile Include="Service\DebugLogger.cs" />
     <Compile Include="Service\LocalStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestClient.cs" />

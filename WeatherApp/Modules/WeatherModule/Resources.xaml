@@ -37,4 +37,7 @@
     <Image x:Key="Sunset" Source="Resources/Icons/Weather/Sunset.png"/>
     <Image x:Key="TorrentialRain" Source="Resources/Icons/Weather/Torrential Rain.png"/>
 
+
+    <FontFamily x:Key="WeatherIconsFontAbsolute">pack://application:,,,/WeatherModule;component/Resources/Fonts/weathericons-regular-webfont.ttf#Weather Icons</FontFamily>
+    <FontFamily x:Key="WeatherIconsFont">../Resources/Fonts/#weathericons-regular-webfont</FontFamily>
 </ResourceDictionary>
