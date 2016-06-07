@@ -98,10 +98,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Resources\Fonts\weathericons-regular-webfont.eot" />
-    <Resource Include="Resources\Fonts\weathericons-regular-webfont.ttf" />
-    <None Include="Resources\Fonts\weathericons-regular-webfont.woff" />
-    <None Include="Resources\Fonts\weathericons-regular-webfont.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\ResourcesDictionary.xaml">
@@ -128,7 +124,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Fonts\weathericons-regular-webfont.svg" />
     <Resource Include="Resources\Icons\WeatherIcons\200d.png" />
     <Resource Include="Resources\Icons\WeatherIcons\200n.png" />
     <Resource Include="Resources\Icons\WeatherIcons\201d.png" />
