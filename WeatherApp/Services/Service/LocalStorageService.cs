@@ -46,7 +46,7 @@ namespace Services.Service
 
         public void Save()
         {
-            using (var isolatedFileStream = new IsolatedStorageFileStream(StorageFileName, FileMode.OpenOrCreate, _isolatedStorage))
+            using (var isolatedFileStream = new IsolatedStorageFileStream(StorageFileName, FileMode.Truncate, _isolatedStorage))
             using (var writer = new StreamWriter(isolatedFileStream))
             {
                 var serializedObj = JsonConvert.SerializeObject(this);

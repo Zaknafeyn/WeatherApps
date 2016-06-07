@@ -104,7 +104,7 @@
     <None Include="Resources\Fonts\weathericons-regular-webfont.woff2" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources.xaml">
+    <Page Include="Themes\ResourcesDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

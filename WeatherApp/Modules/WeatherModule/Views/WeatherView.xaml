@@ -24,6 +24,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Show" 
+                    IsDefault="True"
                     Margin="10 0 10 0"
                     Command="{Binding LoadWeatherCommand}" />
             <TextBox Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
@@ -31,8 +32,6 @@
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
 
-            <!--<Image Source="{Binding Weather, Converter={StaticResource WeatherToImageUriConverter}}" Height="100" Width="100" Stretch="Uniform"/>-->
-            <!--<Image Source="../Resources/Icons/Weather/Bright Moon.png" Height="100" Width="100" Stretch="Uniform"/>-->
             <Image Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
 
             <TextBlock >
@@ -41,9 +40,6 @@
                 <Run Text=" is "/>
                 <Run Text="{Binding Weather.Main.Temp, Converter={StaticResource KelvinToCelsiumDegreesConverter}}"/>
             </TextBlock>
-
-            <TextBlock FontFamily="{StaticResource WeatherIconsFontAbsolute}" Text="\uf002"/>
-
 
         </StackPanel>
     </Grid>
