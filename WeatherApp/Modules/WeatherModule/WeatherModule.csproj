@@ -38,15 +38,21 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism.Wpf">
-      <HintPath>..\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll</HintPath>
+    <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -120,44 +126,6 @@
       <Project>{EA9242A7-1B5C-47EB-9A66-36C36B093923}</Project>
       <Name>Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\Weather\Bright Moon.png" />
-    <Resource Include="Resources\Icons\Weather\Chance of Storm.png" />
-    <Resource Include="Resources\Icons\Weather\Cloud Lighting.png" />
-    <Resource Include="Resources\Icons\Weather\Clouds.png" />
-    <Resource Include="Resources\Icons\Weather\Downpour.png" />
-    <Resource Include="Resources\Icons\Weather\Dry.png" />
-    <Resource Include="Resources\Icons\Weather\Dust.png" />
-    <Resource Include="Resources\Icons\Weather\Fog Day.png" />
-    <Resource Include="Resources\Icons\Weather\Fog Night.png" />
-    <Resource Include="Resources\Icons\Weather\Hail.png" />
-    <Resource Include="Resources\Icons\Weather\Heavy Rain.png" />
-    <Resource Include="Resources\Icons\Weather\High Tide.png" />
-    <Resource Include="Resources\Icons\Weather\Icy.png" />
-    <Resource Include="Resources\Icons\Weather\Intense Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Light Rain 2.png" />
-    <Resource Include="Resources\Icons\Weather\Light Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Light Snow.png" />
-    <Resource Include="Resources\Icons\Weather\Lightning Bolt.png" />
-    <Resource Include="Resources\Icons\Weather\Low Tide.png" />
-    <Resource Include="Resources\Icons\Weather\Moderate Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Moisture.png" />
-    <Resource Include="Resources\Icons\Weather\No Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Partly Cloudy Day.png" />
-    <Resource Include="Resources\Icons\Weather\Partly Cloudy Night.png" />
-    <Resource Include="Resources\Icons\Weather\Partly Cloudy Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Rainy Weather.png" />
-    <Resource Include="Resources\Icons\Weather\Sleet.png" />
-    <Resource Include="Resources\Icons\Weather\Snow Storm.png" />
-    <Resource Include="Resources\Icons\Weather\Snow.png" />
-    <Resource Include="Resources\Icons\Weather\Storm.png" />
-    <Resource Include="Resources\Icons\Weather\Sun.png" />
-    <Resource Include="Resources\Icons\Weather\Sunrise.png" />
-    <Resource Include="Resources\Icons\Weather\Sunset.png" />
-    <Resource Include="Resources\Icons\Weather\Torrential Rain.png" />
-    <Resource Include="Resources\Icons\Weather\Wet.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Fonts\weathericons-regular-webfont.svg" />
