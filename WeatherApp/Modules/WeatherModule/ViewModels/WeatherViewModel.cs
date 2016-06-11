@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -15,10 +16,15 @@ namespace WeatherModule.ViewModels
         private readonly IWeatherSevice _weatherSevice;
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalStorageService _localStorage;
+        private bool _isBusy;
         private CityWeatherStatus _weather;
         private Uri _iconUri;
         private string _city;
         private string _currentDegrees;
+        private string _weatherDescr;
+        private decimal _minTemp;
+        private decimal _maxTemp;
+        private decimal _windSpeed;
 
         public WeatherViewModel(IWeatherSevice weatherSevice, IEventAggregator eventAggregator, ILocalStorageService localStorage)
         {
@@ -27,6 +33,9 @@ namespace WeatherModule.ViewModels
             _localStorage = localStorage;
 
             LoadWeatherCommand = new DelegateCommand(LoadWeatherCommandExecuted, LoadWeatherCommandCanExecute);
+
+            City = "London";
+            LoadWeatherCommand.Execute();
         }
 
         private void DoCityWeatherRequestSend(CityItem city)
@@ -44,6 +53,12 @@ namespace WeatherModule.ViewModels
         {
             get { return _weather; }
             set { SetProperty( ref _weather, value); }
+        }
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty( ref _isBusy, value); }
         }
 
         public string City
@@ -68,6 +83,30 @@ namespace WeatherModule.ViewModels
             set { SetProperty( ref _currentDegrees, value); }
         }
 
+        public string WeatherDescr
+        {
+            get { return _weatherDescr; }
+            set { SetProperty( ref _weatherDescr, value); }
+        }
+
+        public decimal MinTemp
+        {
+            get { return _minTemp; }
+            set { SetProperty( ref _minTemp, value); }
+        }
+
+        public decimal MaxTemp
+        {
+            get { return _maxTemp; }
+            set { SetProperty( ref _maxTemp, value); }
+        }
+
+        public decimal WindSpeed
+        {
+            get { return _windSpeed; }
+            set { SetProperty( ref _windSpeed, value); }
+        }
+
         private bool LoadWeatherCommandCanExecute()
         {
             return !string.IsNullOrEmpty(City);
@@ -75,15 +114,20 @@ namespace WeatherModule.ViewModels
 
         private async void LoadWeatherCommandExecuted()
         {
-            Weather = await _weatherSevice.GetWeatherByCityNameAsync(City);
+            try
+            {
+                IsBusy = true;
 
-            var weatherStatus = Weather.Weather.First();
-            var dayOrNight = weatherStatus.Icon.EndsWith("d") ? "d" : "n";
-            IconUri = new Uri($"pack://application:,,,/WeatherModule;component/Resources/Icons/WeatherIcons/{weatherStatus.Id}{dayOrNight}.png");
+                Weather = await _weatherSevice.GetWeatherByCityNameAsync(City);
 
-            var temperature = Weather.Main.Temp.NormalizeTemperature();
-            CurrentDegrees = $"{temperature}º";
-
+                LoadWeather(Weather);
+                
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+            
             DoCityWeatherRequestSend(new CityItem
             {
                 CityId = Weather.Id,
@@ -91,6 +135,18 @@ namespace WeatherModule.ViewModels
             });
         }
 
+        private void LoadWeather(CityWeatherStatus weather)
+        {
+            var weatherStatus = weather.Weather.First();
+            var dayOrNight = weatherStatus.Icon.EndsWith("d") ? "d" : "n";
+            IconUri = new Uri($"pack://application:,,,/WeatherModule;component/Resources/Icons/WeatherIcons/{weatherStatus.Id}{dayOrNight}.png");
 
+            var temperature = Weather.Main.Temp.NormalizeTemperature();
+            CurrentDegrees = $"{temperature}º";
+            MinTemp = weather.Main.TempMin.NormalizeTemperature();
+            MaxTemp = weather.Main.TempMax.NormalizeTemperature();
+            WeatherDescr = weatherStatus.Description;
+            WindSpeed = weather.Wind.Speed;
+        }
     }
 }

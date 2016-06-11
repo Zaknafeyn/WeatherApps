@@ -11,7 +11,7 @@ namespace WeatherModule.Converters
             var kelvinValue = (decimal) value;
             var celsiumDegrees = kelvinValue.NormalizeTemperature();
 
-            return celsiumDegrees;
+            return Math.Round(celsiumDegrees, 2);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

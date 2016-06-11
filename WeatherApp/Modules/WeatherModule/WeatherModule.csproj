@@ -67,6 +67,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityInvertedConverter.cs" />
     <Compile Include="Converters\KelvinToCelsiumDegreesConverter.cs" />
     <Compile Include="Converters\WeatherToImageUriConverter.cs" />
     <Compile Include="Extensions.cs" />
@@ -109,6 +111,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\Generics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Palette.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

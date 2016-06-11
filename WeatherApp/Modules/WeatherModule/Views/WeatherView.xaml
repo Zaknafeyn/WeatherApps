@@ -30,30 +30,68 @@
             <TextBox Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
         </StackPanel>
 
+        <TextBlock Grid.Row="1" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="Loading ..." 
+                   Style="{StaticResource SubheaderTextBlockStyle}"
+                   Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        
+        <StackPanel Grid.Row="1" Margin="10" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
 
-            <Image Grid.Row="0" Grid.Column="0" Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
-            
-            <TextBlock Grid.Row="0" Grid.Column="1" 
+                <TextBlock Grid.Row="0" Grid.Column="1" 
+                       Style="{StaticResource SubheaderTextBlockStyle}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="48"
                        FontWeight="DemiBold"
                        Text="{Binding CurrentDegrees, Mode=OneWay}"/>
 
-        </Grid>
-        
+                <TextBlock Grid.Row ="1" Grid.Column ="0" Grid.ColumnSpan="2"  
+                           HorizontalAlignment="Center"
+                           Text="{Binding WeatherDescr}" 
+                           Foreground="{StaticResource CloudCaptionBrush}"
+                           FontWeight="Bold"
+                           Style="{StaticResource BodyTextBlockStyle}"/>
+                
+                <Line Grid.Row ="2" Grid.Column ="0" Grid.ColumnSpan="2"  
+                      Fill="Blue"
+                      X1="0" Y1="0" X2="300" Y2="0"
+                    HorizontalAlignment="Center"/>
+            </Grid>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="{Binding MinTemp}" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Grid.Column="1" Text="{Binding MaxTemp}" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Grid.Column="2" Style="{StaticResource BodyTextBlockStyle}" Margin="10 0 10 0">
+                    <Run Text="Wind: " FontWeight="Bold"/>
+                    <Run Text = "{Binding WindSpeed}"/>
+                    <Run Text = " mph"/>
+                </TextBlock>
+            </Grid>
+
+        </StackPanel>
+
         <!--<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
 
 

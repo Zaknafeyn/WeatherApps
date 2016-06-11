@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace WeatherModule.Converters
 {
-    public class KelvinToCelsiumDegreesConverter : IValueConverter
+    public class BooleanToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var kelvinValue = (decimal) value;
-            var celsiumDegrees = kelvinValue.NormalizeTemperature();
+            if (!(value is bool))
+            {
+                return Visibility.Visible;
+            }
 
-            return celsiumDegrees;
+            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }
