@@ -2,7 +2,6 @@
 using System.Windows;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
-using ModuleA;
 using HelloWorld.Views;
 using Services;
 using WeatherModule;
@@ -25,7 +24,6 @@ namespace HelloWorld
         {
             var catalog = (ModuleCatalog)ModuleCatalog;
             catalog.AddModule(typeof(ServicesModule));
-            catalog.AddModule(typeof(ModuleAModule));
             catalog.AddModule(typeof(WeatherModuleModule));
         }
     }

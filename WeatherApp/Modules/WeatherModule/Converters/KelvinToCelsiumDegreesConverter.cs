@@ -8,8 +8,8 @@ namespace WeatherModule.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var kelvinValue = (double) value;
-            var celsiumDegrees = kelvinValue - 273.15d;
+            var kelvinValue = (decimal) value;
+            var celsiumDegrees = kelvinValue.NormalizeTemperature();
 
             return Math.Round(celsiumDegrees, 2);
         }

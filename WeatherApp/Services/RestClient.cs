@@ -2,6 +2,9 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Services.DTO;
+using Services.DTO.Api;
+using Services.Exceptions;
 
 namespace Services
 {
@@ -14,8 +17,18 @@ namespace Services
             var response = await restClient.GetAsync(uri);
             response.EnsureSuccessStatusCode();
 
-            var result = JsonConvert.DeserializeObject<TMessage>(await response.Content.ReadAsStringAsync());
-            return result;
+            var content = await response.Content.ReadAsStringAsync();
+
+            try
+            {
+                var result = JsonConvert.DeserializeObject<TMessage>(content);
+                return result;
+            }
+            catch (JsonSerializationException serializationEx)
+            {
+                var errorMessage = JsonConvert.DeserializeObject<ApiErrorMessage>(content);
+                throw new ApiErrorException(errorMessage.Message, errorMessage.Cod, serializationEx);
+            }
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using Services.DTO.WeatherInCity;
+using Services.DTO;
+using Services.DTO.Api;
 using WeatherModule.Resources;
 
 namespace WeatherModule.Converters

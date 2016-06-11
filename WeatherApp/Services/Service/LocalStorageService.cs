@@ -13,6 +13,8 @@ namespace Services.Service
         private readonly ILogger _logger;
         private const string StorageFileName = "IsolatedFile";
 
+        SettingStorage _settingsStorage = new SettingStorage();
+
         private IsolatedStorageFile _isolatedStorage =
             IsolatedStorageFile.GetStore(
                 IsolatedStorageScope.User | IsolatedStorageScope.Domain | IsolatedStorageScope.Assembly, null, null);
@@ -22,25 +24,34 @@ namespace Services.Service
             _logger = logger;
         }
 
-        public RecentCities RecentCities { get; private set; } = new RecentCities();
-        public List<string> FavouriteCities { get; private set; } = new List<string>();
+        public RecentCities RecentCities => _settingsStorage.RecentCities;
+        public List<string> FavouriteCities => _settingsStorage.FavouriteCities;
 
         public void Read()
         {
-            //_isolatedStorage.Remove();
+            string result;
+
             using (var isolatedFileStream = new IsolatedStorageFileStream(StorageFileName, FileMode.OpenOrCreate, _isolatedStorage))
             using (var reader = new StreamReader(isolatedFileStream))
             {
-                var result = reader.ReadToEnd();
-                if (string.IsNullOrEmpty(result))
-                    return;
+                result = reader.ReadToEnd();
+            }
 
-                _logger.Log(result);
+            if (string.IsNullOrEmpty(result))
+                return;
 
-                var deserialized = JsonConvert.DeserializeObject<LocalStorageService>(result);
+            _logger.Log(result);
 
-                FavouriteCities = deserialized.FavouriteCities;
-                RecentCities = deserialized.RecentCities;
+            try
+            {
+                var deserialized = JsonConvert.DeserializeObject<SettingStorage>(result);
+
+                 deserialized.RecentCities?.Cities?.ForEach(x => _settingsStorage.RecentCities.AddCity(x)); 
+                 deserialized.FavouriteCities?.ForEach(x => _settingsStorage.FavouriteCities.Add(x)); 
+            }
+            catch (JsonSerializationException ex)
+            {
+                _isolatedStorage.Remove();
             }
         }
 
@@ -49,7 +60,7 @@ namespace Services.Service
             using (var isolatedFileStream = new IsolatedStorageFileStream(StorageFileName, FileMode.Truncate, _isolatedStorage))
             using (var writer = new StreamWriter(isolatedFileStream))
             {
-                var serializedObj = JsonConvert.SerializeObject(this);
+                var serializedObj = JsonConvert.SerializeObject(_settingsStorage);
                 writer.Write(serializedObj);
 
                 _logger.Log("Serialized object");
@@ -57,5 +68,11 @@ namespace Services.Service
             }
         }
 
+
+        internal class SettingStorage
+        {
+            public RecentCities RecentCities { get; set; } = new RecentCities();
+            public List<string> FavouriteCities { get; set; } = new List<string>();
+        }
     }
 }

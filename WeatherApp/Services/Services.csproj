@@ -69,14 +69,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\WeatherInCity\CityWeatherStatus.cs" />
-    <Compile Include="DTO\WeatherInCity\Clouds.cs" />
-    <Compile Include="DTO\WeatherInCity\Coord.cs" />
-    <Compile Include="DTO\WeatherInCity\Main.cs" />
-    <Compile Include="DTO\WeatherInCity\Sys.cs" />
-    <Compile Include="DTO\WeatherInCity\Weather.cs" />
-    <Compile Include="DTO\WeatherInCity\Wind.cs" />
+    <Compile Include="DTO\Api\ApiErrorMessage.cs" />
+    <Compile Include="DTO\Api\CityWeatherForecast.cs" />
+    <Compile Include="DTO\Api\CityWeatherStatus.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\City.cs" />
+    <Compile Include="DTO\Api\WeatherForecast\WeatherForecastItem.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Clouds.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Coord.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Main.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Rain.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Sys.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Weather.cs" />
+    <Compile Include="DTO\Api\WeatherDetails\Wind.cs" />
+    <Compile Include="DTO\CityItem.cs" />
     <Compile Include="Events\CityWeatherRequestSentEvent.cs" />
+    <Compile Include="Exceptions\ApiErrorException.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Interfaces\ILocalStorageService.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IWeatherSevice.cs" />
@@ -87,6 +95,8 @@
     <Compile Include="RestClient.cs" />
     <Compile Include="ServicesModule.cs" />
     <Compile Include="Service\WeatherSevice.cs" />
+    <Compile Include="WeatherUriBuilder\WeatherOptions.cs" />
+    <Compile Include="WeatherUriBuilder\WeatherUriBuilder.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

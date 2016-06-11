@@ -1,6 +1,7 @@
 ﻿using System.IO.IsolatedStorage;
 using System.Windows;
 using Microsoft.Practices.Unity;
+using Services.Exceptions;
 using Services.Interfaces;
 
 namespace HelloWorld
@@ -8,7 +9,7 @@ namespace HelloWorld
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         Bootstrapper _bootstrapper = new Bootstrapper();
 
@@ -19,8 +20,16 @@ namespace HelloWorld
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("Ooops. Something went wrong.");
             e.Handled = true;
+
+            var apiException = e.Exception as ApiErrorException;
+            if (apiException != null)
+            {
+                MessageBox.Show(apiException.Message);
+                return;
+            }
+
+            MessageBox.Show("Ooops. Something went wrong.");
         }
 
         protected override void OnExit(ExitEventArgs e)

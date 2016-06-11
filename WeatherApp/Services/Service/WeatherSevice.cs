@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Services.DTO.WeatherInCity;
+using Services.DTO;
+using Services.DTO.Api;
 using Services.Interfaces;
 
 namespace Services.Service
@@ -16,9 +17,22 @@ namespace Services.Service
 
         public async Task<CityWeatherStatus> GetWeatherByCityNameAsync(string cityName)
         {
-            var apiKey = "803dfac6bc748485d062419a84c770d4";
-            var uriStr = $"http://api.openweathermap.org/data/2.5/weather?q={cityName},uk&APPID={apiKey}";
-            var result = await _restClient.GetAsync<CityWeatherStatus>(new Uri(uriStr));
+            var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetCurrentWeatherBuilder();
+            uriBuilder.City = cityName;
+
+            var uri = uriBuilder.Build();
+
+            var result = await _restClient.GetAsync<CityWeatherStatus>(uri);
+            return result;
+        }
+
+        public async Task<CityWeatherForecast> GetWeatherForecast(string cityName)
+        {
+            var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetForecastWeatherBuilder();
+            uriBuilder.City = cityName;
+
+            var uri = uriBuilder.Build();
+            var result = await _restClient.GetAsync<CityWeatherForecast>(uri);
             return result;
         }
     }

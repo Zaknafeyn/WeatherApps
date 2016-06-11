@@ -127,10 +127,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Modules\ModuleA\ModuleA.csproj">
-      <Project>{89b11754-9306-49ca-96fa-b00b5dfd1b60}</Project>
-      <Name>ModuleA</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Modules\WeatherModule\WeatherModule.csproj">
       <Project>{339A5389-037C-44B6-85A9-147EE535214C}</Project>
       <Name>WeatherModule</Name>
@@ -139,6 +135,9 @@
       <Project>{EA9242A7-1B5C-47EB-9A66-36C36B093923}</Project>
       <Name>Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

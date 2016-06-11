@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Services.DTO.Api.WeatherDetails;
 
-namespace Services.DTO.WeatherInCity
+namespace Services.DTO.Api
 {
     public class CityWeatherStatus
     {

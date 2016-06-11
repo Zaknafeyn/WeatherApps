@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using Services.DTO;
 
 namespace Services
 {
     public class RecentCities
     {
         private const int MaxCount = 5;
-        public List<string> Cities { get; } = new List<string>();
+        public List<CityItem> Cities { get; } = new List<CityItem>();
 
-        public void AddCity(string city)
+        public void AddCity(CityItem city)
         {
             if (Cities.Contains(city))
             {

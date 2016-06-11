@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using Prism.Events;
 using Prism.Mvvm;
+using Services.DTO;
 using Services.Events;
 using Services.Interfaces;
 
-namespace ModuleA.ViewModels
+namespace WeatherModule.ViewModels
 {
     public class RecentCitiesViewModel : BindableBase
     {
@@ -22,9 +23,9 @@ namespace ModuleA.ViewModels
             @event.Subscribe(CityWeatherRequestSentEventHandler);
         }
 
-        public ObservableCollection<string> RecentCities { get; } = new ObservableCollection<string>();
+        public ObservableCollection<CityItem> RecentCities { get; } = new ObservableCollection<CityItem>();
 
-        private void CityWeatherRequestSentEventHandler(string city)
+        private void CityWeatherRequestSentEventHandler(CityItem city)
         {
             RecentCities.Clear();
             RecentCities.AddRange(_localStorageService.RecentCities.Cities);

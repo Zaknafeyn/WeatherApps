@@ -15,7 +15,7 @@ namespace ModuleA
 
         public void Initialize()
         {
-            _regionManager.RegisterViewWithRegion("MainRegion", typeof(RecentCitiesView));
+            //_regionManager.RegisterViewWithRegion("MainRegion", typeof(RecentCitiesView));
         }
     }
 }

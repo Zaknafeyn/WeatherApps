@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Services.DTO.WeatherInCity
+namespace Services.DTO.Api.WeatherDetails
 {
     public class Clouds
     {

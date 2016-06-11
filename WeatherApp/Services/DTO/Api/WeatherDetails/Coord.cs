@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 
-namespace Services.DTO.WeatherInCity
+namespace Services.DTO.Api.WeatherDetails
 {
     public class Coord
     {
 
         [JsonProperty("lon")]
-        public double Lon { get; set; }
+        public decimal Lon { get; set; }
 
         [JsonProperty("lat")]
-        public double Lat { get; set; }
+        public decimal Lat { get; set; }
 
     }
 }

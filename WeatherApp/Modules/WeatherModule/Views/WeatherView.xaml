@@ -23,14 +23,39 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Show" 
+            <Button Content="Show weather" 
                     IsDefault="True"
                     Margin="10 0 10 0"
                     Command="{Binding LoadWeatherCommand}" />
             <TextBox Text="{Binding City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
+            
+            <TextBlock Grid.Row="0" Grid.Column="1" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="48"
+                       FontWeight="DemiBold"
+                       Text="{Binding CurrentDegrees, Mode=OneWay}"/>
+
+        </Grid>
+        
+        <!--<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+
 
             <Image Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
 
@@ -41,6 +66,6 @@
                 <Run Text="{Binding Weather.Main.Temp, Converter={StaticResource KelvinToCelsiumDegreesConverter}}"/>
             </TextBlock>
 
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using Prism.Modularity;
 using Prism.Regions;
+using Services;
 using WeatherModule.Views;
 
 namespace WeatherModule
@@ -16,6 +17,7 @@ namespace WeatherModule
         public void Initialize()
         {
             _regionManager.RegisterViewWithRegion("SecondaryRegion", typeof(WeatherView));
+            _regionManager.RegisterViewWithRegion("MainRegion", typeof(RecentCitiesView));
         }
     }
 }

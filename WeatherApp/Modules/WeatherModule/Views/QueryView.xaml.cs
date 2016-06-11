@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModuleA.Views
+namespace WeatherModule.Views
 {
     /// <summary>
-    /// Interaction logic for RecentCitiesView.xaml
+    /// Interaction logic for QueryView.xaml
     /// </summary>
-    public partial class RecentCitiesView : UserControl
+    public partial class QueryView : UserControl
     {
-        public RecentCitiesView()
+        public QueryView()
         {
             InitializeComponent();
         }

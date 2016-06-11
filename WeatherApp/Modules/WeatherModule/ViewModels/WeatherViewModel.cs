@@ -3,7 +3,8 @@ using System.Linq;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using Services.DTO.WeatherInCity;
+using Services.DTO;
+using Services.DTO.Api;
 using Services.Events;
 using Services.Interfaces;
 
@@ -17,6 +18,7 @@ namespace WeatherModule.ViewModels
         private CityWeatherStatus _weather;
         private Uri _iconUri;
         private string _city;
+        private string _currentDegrees;
 
         public WeatherViewModel(IWeatherSevice weatherSevice, IEventAggregator eventAggregator, ILocalStorageService localStorage)
         {
@@ -27,7 +29,7 @@ namespace WeatherModule.ViewModels
             LoadWeatherCommand = new DelegateCommand(LoadWeatherCommandExecuted, LoadWeatherCommandCanExecute);
         }
 
-        private void DoCityWeatherRequestSend(string city)
+        private void DoCityWeatherRequestSend(CityItem city)
         {
             _localStorage.RecentCities.AddCity(city);
 
@@ -60,6 +62,12 @@ namespace WeatherModule.ViewModels
             set { SetProperty( ref _iconUri, value); }
         }
 
+        public string CurrentDegrees
+        {
+            get { return _currentDegrees; }
+            set { SetProperty( ref _currentDegrees, value); }
+        }
+
         private bool LoadWeatherCommandCanExecute()
         {
             return !string.IsNullOrEmpty(City);
@@ -73,7 +81,16 @@ namespace WeatherModule.ViewModels
             var dayOrNight = weatherStatus.Icon.EndsWith("d") ? "d" : "n";
             IconUri = new Uri($"pack://application:,,,/WeatherModule;component/Resources/Icons/WeatherIcons/{weatherStatus.Id}{dayOrNight}.png");
 
-            DoCityWeatherRequestSend(City);
+            var temperature = Weather.Main.Temp.NormalizeTemperature();
+            CurrentDegrees = $"{temperature}º";
+
+            DoCityWeatherRequestSend(new CityItem
+            {
+                CityId = Weather.Id,
+                CityName = Weather.Name
+            });
         }
+
+
     }
 }
