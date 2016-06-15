@@ -28,7 +28,7 @@ namespace Services.WeatherUriBuilder
 
         public string City { get; set; }
 
-        public string CityId { get; set; }
+        public int? CityId { get; set; }
 
         private string GetWeatherApiPath()
         {
@@ -37,7 +37,7 @@ namespace Services.WeatherUriBuilder
                 case WeatherOptions.Current:
                     return "weather";
                 case WeatherOptions.Forecast:
-                    return "forecaset";
+                    return "forecast";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -45,15 +45,18 @@ namespace Services.WeatherUriBuilder
 
         public Uri Build()
         {
-            if (string.IsNullOrEmpty(CityId) && string.IsNullOrEmpty(City))
+            if (!CityId.HasValue && string.IsNullOrEmpty(City))
                 throw new InvalidOperationException("City and/or CityId is not specified. Cannot build query without these data.");
 
-            var cityQueryParam = !string.IsNullOrEmpty(CityId) ? CityId : City;
+            var cityQueryParam = CityId?.ToString() ?? City;
             var paramDict = new Dictionary<string, string>
             {
-                ["q"] = cityQueryParam,
                 ["APPID"] = ApiKey
             };
+
+            var key = CityId.HasValue ? "id" : "q";
+            var value = CityId?.ToString() ?? cityQueryParam;
+            paramDict.Add(key, value);
 
             var queryParams = paramDict.Select(x => $"{x.Key}={x.Value}");
 

@@ -21,6 +21,9 @@ namespace Services
 
             try
             {
+                if (content.Contains("Error"))
+                    throw new JsonSerializationException();
+
                 var result = JsonConvert.DeserializeObject<TMessage>(content);
                 return result;
             }

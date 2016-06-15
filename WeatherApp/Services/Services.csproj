@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\UnixDateJsonConverter.cs" />
     <Compile Include="DTO\Api\ApiErrorMessage.cs" />
     <Compile Include="DTO\Api\CityWeatherForecast.cs" />
     <Compile Include="DTO\Api\CityWeatherStatus.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="DTO\Api\WeatherDetails\Wind.cs" />
     <Compile Include="DTO\CityItem.cs" />
     <Compile Include="Events\CityWeatherRequestSentEvent.cs" />
+    <Compile Include="Events\RecentCitySelectionChangedEvent.cs" />
     <Compile Include="Exceptions\ApiErrorException.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Interfaces\ILocalStorageService.cs" />

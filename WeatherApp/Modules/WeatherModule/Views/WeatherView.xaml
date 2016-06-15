@@ -4,12 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:controls="clr-namespace:WeatherModule.Controls"
+             xmlns:models="clr-namespace:WeatherModule.Models"
              mc:Ignorable="d" 
              mvvm:ViewModelLocator.AutoWireViewModel="True" 
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/GenericDictionary.xaml"/>
+
     </UserControl.Resources>
 
     <Grid>
@@ -37,7 +40,10 @@
                    Style="{StaticResource SubheaderTextBlockStyle}"
                    Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         
-        <StackPanel Grid.Row="1" Margin="10" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
+        <StackPanel Grid.Row="1" Margin="10" 
+                    Name="ContainerStackPanel"
+                    Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -59,19 +65,16 @@
                        VerticalAlignment="Center"
                        FontSize="48"
                        FontWeight="DemiBold"
-                       Text="{Binding CurrentDegrees, Mode=OneWay}"/>
+                       Text="{Binding CurrentDegrees, Mode=OneWay, Converter={StaticResource DecimalToDegreesConverter}}"/>
 
                 <TextBlock Grid.Row ="1" Grid.Column ="0" Grid.ColumnSpan="2"  
+                           Margin="0 5 0 5"
                            HorizontalAlignment="Center"
                            Text="{Binding WeatherDescr}" 
                            Foreground="{StaticResource CloudCaptionBrush}"
                            FontWeight="Bold"
                            Style="{StaticResource BodyTextBlockStyle}"/>
-                
-                <Line Grid.Row ="2" Grid.Column ="0" Grid.ColumnSpan="2"  
-                      Fill="Blue"
-                      X1="0" Y1="0" X2="300" Y2="0"
-                    HorizontalAlignment="Center"/>
+
             </Grid>
             
             <Grid>
@@ -80,30 +83,61 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding MinTemp, Mode=OneWay, Converter={StaticResource DecimalToDegreesConverter}}" 
+                           Style="{StaticResource BodyTextBlockStyle}"/>
+                <Line Grid.Column="0" 
+                      X1="0" Y1 ="0" X2="0" Y2="20" 
+                      Style="{StaticResource SeparatorLineStyle}"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Right" />
                 
-                <TextBlock Grid.Column="0" Text="{Binding MinTemp}" Style="{StaticResource BodyTextBlockStyle}"/>
-                <TextBlock Grid.Column="1" Text="{Binding MaxTemp}" Style="{StaticResource BodyTextBlockStyle}"/>
-                <TextBlock Grid.Column="2" Style="{StaticResource BodyTextBlockStyle}" Margin="10 0 10 0">
+                <TextBlock Grid.Column="1" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding MaxTemp, Mode=OneWay, Converter={StaticResource DecimalToDegreesConverter}}" 
+                           Style="{StaticResource BodyTextBlockStyle}"/>
+                <Line Grid.Column="1" 
+                      X1="0" Y1 ="0" X2="0" Y2="20" 
+                      Style="{StaticResource SeparatorLineStyle}"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Right" />
+                
+                <TextBlock Grid.Column="2" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource BodyTextBlockStyle}" 
+                           Margin="10 0 10 0">
                     <Run Text="Wind: " FontWeight="Bold"/>
-                    <Run Text = "{Binding WindSpeed}"/>
-                    <Run Text = " mph"/>
+                    <Run Text = "{Binding WindSpeed, Converter={StaticResource DecimalToSpeedConverter}}"/>
                 </TextBlock>
             </Grid>
 
+            <Line Margin="0 10 0 5" 
+                  X1="0" Y1="0" X2="{Binding ActualWidth, ElementName=ContainerStackPanel, Mode=OneWay}" Y2="0" 
+                  Style="{StaticResource SeparatorLineStyle}"/>
+
+            <controls:DailyForecastControl WeatherForecast="{Binding WeatherForecastCollection[4], Mode=OneWay}"/>
+
+            <Line Margin="0 10 0 5" 
+                  X1="0" Y1="0" X2="{Binding ActualWidth, ElementName=ContainerStackPanel, Mode=OneWay}" Y2="0" 
+                  Style="{StaticResource SeparatorLineStyle}"/>
+
+            <controls:DailyForecastControl WeatherForecast="{Binding WeatherForecastCollection[12], Mode=OneWay}"/>
+            
+            <!--<ItemsControl ItemsSource="{Binding WeatherForecastCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="models:WeatherForecast">
+                        <controls:DailyForecastControl WeatherForecast="{Binding ., Mode=OneWay}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>-->
+            
         </StackPanel>
 
-        <!--<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-
-
-            <Image Source="{Binding IconUri, Mode=OneWay}" Height="100" Width="100" Stretch="Uniform"/>
-
-            <TextBlock >
-                <Run Text="Temperature in "/>
-                <Run Text="{Binding Weather.Name}"/>
-                <Run Text=" is "/>
-                <Run Text="{Binding Weather.Main.Temp, Converter={StaticResource KelvinToCelsiumDegreesConverter}}"/>
-            </TextBlock>
-
-        </StackPanel>-->
+        
     </Grid>
 </UserControl>

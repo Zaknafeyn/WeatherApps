@@ -4,14 +4,12 @@ using System.Windows.Data;
 
 namespace WeatherModule.Converters
 {
-    public class KelvinToCelsiumDegreesConverter : IValueConverter
+    public class DecimalToSpeedConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var kelvinValue = (decimal) value;
-            var celsiumDegrees = kelvinValue.NormalizeTemperature();
-
-            return celsiumDegrees;
+            var speed = (decimal) value;
+            return $"{speed} mph";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

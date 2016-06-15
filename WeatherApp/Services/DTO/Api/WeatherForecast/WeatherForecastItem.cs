@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Services.Converters;
 using Services.DTO.Api.WeatherDetails;
 
 namespace Services.DTO.Api.WeatherForecast
@@ -7,7 +9,8 @@ namespace Services.DTO.Api.WeatherForecast
     public class WeatherForecastItem
     {
         [JsonProperty("dt")]
-        public int Dt { get; set; }
+        [JsonConverter(typeof(UnixDateJsonConverter))]
+        public DateTime Dt { get; set; }
 
         [JsonProperty("main")]
         public Main Main { get; set; }

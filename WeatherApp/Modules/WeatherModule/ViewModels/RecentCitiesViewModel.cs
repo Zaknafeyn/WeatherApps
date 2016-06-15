@@ -12,6 +12,8 @@ namespace WeatherModule.ViewModels
         private readonly ILocalStorageService _localStorageService;
         private readonly IEventAggregator _eventAggregator;
 
+        private CityItem _recentCitySelected;
+
         public RecentCitiesViewModel(ILocalStorageService localStorageService, IEventAggregator eventAggregator)
         {
             _localStorageService = localStorageService;
@@ -19,11 +21,31 @@ namespace WeatherModule.ViewModels
 
             RecentCities.AddRange(localStorageService.RecentCities.Cities);
 
+            // event subscribe
             var @event = _eventAggregator.GetEvent<CityWeatherRequestSentEvent>();
             @event.Subscribe(CityWeatherRequestSentEventHandler);
         }
 
         public ObservableCollection<CityItem> RecentCities { get; } = new ObservableCollection<CityItem>();
+
+        public CityItem RecentCitySelected
+        {
+            get { return _recentCitySelected; }
+            set
+            {
+                SetProperty( ref _recentCitySelected, value);
+                OnRecentCitySelectionChanged(value);
+            }
+        }
+
+        private void OnRecentCitySelectionChanged(CityItem selectedCityItem)
+        {
+            if (selectedCityItem == null)
+                return;
+
+            var @event = _eventAggregator.GetEvent<RecentCitySelectionChangedEvent>();
+            @event.Publish(selectedCityItem);
+        }
 
         private void CityWeatherRequestSentEventHandler(CityItem city)
         {

@@ -1,9 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:WeatherModule.Converters">
-    
-    <converters:KelvinToCelsiumDegreesConverter x:Key="KelvinToCelsiumDegreesConverter"/>
+
+    <converters:DecimalToDegreesConverter x:Key="DecimalToDegreesConverter"/>
     <converters:WeatherToImageUriConverter x:Key="WeatherToImageUriConverter"/>
     <converters:BooleanToVisibilityInvertedConverter x:Key="BooleanToVisibilityInvertedConverter"/>
     <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    <converters:DecimalToSpeedConverter x:Key="DecimalToSpeedConverter"/>
+    
 </ResourceDictionary>

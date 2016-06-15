@@ -26,10 +26,31 @@ namespace Services.Service
             return result;
         }
 
-        public async Task<CityWeatherForecast> GetWeatherForecast(string cityName)
+        public async Task<CityWeatherStatus> GetWeatherByCityIdAsync(int cityId)
+        {
+            var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetCurrentWeatherBuilder();
+            uriBuilder.CityId = cityId;
+
+            var uri = uriBuilder.Build();
+
+            var result = await _restClient.GetAsync<CityWeatherStatus>(uri);
+            return result;
+        }
+
+        public async Task<CityWeatherForecast> GetWeatherForecastByCityNameAsync(string cityName)
         {
             var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetForecastWeatherBuilder();
             uriBuilder.City = cityName;
+
+            var uri = uriBuilder.Build();
+            var result = await _restClient.GetAsync<CityWeatherForecast>(uri);
+            return result;
+        }
+
+        public async Task<CityWeatherForecast> GetWeatherForecastByCityIdAsync(int cityId)
+        {
+            var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetForecastWeatherBuilder();
+            uriBuilder.CityId = cityId;
 
             var uri = uriBuilder.Build();
             var result = await _restClient.GetAsync<CityWeatherForecast>(uri);

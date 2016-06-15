@@ -67,11 +67,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DailyForecastControl.xaml.cs">
+      <DependentUpon>DailyForecastControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityInvertedConverter.cs" />
-    <Compile Include="Converters\KelvinToCelsiumDegreesConverter.cs" />
+    <Compile Include="Converters\DecimalToDegreesConverter.cs" />
+    <Compile Include="Converters\DecimalToSpeedConverter.cs" />
     <Compile Include="Converters\WeatherToImageUriConverter.cs" />
+    <Compile Include="DataConverters\WeatherConverters.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Models\WeatherForecastModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,6 +117,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\DailyForecastControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -248,6 +258,7 @@
     <Resource Include="Resources\Icons\WeatherIcons\906d.png" />
     <Resource Include="Resources\Icons\WeatherIcons\906n.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

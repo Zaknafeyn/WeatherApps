@@ -2,6 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <Color x:Key="CloudCaptionColor">#CCCCCC</Color>
+    <Color x:Key="SeparatorColor">#CCCCCC</Color>
 
     <SolidColorBrush x:Key="CloudCaptionBrush" Color="{StaticResource CloudCaptionColor}"/>
+    <SolidColorBrush x:Key="SeparatorBrush" Color="{StaticResource SeparatorColor}"/>
+
+
+    <Style x:Key="SeparatorLineStyle" TargetType="Line">
+        <Setter Property="Stroke" Value="{StaticResource SeparatorBrush}"/>
+        <Setter Property ="StrokeThickness" Value="2"/>
+    </Style>
+
 </ResourceDictionary>
