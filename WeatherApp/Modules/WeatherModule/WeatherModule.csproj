@@ -155,12 +155,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Services\Services.csproj">
-      <Project>{EA9242A7-1B5C-47EB-9A66-36C36B093923}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Icons\WeatherIcons\200d.png" />
     <Resource Include="Resources\Icons\WeatherIcons\200n.png" />
     <Resource Include="Resources\Icons\WeatherIcons\201d.png" />
@@ -258,7 +252,12 @@
     <Resource Include="Resources\Icons\WeatherIcons\906d.png" />
     <Resource Include="Resources\Icons\WeatherIcons\906n.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{EA9242A7-1B5C-47EB-9A66-36C36B093923}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
