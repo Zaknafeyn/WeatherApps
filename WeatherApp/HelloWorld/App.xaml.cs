@@ -3,7 +3,7 @@ using Microsoft.Practices.Unity;
 using Services.Interfaces;
 using Services.Portable.Exceptions;
 
-namespace Weather.App
+namespace Weather.Wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml

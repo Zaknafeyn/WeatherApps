@@ -3,10 +3,10 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;
 using Services;
-using Weather.App.Views;
+using Weather.Wpf.Views;
 using WeatherModule;
 
-namespace Weather.App
+namespace Weather.Wpf
 {
     public class Bootstrapper : UnityBootstrapper
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Weather.App.Views
+namespace Weather.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
