@@ -253,6 +253,10 @@
     <Resource Include="Resources\Icons\WeatherIcons\906n.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WeatherApi\Services.Portable\Services.Portable.csproj">
+      <Project>{6EE47C8B-D123-4421-B670-8A2E0362746F}</Project>
+      <Name>Services.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WeatherApi\Services\Services.csproj">
       <Project>{EA9242A7-1B5C-47EB-9A66-36C36B093923}</Project>
       <Name>Services</Name>

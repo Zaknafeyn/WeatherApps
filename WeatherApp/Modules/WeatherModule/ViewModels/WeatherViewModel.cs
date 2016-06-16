@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using Services.DTO;
-using Services.DTO.Api;
 using Services.Events;
 using Services.Interfaces;
+using Services.Portable.DTO;
+using Services.Portable.DTO.Api;
 using WeatherModule.DataConverters;
 using WeatherModule.Models;
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Services.DTO.Api;
-using Services.DTO.Api.WeatherForecast;
+using Services.Portable.DTO.Api.WeatherForecast;
 using WeatherModule.Models;
 
 namespace WeatherModule.DataConverters

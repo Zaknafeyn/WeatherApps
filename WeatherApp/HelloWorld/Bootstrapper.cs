@@ -1,12 +1,12 @@
-﻿using Prism.Unity;
-using System.Windows;
+﻿using System.Windows;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
-using HelloWorld.Views;
+using Prism.Unity;
 using Services;
+using Weather.App.Views;
 using WeatherModule;
 
-namespace HelloWorld
+namespace Weather.App
 {
     public class Bootstrapper : UnityBootstrapper
     {

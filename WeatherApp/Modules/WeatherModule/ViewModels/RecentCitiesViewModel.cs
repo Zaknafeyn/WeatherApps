@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using Prism.Events;
 using Prism.Mvvm;
-using Services.DTO;
 using Services.Events;
 using Services.Interfaces;
+using Services.Portable.DTO;
 
 namespace WeatherModule.ViewModels
 {

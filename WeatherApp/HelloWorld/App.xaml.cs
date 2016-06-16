@@ -1,10 +1,9 @@
-﻿using System.IO.IsolatedStorage;
-using System.Windows;
+﻿using System.Windows;
 using Microsoft.Practices.Unity;
-using Services.Exceptions;
 using Services.Interfaces;
+using Services.Portable.Exceptions;
 
-namespace HelloWorld
+namespace Weather.App
 {
     /// <summary>
     /// Interaction logic for App.xaml
