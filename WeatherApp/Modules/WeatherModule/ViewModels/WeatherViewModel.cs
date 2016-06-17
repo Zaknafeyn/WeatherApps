@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Practices.ObjectBuilder2;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -181,9 +184,7 @@ namespace WeatherModule.ViewModels
 
             WeatherForecastTomorrow = weatherForecastHourly.Skip(7).Take(1).First();
 
-            WeatherForecastCollection.Clear();
-            WeatherForecastCollection.AddRange(weatherForecastHourly);
-
+            PopulateWeatherForecastCollection(weatherForecastHourly);
 
             var weatherStatus = currentWeather.Weather.First();
             var dayOrNight = weatherStatus.Icon.EndsWith("d") ? "d" : "n";
@@ -194,6 +195,12 @@ namespace WeatherModule.ViewModels
             MaxTemp = currentWeather.Main.TempMax.NormalizeTemperature();
             WeatherDescr = weatherStatus.Description;
             WindSpeed = currentWeather.Wind.Speed;
+        }
+
+        private void PopulateWeatherForecastCollection(IList<WeatherForecastModel> weatherForecast)
+        {
+            WeatherForecastCollection.Clear();
+            weatherForecast.ForEach(x => WeatherForecastCollection.Add(x));
         }
 
         private async void RecentCitySelectionChangedEventHandler(CityItem recentCityItem)

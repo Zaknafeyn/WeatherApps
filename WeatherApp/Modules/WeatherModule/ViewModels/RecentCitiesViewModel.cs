@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Microsoft.Practices.ObjectBuilder2;
 using Prism.Events;
 using Prism.Mvvm;
 using Services.Events;
@@ -19,7 +20,7 @@ namespace WeatherModule.ViewModels
             _localStorageService = localStorageService;
             _eventAggregator = eventAggregator;
 
-            RecentCities.AddRange(localStorageService.RecentCities.Cities);
+            UpdateRecentCitiesList();
 
             // event subscribe
             var @event = _eventAggregator.GetEvent<CityWeatherRequestSentEvent>();
@@ -49,8 +50,13 @@ namespace WeatherModule.ViewModels
 
         private void CityWeatherRequestSentEventHandler(CityItem city)
         {
+            UpdateRecentCitiesList();
+        }
+
+        private void UpdateRecentCitiesList()
+        {
             RecentCities.Clear();
-            RecentCities.AddRange(_localStorageService.RecentCities.Cities);
+            _localStorageService.RecentCities.Cities.ForEach(x => RecentCities.Add(x));
         }
     }
 }
