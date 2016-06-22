@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Services.Interfaces;
 using Services.Portable;
+using Services.Portable.API;
 using Services.Portable.DTO.Api;
 using Services.Portable.WeatherUriBuilder;
 
@@ -9,52 +10,35 @@ namespace Services.Service
 {
     public class WeatherSevice : IWeatherSevice
     {
-        private readonly RestClient _restClient;
 
-        public WeatherSevice(RestClient restClient)
+        private readonly WeatherApi _weatherApi;
+
+        public WeatherSevice()
         {
-            _restClient = restClient;
+            _weatherApi = new WeatherApi();
         }
 
         public async Task<CityWeatherStatus> GetWeatherByCityNameAsync(string cityName)
         {
-            var uriBuilder = WeatherUriBuilder.GetCurrentWeatherBuilder();
-            uriBuilder.City = cityName;
-
-            var uri = uriBuilder.Build();
-
-            var result = await _restClient.GetAsync<CityWeatherStatus>(uri);
+            var result = await _weatherApi.GetWeatherByCityNameAsync(cityName);
             return result;
         }
 
         public async Task<CityWeatherStatus> GetWeatherByCityIdAsync(int cityId)
         {
-            var uriBuilder = WeatherUriBuilder.GetCurrentWeatherBuilder();
-            uriBuilder.CityId = cityId;
-
-            var uri = uriBuilder.Build();
-
-            var result = await _restClient.GetAsync<CityWeatherStatus>(uri);
+            var result = await _weatherApi.GetWeatherByCityIdAsync(cityId);
             return result;
         }
 
         public async Task<CityWeatherForecast> GetWeatherForecastByCityNameAsync(string cityName)
         {
-            var uriBuilder = WeatherUriBuilder.GetForecastWeatherBuilder();
-            uriBuilder.City = cityName;
-
-            var uri = uriBuilder.Build();
-            var result = await _restClient.GetAsync<CityWeatherForecast>(uri);
+            var result = await _weatherApi.GetWeatherForecastByCityNameAsync(cityName);
             return result;
         }
 
         public async Task<CityWeatherForecast> GetWeatherForecastByCityIdAsync(int cityId)
         {
-            var uriBuilder = WeatherUriBuilder.GetForecastWeatherBuilder();
-            uriBuilder.CityId = cityId;
-
-            var uri = uriBuilder.Build();
-            var result = await _restClient.GetAsync<CityWeatherForecast>(uri);
+            var result = await _weatherApi.GetWeatherForecastByCityIdAsync(cityId);
             return result;
         }
     }

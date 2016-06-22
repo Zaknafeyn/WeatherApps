@@ -24,7 +24,7 @@ namespace Services
 
             //_unityContainer.RegisterInstance(new RestClient());
             //_unityContainer.RegisterType(typeof(IWeatherSevice), typeof(WeatherSevice));
-            _unityContainer.RegisterInstance(typeof(IWeatherSevice), new WeatherSevice(new RestClient()));
+            _unityContainer.RegisterInstance(typeof(IWeatherSevice), new WeatherSevice());
             _unityContainer.RegisterInstance(typeof(ILocalStorageService), localStorage);
             _unityContainer.RegisterType(typeof(ILogger), typeof(DebugLogger));
         }

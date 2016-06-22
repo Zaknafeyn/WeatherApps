@@ -36,6 +36,9 @@ namespace Services.Portable.DTO.Api
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
         [JsonProperty("cod")]
         public int Cod { get; set; }
     }
