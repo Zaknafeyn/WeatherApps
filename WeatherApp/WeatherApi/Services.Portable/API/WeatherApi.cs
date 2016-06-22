@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 
 namespace Services.Portable.API
@@ -39,6 +40,17 @@ namespace Services.Portable.API
             return result;
         }
 
+        public async Task<CityWeatherResult> GetWeatherByCoordAsync(Coordinates coords)
+        {
+            var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetCurrentWeatherBuilder();
+            uriBuilder.Coordinates = coords;
+
+            var uri = uriBuilder.Build();
+
+            var result = await _restClient.GetAsync<CityWeatherResult>(uri);
+            return result;
+        }
+
         public async Task<CityWeatherForecastResult> GetWeatherForecastByCityNameAsync(string cityName)
         {
             var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetForecastWeatherBuilder();
@@ -53,6 +65,16 @@ namespace Services.Portable.API
         {
             var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetForecastWeatherBuilder();
             uriBuilder.CityId = cityId;
+
+            var uri = uriBuilder.Build();
+            var result = await _restClient.GetAsync<CityWeatherForecastResult>(uri);
+            return result;
+        }
+
+        public async Task<CityWeatherForecastResult> GetWeatherForecastByCoordsAsync(Coordinates coords)
+        {
+            var uriBuilder = WeatherUriBuilder.WeatherUriBuilder.GetForecastWeatherBuilder();
+            uriBuilder.Coordinates = coords;
 
             var uri = uriBuilder.Build();
             var result = await _restClient.GetAsync<CityWeatherForecastResult>(uri);

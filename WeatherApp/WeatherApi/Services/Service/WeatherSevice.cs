@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Services.Interfaces;
-using Services.Portable;
 using Services.Portable.API;
+using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
-using Services.Portable.WeatherUriBuilder;
 
 namespace Services.Service
 {
@@ -30,6 +29,12 @@ namespace Services.Service
             return result;
         }
 
+        public async Task<CityWeatherResult> GetWeatherByCoordsAsync(Coordinates coords)
+        {
+            var result = await _weatherApi.GetWeatherByCoordAsync(coords);
+            return result;
+        }
+
         public async Task<CityWeatherForecastResult> GetWeatherForecastByCityNameAsync(string cityName)
         {
             var result = await _weatherApi.GetWeatherForecastByCityNameAsync(cityName);
@@ -39,6 +44,12 @@ namespace Services.Service
         public async Task<CityWeatherForecastResult> GetWeatherForecastByCityIdAsync(int cityId)
         {
             var result = await _weatherApi.GetWeatherForecastByCityIdAsync(cityId);
+            return result;
+        }
+
+        public async Task<CityWeatherForecastResult> GetWeatherForecastByCoordsAsync(Coordinates coords)
+        {
+            var result = await _weatherApi.GetWeatherForecastByCoordsAsync(coords);
             return result;
         }
     }

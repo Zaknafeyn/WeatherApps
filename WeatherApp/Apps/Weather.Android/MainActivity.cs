@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Services.Portable.API;
+using Services.Portable.DTO;
 
 namespace Weather.Android
 {
@@ -14,6 +15,8 @@ namespace Weather.Android
     public class MainActivity : Activity
     {
         int count = 1;
+
+        private readonly WeatherApi _weatherApi = new WeatherApi();
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -34,8 +37,13 @@ namespace Weather.Android
 
                 progressBar.Visibility = ViewStates.Visible;
 
-                var api = new WeatherApi();
-                var cityWeather = await api.GetWeatherByCityNameAsync("New York");
+                //var cityWeather = await _weatherApi.GetWeatherByCoordAsync(new Coordinates()
+                //                  {
+                //                      Longtitude = 30.52m,
+                //                      Latitude = 50.45m
+                //                  });
+
+                var cityWeather = await _weatherApi.GetWeatherByCityNameAsync("New York");
                 var weatherStatus = cityWeather.Weather.First();
 
                 currentTempIndicator.Text = $"{cityWeather.Main.Temp-273.15m}º";
