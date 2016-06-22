@@ -46,26 +46,53 @@ namespace Weather.Android
             _textViewCurrentTemp = FindViewById<TextView>(Resource.Id.textViewCurrentTemp);
 
 
-            _imageViewCurrentWeather.Visibility = ViewStates.Gone;
-            _textViewCurrentTemp.Visibility = ViewStates.Gone;
-            _progressBar.Visibility = ViewStates.Visible;
+            //await DisplayWeatherAsync("Athens");
+            await DisplayWeatherAsync(new Coordinates
+            {
+                Longtitude = 50.4601m,
+                Latitude = -30.5148m
+            });
+
+        }
+
+        private void SetLoadingState(bool isLoading)
+        {
+            _buttonShowWeather.Enabled = !isLoading;
+
+            _imageViewCurrentWeather.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
+            _textViewCurrentTemp.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
+            _progressBar.Visibility = isLoading ? ViewStates.Visible : ViewStates.Gone;
+        }
+
+        async Task DisplayWeatherAsync(Coordinates coords)
+        {
+            SetLoadingState(true);
 
             try
             {
-                //var cityWeather = await _weatherApi.GetWeatherByCoordAsync(new Coordinates()
-                //                  {
-                //                      Longtitude = 30.52m,
-                //                      Latitude = 50.45m
-                //                  });
-
-                await ShowWeatherAsync("Lviv");
+                await ShowWeatherAsync(coords);
+            }
+            catch (Exception ex)
+            {
+                _editTextCity.Text = ex.Message;
             }
             finally
             {
-                _imageViewCurrentWeather.Visibility = ViewStates.Visible;
-                _textViewCurrentTemp.Visibility = ViewStates.Visible;
+                SetLoadingState(false);
+            }
+        }
 
-                _progressBar.Visibility = ViewStates.Gone;
+        async Task DisplayWeatherAsync(string city)
+        {
+            SetLoadingState(true);
+
+            try
+            {
+                await ShowWeatherAsync(city);
+            }
+            finally
+            {
+                SetLoadingState(false);
             }
         }
 

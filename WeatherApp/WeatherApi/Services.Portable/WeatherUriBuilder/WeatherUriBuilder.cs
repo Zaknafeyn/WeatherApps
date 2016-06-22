@@ -54,7 +54,7 @@ namespace Services.Portable.WeatherUriBuilder
 
         public Uri Build()
         {
-            if (!CityId.HasValue && string.IsNullOrEmpty(City))
+            if (!CityId.HasValue && string.IsNullOrEmpty(City) && !Coordinates.HasValue)
                 throw new InvalidOperationException("City and/or CityId is not specified. Cannot build query without these data.");
 
             var paramDict = new Dictionary<string, string>();
