@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Services.Portable;
 using Services.Portable.API;
 using Services.Portable.DTO;
+using Services.Portable.DTO.Api;
 
 namespace Weather.Android
 {
-    [Activity(Label = "Weather.Android", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
+
+        private Button _buttonShowWeather;
+        private EditText _editTextCity;
+        private ImageView _imageViewCurrentWeather;
+        private TextView _textViewCity;
+        private TextView _textViewCurrentTemp;
+        private ProgressBar _progressBar;
 
         private readonly WeatherApi _weatherApi = new WeatherApi();
 
@@ -25,46 +35,65 @@ namespace Weather.Android
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            var progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarLoading);
-            var imgView = FindViewById<ImageView>(Resource.Id.imageViewCurrentWeather);
-            var cityIndicator = FindViewById<TextView>(Resource.Id.textViewCity);
-            var currentTempIndicator = FindViewById<TextView>(Resource.Id.textViewCurrentTemp);
+            _editTextCity = FindViewById<EditText>(Resource.Id.editTextCity);
+            _buttonShowWeather = FindViewById<Button>(Resource.Id.MyButton);
+
+            _buttonShowWeather.Click += _buttonShowWeather_Click;
+
+            _progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarLoading);
+            _imageViewCurrentWeather = FindViewById<ImageView>(Resource.Id.imageViewCurrentWeather);
+            _textViewCity = FindViewById<TextView>(Resource.Id.textViewCity);
+            _textViewCurrentTemp = FindViewById<TextView>(Resource.Id.textViewCurrentTemp);
+
+
+            _imageViewCurrentWeather.Visibility = ViewStates.Gone;
+            _textViewCurrentTemp.Visibility = ViewStates.Gone;
+            _progressBar.Visibility = ViewStates.Visible;
 
             try
             {
-                imgView.Visibility = ViewStates.Gone;
-                currentTempIndicator.Visibility = ViewStates.Gone;
-
-                progressBar.Visibility = ViewStates.Visible;
-
                 //var cityWeather = await _weatherApi.GetWeatherByCoordAsync(new Coordinates()
                 //                  {
                 //                      Longtitude = 30.52m,
                 //                      Latitude = 50.45m
                 //                  });
 
-                var cityWeather = await _weatherApi.GetWeatherByCityNameAsync("New York");
-                var weatherStatus = cityWeather.Weather.First();
-
-                currentTempIndicator.Text = $"{cityWeather.Main.Temp-273.15m}º";
-                cityIndicator.Text = $"{cityWeather.Name}";
-                var drawableId = Resources.GetIdentifier(weatherStatus.GetWeatherIconName().ToLower(), "drawable", PackageName);
-                imgView.SetImageResource(drawableId);
+                await ShowWeatherAsync("Lviv");
             }
             finally
             {
-                imgView.Visibility = ViewStates.Visible;
-                currentTempIndicator.Visibility = ViewStates.Visible;
+                _imageViewCurrentWeather.Visibility = ViewStates.Visible;
+                _textViewCurrentTemp.Visibility = ViewStates.Visible;
 
-                progressBar.Visibility = ViewStates.Gone;
+                _progressBar.Visibility = ViewStates.Gone;
             }
+        }
 
-            // Get our button from the layout resource,
-            // and attach an event to it
+        async Task ShowWeatherAsync(string city)
+        {
+            var cityWeather = await _weatherApi.GetWeatherByCityNameAsync(city);
+            ShowWeather(cityWeather);
+        }
 
-            var button = FindViewById<Button>(Resource.Id.MyButton);
+        async Task ShowWeatherAsync(Coordinates coords)
+        {
+            var cityWeather = await _weatherApi.GetWeatherByCoordAsync(coords);
+            ShowWeather(cityWeather);
+        }
 
-            button.Click += (sender, args) => button.Text = $"{count++} clicks!";
+        void ShowWeather(CityWeatherResult cityWeather)
+        {
+            var weatherStatus = cityWeather.Weather.First();
+
+            _textViewCurrentTemp.Text = $"{cityWeather.Main.Temp.NormalizeTemperature()}º";
+            _textViewCity.Text = $"{cityWeather.Name}";
+            var drawableId = Resources.GetIdentifier(weatherStatus.GetWeatherIconName().ToLower(), "drawable", PackageName);
+            _imageViewCurrentWeather.SetImageResource(drawableId);
+        }
+
+        private async void _buttonShowWeather_Click(object sender, EventArgs e)
+        {
+            await ShowWeatherAsync(_editTextCity.Text);
         }
     }
 }
