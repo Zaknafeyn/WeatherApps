@@ -10,6 +10,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using Services.Events;
 using Services.Interfaces;
+using Services.Portable;
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 using WeatherModule.DataConverters;
@@ -23,7 +24,7 @@ namespace WeatherModule.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalStorageService _localStorage;
         private bool _isBusy;
-        private CityWeatherStatus _weather;
+        private CityWeatherResult _weather;
         private Uri _iconUri;
         private string _city;
         private decimal _currentDegrees;
@@ -51,7 +52,7 @@ namespace WeatherModule.ViewModels
 
         public DelegateCommand LoadWeatherCommand { get; }
 
-        public CityWeatherStatus Weather
+        public CityWeatherResult Weather
         {
             get { return _weather; }
             set { SetProperty(ref _weather, value); }
@@ -175,7 +176,7 @@ namespace WeatherModule.ViewModels
             }
         }
 
-        private void LoadWeather(CityWeatherStatus currentWeather, CityWeatherForecast weatherForecast)
+        private void LoadWeather(CityWeatherResult currentWeather, CityWeatherForecastResult weatherForecast)
         {
             Weather = currentWeather;
 

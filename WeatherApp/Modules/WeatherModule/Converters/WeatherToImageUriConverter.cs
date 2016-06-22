@@ -11,7 +11,7 @@ namespace WeatherModule.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             
-            var weatherObj = value as CityWeatherStatus;
+            var weatherObj = value as CityWeatherResult;
 
             if (weatherObj == null)
                 return null;
@@ -24,7 +24,7 @@ namespace WeatherModule.Converters
             throw new NotImplementedException();
         }
 
-        private Uri GetImageUri(CityWeatherStatus weatherStatus)
+        private Uri GetImageUri(CityWeatherResult weatherStatus)
         {
             if (weatherStatus.Clouds.All < 20)
             {

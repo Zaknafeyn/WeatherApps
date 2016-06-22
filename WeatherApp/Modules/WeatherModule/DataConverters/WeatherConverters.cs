@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Services.Portable;
 using Services.Portable.DTO.Api.WeatherForecast;
 using WeatherModule.Models;
 

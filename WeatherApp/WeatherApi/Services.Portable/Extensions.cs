@@ -22,5 +22,9 @@ namespace Services.Portable
             return uriBuilder.Uri;
         }
 
+        public static decimal NormalizeTemperature(this decimal tempValue)
+        {
+            return Math.Round(tempValue - 273.15m, 1);
+        }
     }
 }

@@ -38,11 +38,9 @@ namespace Weather.Android
                 var cityWeather = await api.GetWeatherByCityNameAsync("New York");
                 var weatherStatus = cityWeather.Weather.First();
 
-                var dayOrNight = weatherStatus.Icon.EndsWith("d") ? "d" : "n";
-
                 currentTempIndicator.Text = $"{cityWeather.Main.Temp-273.15m}º";
                 cityIndicator.Text = $"{cityWeather.Name}";
-                var drawableId = Resources.GetIdentifier($"WeatherStatus{weatherStatus.Id}{dayOrNight}".ToLower(), "drawable", PackageName);
+                var drawableId = Resources.GetIdentifier(weatherStatus.GetWeatherIconName().ToLower(), "drawable", PackageName);
                 imgView.SetImageResource(drawableId);
             }
             finally
