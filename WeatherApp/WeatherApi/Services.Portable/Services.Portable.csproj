@@ -37,8 +37,8 @@
     <Compile Include="API\WeatherApi.cs" />
     <Compile Include="Converters\UnixDateJsonConverter.cs" />
     <Compile Include="DTO\Api\ApiErrorMessage.cs" />
-    <Compile Include="DTO\Api\CityWeatherForecast.cs" />
-    <Compile Include="DTO\Api\CityWeatherStatus.cs" />
+    <Compile Include="DTO\Api\CityWeatherForecastResult.cs" />
+    <Compile Include="DTO\Api\CityWeatherResult.cs" />
     <Compile Include="DTO\Api\WeatherDetails\City.cs" />
     <Compile Include="DTO\Api\WeatherDetails\Clouds.cs" />
     <Compile Include="DTO\Api\WeatherDetails\Coord.cs" />
