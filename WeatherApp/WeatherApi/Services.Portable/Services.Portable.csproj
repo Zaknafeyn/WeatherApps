@@ -37,8 +37,8 @@
     <Compile Include="API\WeatherApi.cs" />
     <Compile Include="Converters\UnixDateJsonConverter.cs" />
     <Compile Include="DTO\Api\ApiErrorMessage.cs" />
-    <Compile Include="DTO\Api\CityWeatherForecast.cs" />
-    <Compile Include="DTO\Api\CityWeatherStatus.cs" />
+    <Compile Include="DTO\Api\CityWeatherForecastResult.cs" />
+    <Compile Include="DTO\Api\CityWeatherResult.cs" />
     <Compile Include="DTO\Api\WeatherDetails\City.cs" />
     <Compile Include="DTO\Api\WeatherDetails\Clouds.cs" />
     <Compile Include="DTO\Api\WeatherDetails\Coord.cs" />
@@ -49,6 +49,7 @@
     <Compile Include="DTO\Api\WeatherDetails\Wind.cs" />
     <Compile Include="DTO\Api\WeatherForecast\WeatherForecastItem.cs" />
     <Compile Include="DTO\CityItem.cs" />
+    <Compile Include="DTO\Coordinates.cs" />
     <Compile Include="Exceptions\ApiErrorException.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,13 +59,17 @@
     <Compile Include="WeatherUriBuilder\WeatherUriBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WeatherNet.2.1\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WeatherNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WeatherNet.2.1\lib\WeatherNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

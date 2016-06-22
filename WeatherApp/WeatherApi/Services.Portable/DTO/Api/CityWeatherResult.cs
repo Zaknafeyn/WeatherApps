@@ -4,7 +4,7 @@ using Services.Portable.DTO.Api.WeatherDetails;
 
 namespace Services.Portable.DTO.Api
 {
-    public class CityWeatherStatus
+    public class CityWeatherResult
     {
         [JsonProperty("coord")]
         public Coord Coord { get; set; }

@@ -5,7 +5,7 @@ using Services.Portable.DTO.Api.WeatherForecast;
 
 namespace Services.Portable.DTO.Api
 {
-    public class CityWeatherForecast
+    public class CityWeatherForecastResult
     {
         [JsonProperty("city")]
         public City City { get; set; }

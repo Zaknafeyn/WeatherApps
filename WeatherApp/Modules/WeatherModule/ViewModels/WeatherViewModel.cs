@@ -10,6 +10,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using Services.Events;
 using Services.Interfaces;
+using Services.Portable;
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 using WeatherModule.DataConverters;

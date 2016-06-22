@@ -87,7 +87,6 @@
     <Compile Include="Converters\DecimalToSpeedConverter.cs" />
     <Compile Include="Converters\WeatherToImageUriConverter.cs" />
     <Compile Include="DataConverters\WeatherConverters.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="Models\WeatherForecastModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

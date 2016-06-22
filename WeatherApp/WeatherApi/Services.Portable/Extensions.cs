@@ -7,7 +7,7 @@ namespace Services.Portable
     {
         public static Uri Append(this Uri uri, params string[] paths)
         {
-            return new Uri(paths.Aggregate(uri.AbsoluteUri, (current, path) => string.Format("{0}/{1}", current.TrimEnd('/'), path.TrimStart('/'))));
+            return new Uri(paths.Aggregate(uri.AbsoluteUri, (current, path) => $"{current.TrimEnd('/')}/{path.TrimStart('/')}"));
         }
 
         public static Uri AppendQuery(this Uri uri, params string[] query)
@@ -22,5 +22,9 @@ namespace Services.Portable
             return uriBuilder.Uri;
         }
 
+        public static decimal NormalizeTemperature(this decimal tempValue)
+        {
+            return Math.Round(tempValue - 273.15m, 1);
+        }
     }
 }
