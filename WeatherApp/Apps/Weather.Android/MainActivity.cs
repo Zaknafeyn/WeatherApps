@@ -30,9 +30,11 @@ namespace Weather.Android
         private LinearLayout _linearLayoutWeather;
         private TextView _textViewDescription;
         private TextView _textViewTempRange;
-		
+        private HorizontalScrollView _horizontalScrollHourlyForecast;
+        private LinearLayout _linearLayoutHourlyForecast;
 
-		private readonly WeatherApi _weatherApi = new WeatherApi();
+
+        private readonly WeatherApi _weatherApi = new WeatherApi();
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -59,11 +61,13 @@ namespace Weather.Android
             _textViewCurrentTemp = FindViewById<TextView>(Resource.Id.textViewCurrentTemp);
             _textViewDescription = FindViewById<TextView>(Resource.Id.textViewDescription);
 	        _textViewTempRange = FindViewById<TextView>(Resource.Id.textViewTempRange);
+            _horizontalScrollHourlyForecast =
+                FindViewById<HorizontalScrollView>(Resource.Id.horizontalScrollHourlyForecast);
+            _linearLayoutHourlyForecast = FindViewById<LinearLayout>(Resource.Id.linearLayoutHourlyForecast);
 
+            //await DisplayWeatherAsync("Athens");
 
-			//await DisplayWeatherAsync("Athens");
-
-			var coords = new Coordinates
+            var coords = new Coordinates
             {
                 Longtitude = 50.4601m,
                 Latitude = -30.5148m
@@ -129,14 +133,42 @@ namespace Weather.Android
 
         async Task ShowWeatherAsync(string city)
         {
-            var cityWeather = await _weatherApi.GetWeatherByCityNameAsync(city);
+
+            var cityWeatherTask = _weatherApi.GetWeatherByCityNameAsync(city);
+            var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCityNameAsync(city);
+
+            await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
+
+            var cityWeather = cityWeatherTask.Result;
+            var cityForecastWeather = cityForecastWeatherTask.Result;
+
             ShowWeather(cityWeather);
+            ShowForecast(cityForecastWeather);
         }
 
         async Task ShowWeatherAsync(Coordinates coords)
         {
-            var cityWeather = await _weatherApi.GetWeatherByCoordAsync(coords);
+            var cityWeatherTask =  _weatherApi.GetWeatherByCoordAsync(coords);
+            var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCoordsAsync(coords);
+
+            await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
+
+            var cityWeather = cityWeatherTask.Result;
+            var cityForecastWeather = cityForecastWeatherTask.Result;
+
             ShowWeather(cityWeather);
+            ShowForecast(cityForecastWeather);
+        }
+
+        void ShowForecast(CityWeatherForecastResult cityForecastWeather)
+        {
+            _linearLayoutHourlyForecast.RemoveAllViews();
+            foreach (var weatherForecastItem in cityForecastWeather.HourlyForecast)
+            {
+                var panel = new HourlyForecastPanel(this);
+                panel.SetWeather(weatherForecastItem);
+                _linearLayoutHourlyForecast.AddView(panel);
+            }
         }
 
         void ShowWeather(CityWeatherResult cityWeather)
@@ -145,7 +177,7 @@ namespace Weather.Android
 
             _textViewCurrentTemp.Text = $"{cityWeather.Main.Temp.NormalizeTemperature()}º";
             _textViewCity.Text = $"{cityWeather.Name}";
-            var drawableId = Resources.GetIdentifier(weatherStatus.GetWeatherIconName().ToLower(), "drawable", PackageName);
+            var drawableId = Resources.GetWeatherIconResourceId(weatherStatus, PackageName);
             _imageViewCurrentWeather.SetImageResource(drawableId);
             _textViewDescription.Text = weatherStatus.Description;
 
