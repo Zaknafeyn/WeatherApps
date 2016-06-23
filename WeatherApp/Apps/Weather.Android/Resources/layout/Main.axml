@@ -1,85 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-  <EditText android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter a city"
-            android:text="Kiev"
-            android:gravity="center"
-            android:id="@+id/editTextCity"
-            android:inputType="text" />
-  <Button android:id="@+id/MyButton"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/Hello"
-          android:shadowColor="#ffe4c4ff" />
-  <TextView android:text=""
-            style="@style/header_text_style"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter a city"
+        android:text="Kiev"
+        android:gravity="center"
+        android:id="@+id/editTextCity"
+        android:inputType="text" />
+    <Button
+        android:id="@+id/MyButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Hello"
+        android:shadowColor="#ffe4c4ff" />
+    <TextView
+        android:text=""
+        style="@style/header_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewCity"
+        android:gravity="center" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutWeather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewCity"
-            android:gravity="center" />
-  <LinearLayout android:orientation="vertical"
-                android:id="@+id/linearLayoutWeather"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-    <LinearLayout android:orientation="horizontal"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
-      <ImageView android:src="@drawable/weatherstatus200d"
-                 android:layout_width="0dp"
-                 android:layout_height="wrap_content"
-                 android:layout_weight=".50"
-                 android:id="@+id/imageViewCurrentWeather"
-                 android:scaleType="fitCenter"
-                 android:layout_gravity="center" />
-      <LinearLayout android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".50"
-                    android:gravity="center">
-        <TextView style="@style/sub_header_text_style"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:id="@+id/textViewCurrentTemp"
-                  tools:text="+23º"
-                  tools:visibility="visible"
-                  android:layout_marginBottom="0.0dp"
-                  android:layout_gravity="center_vertical" />
-        <TextView style="@style/sub_title_text_style"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  tools:text="+23.2 ... 25.2º"
-                  tools:visibility="visible"
-                  android:id="@+id/textViewTempRange"
-                  android:visibility="visible"
-                  android:layout_gravity="center" />
-      </LinearLayout>
-    </LinearLayout>
-    <TextView style="@style/title_text_style"
-              android:text="Weather description"
-              android:id="@+id/textViewDescription" />
-    <HorizontalScrollView android:minWidth="25px"
-                          android:minHeight="25px"
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:id="@+id/horizontalScrollHourlyForecast">
-      <LinearLayout android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/weatherstatus200d"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:id="@+id/imageViewCurrentWeather"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50"
+                android:gravity="center">
+                <TextView
+                    style="@style/sub_header_text_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayoutHourlyForecast">
-
-      </LinearLayout>
-    </HorizontalScrollView>
-
-  </LinearLayout>
-  <ProgressBar android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:id="@+id/progressBarLoading" />
+                    android:gravity="center"
+                    android:id="@+id/textViewCurrentTemp"
+                    tools:text="+23º"
+                    tools:visibility="visible"
+                    android:layout_marginBottom="0.0dp"
+                    android:layout_gravity="center_vertical" />
+                <TextView
+                    style="@style/sub_title_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:text="+23.2 ... 25.2º"
+                    tools:visibility="visible"
+                    android:id="@+id/textViewTempRange"
+                    android:visibility="visible"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            style="@style/title_text_style"
+            android:text="Weather description"
+            android:id="@+id/textViewDescription" />
+        <HorizontalScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/horizontalScrollHourlyForecast"
+            android:scrollbars="none">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayoutHourlyForecast" />
+        </HorizontalScrollView>
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarLoading" />
 </LinearLayout>

@@ -175,7 +175,7 @@ namespace Weather.Android
         {
             var weatherStatus = cityWeather.Weather.First();
 
-            _textViewCurrentTemp.Text = $"{cityWeather.Main.Temp.DisplayTemperature()}º";
+            _textViewCurrentTemp.Text = $"{cityWeather.Main.Temp.DisplayTemperature()}";
             _textViewCity.Text = $"{cityWeather.Name}";
             var drawableId = Resources.GetWeatherIconResourceId(weatherStatus, PackageName);
             _imageViewCurrentWeather.SetImageResource(drawableId);

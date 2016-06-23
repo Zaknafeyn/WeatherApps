@@ -56,7 +56,7 @@ namespace Weather.Android
 
             _imageViewForecastImage.SetImageResource(iconId);
 		    _textViewTemp.Text = weatherForecastItem.Main.Temp.DisplayTemperature();
-		    _textViewHour.Text = weatherForecastItem.Dt.Hour.ToString();
+		    _textViewHour.Text = $"{weatherForecastItem.Dt.Hour} : 00";
 		}
 	}
 }
