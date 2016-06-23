@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Locations;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -15,7 +17,7 @@ using Services.Portable.DTO.Api;
 namespace Weather.Android
 {
     [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public partial class MainActivity : Activity, ILocationListener
     {
         int count = 1;
 
@@ -25,12 +27,17 @@ namespace Weather.Android
         private TextView _textViewCity;
         private TextView _textViewCurrentTemp;
         private ProgressBar _progressBar;
+        private LinearLayout _linearLayoutWeather;
 
         private readonly WeatherApi _weatherApi = new WeatherApi();
 
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            //InitializeLocationManager();
+
+            //_locationManager.RequestLocationUpdates(_locationProvider, 0,0, this);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -40,6 +47,7 @@ namespace Weather.Android
 
             _buttonShowWeather.Click += _buttonShowWeather_Click;
 
+            _linearLayoutWeather = FindViewById<LinearLayout>(Resource.Id.linearLayoutWeather);
             _progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarLoading);
             _imageViewCurrentWeather = FindViewById<ImageView>(Resource.Id.imageViewCurrentWeather);
             _textViewCity = FindViewById<TextView>(Resource.Id.textViewCity);
@@ -47,26 +55,34 @@ namespace Weather.Android
 
 
             //await DisplayWeatherAsync("Athens");
-            await DisplayWeatherAsync(new Coordinates
+
+            var coords = new Coordinates
             {
                 Longtitude = 50.4601m,
                 Latitude = -30.5148m
-            });
+            };
 
+            //var coords = await GetCurrentCoords();
+
+            await DisplayWeatherAsync(coords);
+
+            //_locationManager.RemoveUpdates(this);
         }
 
-        private void SetLoadingState(bool isLoading)
+        private void ToggleLoadingState(bool isLoading)
         {
             _buttonShowWeather.Enabled = !isLoading;
 
-            _imageViewCurrentWeather.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
-            _textViewCurrentTemp.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
+            //_imageViewCurrentWeather.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
+            //_textViewCurrentTemp.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
+            _linearLayoutWeather.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
+
             _progressBar.Visibility = isLoading ? ViewStates.Visible : ViewStates.Gone;
         }
 
         async Task DisplayWeatherAsync(Coordinates coords)
         {
-            SetLoadingState(true);
+            ToggleLoadingState(true);
 
             try
             {
@@ -78,13 +94,13 @@ namespace Weather.Android
             }
             finally
             {
-                SetLoadingState(false);
+                ToggleLoadingState(false);
             }
         }
 
         async Task DisplayWeatherAsync(string city)
         {
-            SetLoadingState(true);
+            ToggleLoadingState(true);
 
             try
             {
@@ -92,7 +108,7 @@ namespace Weather.Android
             }
             finally
             {
-                SetLoadingState(false);
+                ToggleLoadingState(false);
             }
         }
 
