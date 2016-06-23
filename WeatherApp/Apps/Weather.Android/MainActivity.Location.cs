@@ -21,16 +21,10 @@ namespace Weather.Android
             {
                 Accuracy = Accuracy.Fine
             };
+
             IList<string> acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
 
-            if (acceptableLocationProviders.Any())
-            {
-                _locationProvider = acceptableLocationProviders.First();
-            }
-            else
-            {
-                _locationProvider = string.Empty;
-            }
+            _locationProvider = acceptableLocationProviders.Any() ? acceptableLocationProviders.First() : string.Empty;
         }
 
         async Task<Address> ReverseGeocodeCurrentLocation()

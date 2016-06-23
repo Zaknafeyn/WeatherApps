@@ -15,7 +15,8 @@
         android:id="@+id/MyButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Hello" />
+        android:text="@string/Hello"
+        android:shadowColor="#ffe4c4ff" />
     <TextView
         android:text=""
         style="@style/header_text_style"
@@ -24,32 +25,32 @@
         android:id="@+id/textViewCity"
         android:gravity="center" />
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:id="@+id/linearLayoutWeather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/weatherstatus200d"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageViewCurrentWeather"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center" />
-        <TextView xmlns:tools="http://schemas.android.com/tools"
-            style="@style/sub_header_text_style"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/textViewCurrentTemp"
-            tools:text="+23º"
-            tools:visibility="visible" />
-    <!--<TextView
-            android:text="Current temp"
-            style="@style/header_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewCurrentTemp"
-            android:gravity="center" />-->
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/weatherstatus200d"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".50"
+                android:id="@+id/imageViewCurrentWeather"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center" />
+            <TextView xmlns:tools="http://schemas.android.com/tools"
+                style="@style/sub_header_text_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50"
+                android:gravity="center"
+                android:id="@+id/textViewCurrentTemp"
+                tools:text="+23º"
+                tools:visibility="visible" />
+        </LinearLayout>
     </LinearLayout>
     <ProgressBar
         android:layout_width="match_parent"

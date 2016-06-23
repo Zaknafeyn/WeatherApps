@@ -35,7 +35,9 @@ namespace Weather.Android
         {
             base.OnCreate(bundle);
 
-            //InitializeLocationManager();
+            InitializeLocationManager();
+
+            ShowDiagInfo($"Location providers: {string.Join(", ", _locationProvider)}");
 
             //_locationManager.RequestLocationUpdates(_locationProvider, 0,0, this);
 
@@ -67,6 +69,14 @@ namespace Weather.Android
             await DisplayWeatherAsync(coords);
 
             //_locationManager.RemoveUpdates(this);
+        }
+
+        private void ShowDiagInfo(string message)
+        {
+            var dialog = new AlertDialog.Builder(this);
+            dialog.SetTitle("Diagnostics");
+            dialog.SetMessage(message);
+            RunOnUiThread(() => { dialog.Show(); });
         }
 
         private void ToggleLoadingState(bool isLoading)

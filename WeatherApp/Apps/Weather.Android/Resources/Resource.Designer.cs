@@ -420,14 +420,26 @@ namespace Weather.Android
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int button_text = 2131034114;
-			
 			// aapt resource value: 0x7f050000
-			public const int header_text_style = 2131034112;
+			public const int base_text_block_style = 2131034112;
+			
+			// aapt resource value: 0x7f050006
+			public const int button_text = 2131034118;
+			
+			// aapt resource value: 0x7f050005
+			public const int caption_text_block_style = 2131034117;
 			
 			// aapt resource value: 0x7f050001
-			public const int sub_header_text_style = 2131034113;
+			public const int header_text_style = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int sub_header_text_style = 2131034114;
+			
+			// aapt resource value: 0x7f050004
+			public const int sub_title_text_style = 2131034116;
+			
+			// aapt resource value: 0x7f050003
+			public const int title_text_style = 2131034115;
 			
 			static Style()
 			{

@@ -1,22 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="header_text_style">
-    <item name="android:textSize">36dp</item>
-    <item name="android:textStyle" >bold</item>
+
+  <style name="base_text_block_style" >
+    <item name="android:textSize">15dp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:gravity" >center</item>
+    <item name="android:layout_margin" >3dp</item>
+    <item name="android:layout_width" >fill_parent</item>
+    <item name="android:layout_height" >wrap_content</item>
   </style>
 
-  <style name="sub_header_text_style">
-    <item name="android:textSize">32dp</item>
-    <item name="android:textStyle" >bold</item>
+  <style name="header_text_style" parent="@style/base_text_block_style">
+    <item name="android:textSize">46dp</item>
   </style>
 
-  <style name="button_text" >
+  <style name="sub_header_text_style" parent="@style/base_text_block_style">
+    <item name="android:textSize">34dp</item>
+  </style>
+
+  <style name="title_text_style" parent="@style/base_text_block_style">
+    <item name="android:textSize">24dp</item>
+  </style>
+
+  <style name="sub_title_text_style" parent="@style/base_text_block_style">
+    <item name="android:textSize">20dp</item>
+  </style>
+
+  <style name="caption_text_block_style" parent="@style/base_text_block_style">
+    <item name="android:textSize">12dp</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+
+  <style name="button_text" parent="@style/base_text_block_style">
     <item name="android:layout_width" >fill_parent</item>
     <item name="android:layout_height" >wrap_content</item>
     <item name="android:textColor" >#ffffff</item>
     <item name="android:gravity" >center</item>
     <item name="android:layout_margin" >3dp</item>
-    <item name="android:textSize" >30dp</item>
+    <item name="android:textSize">30dp</item>
     <item name="android:textStyle" >bold</item>
     <item name="android:shadowColor" >#000000</item>
     <item name="android:shadowDx" >1</item>
