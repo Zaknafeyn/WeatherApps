@@ -363,14 +363,20 @@ namespace Weather.Android
 			// aapt resource value: 0x7f060003
 			public const int linearLayoutWeather = 2131099651;
 			
-			// aapt resource value: 0x7f060006
-			public const int progressBarLoading = 2131099654;
+			// aapt resource value: 0x7f060008
+			public const int progressBarLoading = 2131099656;
 			
 			// aapt resource value: 0x7f060002
 			public const int textViewCity = 2131099650;
 			
 			// aapt resource value: 0x7f060005
 			public const int textViewCurrentTemp = 2131099653;
+			
+			// aapt resource value: 0x7f060007
+			public const int textViewDescription = 2131099655;
+			
+			// aapt resource value: 0x7f060006
+			public const int textViewTempRange = 2131099654;
 			
 			static Id()
 			{

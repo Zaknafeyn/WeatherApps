@@ -41,16 +41,38 @@
                 android:id="@+id/imageViewCurrentWeather"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center" />
-            <TextView xmlns:tools="http://schemas.android.com/tools"
-                style="@style/sub_header_text_style"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".50"
-                android:gravity="center"
-                android:id="@+id/textViewCurrentTemp"
-                tools:text="+23º"
-                tools:visibility="visible" />
+                android:gravity="center">
+                <TextView xmlns:tools="http://schemas.android.com/tools"
+                    style="@style/sub_header_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/textViewCurrentTemp"
+                    tools:text="+23º"
+                    tools:visibility="visible"
+                    android:layout_marginBottom="0.0dp"
+                    android:layout_gravity="center_vertical" />
+                <TextView xmlns:tools="http://schemas.android.com/tools"
+                    style="@style/sub_title_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:text="+23.2 ... 25.2º"
+                    tools:visibility="visible"
+                    android:id="@+id/textViewTempRange"
+                    android:visibility="visible"
+                    android:layout_gravity="center" />
+            </LinearLayout>
         </LinearLayout>
+        <TextView
+            style="@style/title_text_style"
+            android:text="Weather description"
+            android:id="@+id/textViewDescription" />
     </LinearLayout>
     <ProgressBar
         android:layout_width="match_parent"

@@ -28,8 +28,11 @@ namespace Weather.Android
         private TextView _textViewCurrentTemp;
         private ProgressBar _progressBar;
         private LinearLayout _linearLayoutWeather;
+        private TextView _textViewDescription;
+        private TextView _textViewTempRange;
+		
 
-        private readonly WeatherApi _weatherApi = new WeatherApi();
+		private readonly WeatherApi _weatherApi = new WeatherApi();
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -54,11 +57,13 @@ namespace Weather.Android
             _imageViewCurrentWeather = FindViewById<ImageView>(Resource.Id.imageViewCurrentWeather);
             _textViewCity = FindViewById<TextView>(Resource.Id.textViewCity);
             _textViewCurrentTemp = FindViewById<TextView>(Resource.Id.textViewCurrentTemp);
+            _textViewDescription = FindViewById<TextView>(Resource.Id.textViewDescription);
+	        _textViewTempRange = FindViewById<TextView>(Resource.Id.textViewTempRange);
 
 
-            //await DisplayWeatherAsync("Athens");
+			//await DisplayWeatherAsync("Athens");
 
-            var coords = new Coordinates
+			var coords = new Coordinates
             {
                 Longtitude = 50.4601m,
                 Latitude = -30.5148m
@@ -142,6 +147,13 @@ namespace Weather.Android
             _textViewCity.Text = $"{cityWeather.Name}";
             var drawableId = Resources.GetIdentifier(weatherStatus.GetWeatherIconName().ToLower(), "drawable", PackageName);
             _imageViewCurrentWeather.SetImageResource(drawableId);
+            _textViewDescription.Text = weatherStatus.Description;
+
+	        var isMinMaxTempEqual = cityWeather.Main.TempMin == cityWeather.Main.TempMax;
+
+	        _textViewTempRange.Visibility = isMinMaxTempEqual ? ViewStates.Gone : ViewStates.Visible;
+			_textViewTempRange.Text =
+		        $"{cityWeather.Main.TempMin.NormalizeTemperature()}º .. {cityWeather.Main.TempMax.NormalizeTemperature()}º";
         }
 
         private async void _buttonShowWeather_Click(object sender, EventArgs e)
