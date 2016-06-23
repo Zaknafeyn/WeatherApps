@@ -26,5 +26,10 @@ namespace Services.Portable
         {
             return Math.Round(tempValue - 273.15m, 1);
         }
+
+        public static string DisplayTemperature(this decimal tempValue)
+        {
+            return $"{tempValue.NormalizeTemperature()}º";
+        }
     }
 }

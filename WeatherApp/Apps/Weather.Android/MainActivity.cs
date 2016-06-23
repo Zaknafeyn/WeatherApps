@@ -163,7 +163,7 @@ namespace Weather.Android
         void ShowForecast(CityWeatherForecastResult cityForecastWeather)
         {
             _linearLayoutHourlyForecast.RemoveAllViews();
-            foreach (var weatherForecastItem in cityForecastWeather.HourlyForecast)
+            foreach (var weatherForecastItem in cityForecastWeather.HourlyForecast.Take(8))
             {
                 var panel = new HourlyForecastPanel(this);
                 panel.SetWeather(weatherForecastItem);
@@ -175,7 +175,7 @@ namespace Weather.Android
         {
             var weatherStatus = cityWeather.Weather.First();
 
-            _textViewCurrentTemp.Text = $"{cityWeather.Main.Temp.NormalizeTemperature()}º";
+            _textViewCurrentTemp.Text = $"{cityWeather.Main.Temp.DisplayTemperature()}º";
             _textViewCity.Text = $"{cityWeather.Name}";
             var drawableId = Resources.GetWeatherIconResourceId(weatherStatus, PackageName);
             _imageViewCurrentWeather.SetImageResource(drawableId);
@@ -185,7 +185,7 @@ namespace Weather.Android
 
 	        _textViewTempRange.Visibility = isMinMaxTempEqual ? ViewStates.Gone : ViewStates.Visible;
 			_textViewTempRange.Text =
-		        $"{cityWeather.Main.TempMin.NormalizeTemperature()}º .. {cityWeather.Main.TempMax.NormalizeTemperature()}º";
+		        $"{cityWeather.Main.TempMin.DisplayTemperature()} .. {cityWeather.Main.TempMax.DisplayTemperature()}";
         }
 
         private async void _buttonShowWeather_Click(object sender, EventArgs e)

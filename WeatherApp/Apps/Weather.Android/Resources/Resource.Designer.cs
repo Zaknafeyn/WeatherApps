@@ -351,41 +351,47 @@ namespace Weather.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060002
-			public const int MyButton = 2131099650;
-			
-			// aapt resource value: 0x7f060001
-			public const int editTextCity = 2131099649;
-			
-			// aapt resource value: 0x7f060009
-			public const int horizontalScrollHourlyForecast = 2131099657;
-			
-			// aapt resource value: 0x7f060005
-			public const int imageViewCurrentWeather = 2131099653;
-			
-			// aapt resource value: 0x7f060000
-			public const int imageViewForecastImage = 2131099648;
-			
-			// aapt resource value: 0x7f06000a
-			public const int linearLayoutHourlyForecast = 2131099658;
-			
 			// aapt resource value: 0x7f060004
-			public const int linearLayoutWeather = 2131099652;
-			
-			// aapt resource value: 0x7f06000b
-			public const int progressBarLoading = 2131099659;
+			public const int MyButton = 2131099652;
 			
 			// aapt resource value: 0x7f060003
-			public const int textViewCity = 2131099651;
+			public const int editTextCity = 2131099651;
 			
-			// aapt resource value: 0x7f060006
-			public const int textViewCurrentTemp = 2131099654;
-			
-			// aapt resource value: 0x7f060008
-			public const int textViewDescription = 2131099656;
+			// aapt resource value: 0x7f06000b
+			public const int horizontalScrollHourlyForecast = 2131099659;
 			
 			// aapt resource value: 0x7f060007
-			public const int textViewTempRange = 2131099655;
+			public const int imageViewCurrentWeather = 2131099655;
+			
+			// aapt resource value: 0x7f060001
+			public const int imageViewForecastImage = 2131099649;
+			
+			// aapt resource value: 0x7f06000c
+			public const int linearLayoutHourlyForecast = 2131099660;
+			
+			// aapt resource value: 0x7f060006
+			public const int linearLayoutWeather = 2131099654;
+			
+			// aapt resource value: 0x7f06000d
+			public const int progressBarLoading = 2131099661;
+			
+			// aapt resource value: 0x7f060005
+			public const int textViewCity = 2131099653;
+			
+			// aapt resource value: 0x7f060008
+			public const int textViewCurrentTemp = 2131099656;
+			
+			// aapt resource value: 0x7f06000a
+			public const int textViewDescription = 2131099658;
+			
+			// aapt resource value: 0x7f060000
+			public const int textViewHour = 2131099648;
+			
+			// aapt resource value: 0x7f060002
+			public const int textViewTemp = 2131099650;
+			
+			// aapt resource value: 0x7f060009
+			public const int textViewTempRange = 2131099657;
 			
 			static Id()
 			{
