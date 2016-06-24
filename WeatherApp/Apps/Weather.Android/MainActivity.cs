@@ -4,11 +4,15 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Locations;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using HockeyApp.Android;
+using HockeyApp.Android.Metrics;
+using Java.Net;
 using Services.Portable;
 using Services.Portable.API;
 using Services.Portable.DTO;
@@ -19,54 +23,39 @@ namespace Weather.Android
     [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon")]
     public partial class MainActivity : Activity, ILocationListener
     {
-        int count = 1;
-
-        private Button _buttonShowWeather;
-        private EditText _editTextCity;
-        private ImageView _imageViewCurrentWeather;
-        private TextView _textViewCity;
-        private TextView _textViewCurrentTemp;
-        private ProgressBar _progressBar;
-        private LinearLayout _linearLayoutWeather;
-        private TextView _textViewDescription;
-        private TextView _textViewTempRange;
-        private HorizontalScrollView _horizontalScrollHourlyForecast;
-        private LinearLayout _linearLayoutHourlyForecast;
-
-
         private readonly WeatherApi _weatherApi = new WeatherApi();
+        private const string HockeyAppId = "d852457aea42476bb9a9377774b314e5";
 
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
+            CrashManager.Register(this);
+            MetricsManager.Register(this, Application);
+
+            HockeyApp.MetricsManager.TrackEvent("Application is initializing...");
+
             InitializeLocationManager();
-
-            ShowDiagInfo($"Location providers: {string.Join(", ", _locationProvider)}");
-
-            //_locationManager.RequestLocationUpdates(_locationProvider, 0,0, this);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            
+            //throw new Exception("Test exception");
 
-            _editTextCity = FindViewById<EditText>(Resource.Id.editTextCity);
-            _buttonShowWeather = FindViewById<Button>(Resource.Id.MyButton);
-            _buttonShowWeather.RequestFocus();
+            //ShowDiagInfo($"Location providers: {string.Join(", ", _locationProvider)}");
+
+            //_locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+
+            InitializeComponents();
+
+            //HockeyApp.MetricsManager.TrackEvent("Application is initialized");
 
             _buttonShowWeather.Click += _buttonShowWeather_Click;
 
-            _linearLayoutWeather = FindViewById<LinearLayout>(Resource.Id.linearLayoutWeather);
-            _progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarLoading);
-            _imageViewCurrentWeather = FindViewById<ImageView>(Resource.Id.imageViewCurrentWeather);
-            _textViewCity = FindViewById<TextView>(Resource.Id.textViewCity);
-            _textViewCurrentTemp = FindViewById<TextView>(Resource.Id.textViewCurrentTemp);
-            _textViewDescription = FindViewById<TextView>(Resource.Id.textViewDescription);
-	        _textViewTempRange = FindViewById<TextView>(Resource.Id.textViewTempRange);
-            _horizontalScrollHourlyForecast =
-                FindViewById<HorizontalScrollView>(Resource.Id.horizontalScrollHourlyForecast);
-            _linearLayoutHourlyForecast = FindViewById<LinearLayout>(Resource.Id.linearLayoutHourlyForecast);
-
             await DisplayWeatherAsync("Kiev");
+
+            ShowImg();
+
 
             //var coords = new Coordinates
             //{
@@ -80,6 +69,35 @@ namespace Weather.Android
 
             ////_locationManager.RemoveUpdates(this);
         }
+
+        private void ShowImg()
+        {
+            //var restClient = new RestClient();
+            //try
+            //{
+            //    var result = await restClient.GetAsync(
+            //    new Uri(
+            //        "http://thecatapi.com/api/images/get?api_key=OTcwMTU&size=med&type=png&format=src&results_per_page=1"));
+            //    ShowDiagInfo(result);
+            //}
+            //catch (Exception ex)
+            //{
+            //    ShowDiagInfo(ex.Message);
+            //}
+
+
+            //var src = await restClient.GetAsync(new Uri(result));
+
+
+            //var kittyUrl = new URL("http://24.media.tumblr.com/tumblr_m2wxvgkow61r73wdao1_500.png");
+            //var bmp = BitmapFactory.DecodeStream(kittyUrl.OpenConnection().InputStream);
+
+            var imageViewKitty = FindViewById<ImageView>(Resource.Id.imageViewKitty);
+            imageViewKitty.Visibility = ViewStates.Gone;
+
+            //imageViewKitty.SetImageBitmap(bmp);
+        }
+
 
         private void ShowDiagInfo(string message)
         {

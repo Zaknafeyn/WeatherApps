@@ -29,6 +29,8 @@ using Android.App;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
+[assembly: MetaData("net.hockeyapp.android.appIdentifier", Value = "d852457aea42476bb9a9377774b314e5")]
+
 #if DEBUG
 [assembly: Application(Debuggable = true)]
 #else

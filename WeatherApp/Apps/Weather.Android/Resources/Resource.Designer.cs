@@ -26,6 +26,126 @@ namespace Weather.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::HockeyApp.Resource.Color.hockeyapp_background_header = global::Weather.Android.Resource.Color.hockeyapp_background_header;
+			global::HockeyApp.Resource.Color.hockeyapp_background_light = global::Weather.Android.Resource.Color.hockeyapp_background_light;
+			global::HockeyApp.Resource.Color.hockeyapp_background_white = global::Weather.Android.Resource.Color.hockeyapp_background_white;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background = global::Weather.Android.Resource.Color.hockeyapp_button_background;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background_pressed = global::Weather.Android.Resource.Color.hockeyapp_button_background_pressed;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background_selected = global::Weather.Android.Resource.Color.hockeyapp_button_background_selected;
+			global::HockeyApp.Resource.Color.hockeyapp_text_black = global::Weather.Android.Resource.Color.hockeyapp_text_black;
+			global::HockeyApp.Resource.Color.hockeyapp_text_light = global::Weather.Android.Resource.Color.hockeyapp_text_light;
+			global::HockeyApp.Resource.Color.hockeyapp_text_normal = global::Weather.Android.Resource.Color.hockeyapp_text_normal;
+			global::HockeyApp.Resource.Color.hockeyapp_text_white = global::Weather.Android.Resource.Color.hockeyapp_text_white;
+			global::HockeyApp.Resource.Drawable.hockeyapp_btn_background = global::Weather.Android.Resource.Drawable.hockeyapp_btn_background;
+			global::HockeyApp.Resource.Id.button_add_response = global::Weather.Android.Resource.Id.button_add_response;
+			global::HockeyApp.Resource.Id.button_attachment = global::Weather.Android.Resource.Id.button_attachment;
+			global::HockeyApp.Resource.Id.button_login = global::Weather.Android.Resource.Id.button_login;
+			global::HockeyApp.Resource.Id.button_refresh = global::Weather.Android.Resource.Id.button_refresh;
+			global::HockeyApp.Resource.Id.button_send = global::Weather.Android.Resource.Id.button_send;
+			global::HockeyApp.Resource.Id.button_update = global::Weather.Android.Resource.Id.button_update;
+			global::HockeyApp.Resource.Id.input_email = global::Weather.Android.Resource.Id.input_email;
+			global::HockeyApp.Resource.Id.input_message = global::Weather.Android.Resource.Id.input_message;
+			global::HockeyApp.Resource.Id.input_name = global::Weather.Android.Resource.Id.input_name;
+			global::HockeyApp.Resource.Id.input_password = global::Weather.Android.Resource.Id.input_password;
+			global::HockeyApp.Resource.Id.input_subject = global::Weather.Android.Resource.Id.input_subject;
+			global::HockeyApp.Resource.Id.label_author = global::Weather.Android.Resource.Id.label_author;
+			global::HockeyApp.Resource.Id.label_date = global::Weather.Android.Resource.Id.label_date;
+			global::HockeyApp.Resource.Id.label_last_updated = global::Weather.Android.Resource.Id.label_last_updated;
+			global::HockeyApp.Resource.Id.label_message = global::Weather.Android.Resource.Id.label_message;
+			global::HockeyApp.Resource.Id.label_text = global::Weather.Android.Resource.Id.label_text;
+			global::HockeyApp.Resource.Id.label_title = global::Weather.Android.Resource.Id.label_title;
+			global::HockeyApp.Resource.Id.label_version = global::Weather.Android.Resource.Id.label_version;
+			global::HockeyApp.Resource.Id.list_attachments = global::Weather.Android.Resource.Id.list_attachments;
+			global::HockeyApp.Resource.Id.list_feedback_messages = global::Weather.Android.Resource.Id.list_feedback_messages;
+			global::HockeyApp.Resource.Id.text_headline = global::Weather.Android.Resource.Id.text_headline;
+			global::HockeyApp.Resource.Id.view_header = global::Weather.Android.Resource.Id.view_header;
+			global::HockeyApp.Resource.Id.web_update_details = global::Weather.Android.Resource.Id.web_update_details;
+			global::HockeyApp.Resource.Id.wrapper_attachments = global::Weather.Android.Resource.Id.wrapper_attachments;
+			global::HockeyApp.Resource.Id.wrapper_feedback = global::Weather.Android.Resource.Id.wrapper_feedback;
+			global::HockeyApp.Resource.Id.wrapper_feedback_scroll = global::Weather.Android.Resource.Id.wrapper_feedback_scroll;
+			global::HockeyApp.Resource.Id.wrapper_messages = global::Weather.Android.Resource.Id.wrapper_messages;
+			global::HockeyApp.Resource.Id.wrapper_messages_buttons = global::Weather.Android.Resource.Id.wrapper_messages_buttons;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_expiry_info = global::Weather.Android.Resource.Layout.hockeyapp_activity_expiry_info;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_feedback = global::Weather.Android.Resource.Layout.hockeyapp_activity_feedback;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_login = global::Weather.Android.Resource.Layout.hockeyapp_activity_login;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_update = global::Weather.Android.Resource.Layout.hockeyapp_activity_update;
+			global::HockeyApp.Resource.Layout.hockeyapp_fragment_update = global::Weather.Android.Resource.Layout.hockeyapp_fragment_update;
+			global::HockeyApp.Resource.Layout.hockeyapp_view_feedback_message = global::Weather.Android.Resource.Layout.hockeyapp_view_feedback_message;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_app_name_fallback = global::Weather.Android.Resource.String.hockeyapp_crash_dialog_app_name_fallback;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_message = global::Weather.Android.Resource.String.hockeyapp_crash_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_negative_button = global::Weather.Android.Resource.String.hockeyapp_crash_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_neutral_button = global::Weather.Android.Resource.String.hockeyapp_crash_dialog_neutral_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_positive_button = global::Weather.Android.Resource.String.hockeyapp_crash_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_title = global::Weather.Android.Resource.String.hockeyapp_crash_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_error_message = global::Weather.Android.Resource.String.hockeyapp_dialog_error_message;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_error_title = global::Weather.Android.Resource.String.hockeyapp_dialog_error_title;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_negative_button = global::Weather.Android.Resource.String.hockeyapp_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_positive_button = global::Weather.Android.Resource.String.hockeyapp_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_message = global::Weather.Android.Resource.String.hockeyapp_download_failed_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_negative_button = global::Weather.Android.Resource.String.hockeyapp_download_failed_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_positive_button = global::Weather.Android.Resource.String.hockeyapp_download_failed_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_title = global::Weather.Android.Resource.String.hockeyapp_download_failed_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_error_no_network_message = global::Weather.Android.Resource.String.hockeyapp_error_no_network_message;
+			global::HockeyApp.Resource.String.hockeyapp_expiry_info_text = global::Weather.Android.Resource.String.hockeyapp_expiry_info_text;
+			global::HockeyApp.Resource.String.hockeyapp_expiry_info_title = global::Weather.Android.Resource.String.hockeyapp_expiry_info_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attach_file = global::Weather.Android.Resource.String.hockeyapp_feedback_attach_file;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attach_picture = global::Weather.Android.Resource.String.hockeyapp_feedback_attach_picture;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_button_text = global::Weather.Android.Resource.String.hockeyapp_feedback_attachment_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_error = global::Weather.Android.Resource.String.hockeyapp_feedback_attachment_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_loading = global::Weather.Android.Resource.String.hockeyapp_feedback_attachment_loading;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_email_hint = global::Weather.Android.Resource.String.hockeyapp_feedback_email_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_failed_text = global::Weather.Android.Resource.String.hockeyapp_feedback_failed_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_failed_title = global::Weather.Android.Resource.String.hockeyapp_feedback_failed_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_fetching_feedback_text = global::Weather.Android.Resource.String.hockeyapp_feedback_fetching_feedback_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_generic_error = global::Weather.Android.Resource.String.hockeyapp_feedback_generic_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_last_updated_text = global::Weather.Android.Resource.String.hockeyapp_feedback_last_updated_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_max_attachments_allowed = global::Weather.Android.Resource.String.hockeyapp_feedback_max_attachments_allowed;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_message_hint = global::Weather.Android.Resource.String.hockeyapp_feedback_message_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_name_hint = global::Weather.Android.Resource.String.hockeyapp_feedback_name_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_refresh_button_text = global::Weather.Android.Resource.String.hockeyapp_feedback_refresh_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_response_button_text = global::Weather.Android.Resource.String.hockeyapp_feedback_response_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_select_file = global::Weather.Android.Resource.String.hockeyapp_feedback_select_file;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_select_picture = global::Weather.Android.Resource.String.hockeyapp_feedback_select_picture;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_button_text = global::Weather.Android.Resource.String.hockeyapp_feedback_send_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_generic_error = global::Weather.Android.Resource.String.hockeyapp_feedback_send_generic_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_network_error = global::Weather.Android.Resource.String.hockeyapp_feedback_send_network_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_sending_feedback_text = global::Weather.Android.Resource.String.hockeyapp_feedback_sending_feedback_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_subject_hint = global::Weather.Android.Resource.String.hockeyapp_feedback_subject_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_title = global::Weather.Android.Resource.String.hockeyapp_feedback_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_email_empty = global::Weather.Android.Resource.String.hockeyapp_feedback_validate_email_empty;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_email_error = global::Weather.Android.Resource.String.hockeyapp_feedback_validate_email_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_name_error = global::Weather.Android.Resource.String.hockeyapp_feedback_validate_name_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_subject_error = global::Weather.Android.Resource.String.hockeyapp_feedback_validate_subject_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_text_error = global::Weather.Android.Resource.String.hockeyapp_feedback_validate_text_error;
+			global::HockeyApp.Resource.String.hockeyapp_login_email_hint = global::Weather.Android.Resource.String.hockeyapp_login_email_hint;
+			global::HockeyApp.Resource.String.hockeyapp_login_headline_text = global::Weather.Android.Resource.String.hockeyapp_login_headline_text;
+			global::HockeyApp.Resource.String.hockeyapp_login_headline_text_email_only = global::Weather.Android.Resource.String.hockeyapp_login_headline_text_email_only;
+			global::HockeyApp.Resource.String.hockeyapp_login_login_button_text = global::Weather.Android.Resource.String.hockeyapp_login_login_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_login_missing_credentials_toast = global::Weather.Android.Resource.String.hockeyapp_login_missing_credentials_toast;
+			global::HockeyApp.Resource.String.hockeyapp_login_password_hint = global::Weather.Android.Resource.String.hockeyapp_login_password_hint;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_message = global::Weather.Android.Resource.String.hockeyapp_paint_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_negative_button = global::Weather.Android.Resource.String.hockeyapp_paint_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_neutral_button = global::Weather.Android.Resource.String.hockeyapp_paint_dialog_neutral_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_positive_button = global::Weather.Android.Resource.String.hockeyapp_paint_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_indicator_toast = global::Weather.Android.Resource.String.hockeyapp_paint_indicator_toast;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_clear = global::Weather.Android.Resource.String.hockeyapp_paint_menu_clear;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_save = global::Weather.Android.Resource.String.hockeyapp_paint_menu_save;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_undo = global::Weather.Android.Resource.String.hockeyapp_paint_menu_undo;
+			global::HockeyApp.Resource.String.hockeyapp_permission_dialog_negative_button = global::Weather.Android.Resource.String.hockeyapp_permission_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_permission_dialog_positive_button = global::Weather.Android.Resource.String.hockeyapp_permission_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_permission_update_message = global::Weather.Android.Resource.String.hockeyapp_permission_update_message;
+			global::HockeyApp.Resource.String.hockeyapp_permission_update_title = global::Weather.Android.Resource.String.hockeyapp_permission_update_title;
+			global::HockeyApp.Resource.String.hockeyapp_update_button = global::Weather.Android.Resource.String.hockeyapp_update_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_message = global::Weather.Android.Resource.String.hockeyapp_update_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_negative_button = global::Weather.Android.Resource.String.hockeyapp_update_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_positive_button = global::Weather.Android.Resource.String.hockeyapp_update_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_title = global::Weather.Android.Resource.String.hockeyapp_update_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_update_mandatory_toast = global::Weather.Android.Resource.String.hockeyapp_update_mandatory_toast;
+			global::HockeyApp.Resource.String.hockeyapp_update_version_details_label = global::Weather.Android.Resource.String.hockeyapp_update_version_details_label;
+			global::HockeyApp.Resource.String.library_name = global::Weather.Android.Resource.String.library_name;
+			global::HockeyApp.Resource.Style.HockeyApp_ButtonStyle = global::Weather.Android.Resource.Style.HockeyApp_ButtonStyle;
+			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::Weather.Android.Resource.Style.HockeyApp_EditTextStyle;
+			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::Weather.Android.Resource.Style.HockeyApp_SingleLineInputStyle;
 		}
 		
 		public partial class Attribute
@@ -41,302 +161,348 @@ namespace Weather.Android
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int hockeyapp_background_header = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int hockeyapp_background_light = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int hockeyapp_background_white = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int hockeyapp_button_background = 2131099651;
+			
+			// aapt resource value: 0x7f060004
+			public const int hockeyapp_button_background_pressed = 2131099652;
+			
+			// aapt resource value: 0x7f060005
+			public const int hockeyapp_button_background_selected = 2131099653;
+			
+			// aapt resource value: 0x7f060006
+			public const int hockeyapp_text_black = 2131099654;
+			
+			// aapt resource value: 0x7f060007
+			public const int hockeyapp_text_light = 2131099655;
+			
+			// aapt resource value: 0x7f060008
+			public const int hockeyapp_text_normal = 2131099656;
+			
+			// aapt resource value: 0x7f060009
+			public const int hockeyapp_text_white = 2131099657;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int hockeyapp_btn_background = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int red_button = 2130837505;
+			public const int Icon = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int WeatherStatus200d = 2130837506;
+			public const int red_button = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int WeatherStatus200n = 2130837507;
+			public const int WeatherStatus200d = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int WeatherStatus201d = 2130837508;
+			public const int WeatherStatus200n = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int WeatherStatus201n = 2130837509;
+			public const int WeatherStatus201d = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int WeatherStatus202d = 2130837510;
+			public const int WeatherStatus201n = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int WeatherStatus202n = 2130837511;
+			public const int WeatherStatus202d = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int WeatherStatus210d = 2130837512;
+			public const int WeatherStatus202n = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int WeatherStatus210n = 2130837513;
+			public const int WeatherStatus210d = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int WeatherStatus211d = 2130837514;
+			public const int WeatherStatus210n = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int WeatherStatus211n = 2130837515;
+			public const int WeatherStatus211d = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int WeatherStatus212d = 2130837516;
+			public const int WeatherStatus211n = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int WeatherStatus212n = 2130837517;
+			public const int WeatherStatus212d = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int WeatherStatus221d = 2130837518;
+			public const int WeatherStatus212n = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int WeatherStatus221n = 2130837519;
+			public const int WeatherStatus221d = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int WeatherStatus230d = 2130837520;
+			public const int WeatherStatus221n = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int WeatherStatus230n = 2130837521;
+			public const int WeatherStatus230d = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int WeatherStatus231d = 2130837522;
+			public const int WeatherStatus230n = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int WeatherStatus231n = 2130837523;
+			public const int WeatherStatus231d = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int WeatherStatus232d = 2130837524;
+			public const int WeatherStatus231n = 2130837524;
 			
 			// aapt resource value: 0x7f020015
-			public const int WeatherStatus232n = 2130837525;
+			public const int WeatherStatus232d = 2130837525;
 			
 			// aapt resource value: 0x7f020016
-			public const int WeatherStatus300d = 2130837526;
+			public const int WeatherStatus232n = 2130837526;
 			
 			// aapt resource value: 0x7f020017
-			public const int WeatherStatus300n = 2130837527;
+			public const int WeatherStatus300d = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int WeatherStatus301d = 2130837528;
+			public const int WeatherStatus300n = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int WeatherStatus301n = 2130837529;
+			public const int WeatherStatus301d = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int WeatherStatus302d = 2130837530;
+			public const int WeatherStatus301n = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int WeatherStatus302n = 2130837531;
+			public const int WeatherStatus302d = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int WeatherStatus310d = 2130837532;
+			public const int WeatherStatus302n = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int WeatherStatus310n = 2130837533;
+			public const int WeatherStatus310d = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int WeatherStatus311d = 2130837534;
+			public const int WeatherStatus310n = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int WeatherStatus311n = 2130837535;
+			public const int WeatherStatus311d = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int WeatherStatus312d = 2130837536;
+			public const int WeatherStatus311n = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int WeatherStatus312n = 2130837537;
+			public const int WeatherStatus312d = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int WeatherStatus321d = 2130837538;
+			public const int WeatherStatus312n = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int WeatherStatus321n = 2130837539;
+			public const int WeatherStatus321d = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int WeatherStatus500d = 2130837540;
+			public const int WeatherStatus321n = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int WeatherStatus500n = 2130837541;
+			public const int WeatherStatus500d = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int WeatherStatus501d = 2130837542;
+			public const int WeatherStatus500n = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int WeatherStatus501n = 2130837543;
+			public const int WeatherStatus501d = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int WeatherStatus502d = 2130837544;
+			public const int WeatherStatus501n = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int WeatherStatus502n = 2130837545;
+			public const int WeatherStatus502d = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int WeatherStatus503d = 2130837546;
+			public const int WeatherStatus502n = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int WeatherStatus503n = 2130837547;
+			public const int WeatherStatus503d = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int WeatherStatus504d = 2130837548;
+			public const int WeatherStatus503n = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int WeatherStatus504n = 2130837549;
+			public const int WeatherStatus504d = 2130837549;
 			
 			// aapt resource value: 0x7f02002e
-			public const int WeatherStatus511d = 2130837550;
+			public const int WeatherStatus504n = 2130837550;
 			
 			// aapt resource value: 0x7f02002f
-			public const int WeatherStatus511n = 2130837551;
+			public const int WeatherStatus511d = 2130837551;
 			
 			// aapt resource value: 0x7f020030
-			public const int WeatherStatus520d = 2130837552;
+			public const int WeatherStatus511n = 2130837552;
 			
 			// aapt resource value: 0x7f020031
-			public const int WeatherStatus520n = 2130837553;
+			public const int WeatherStatus520d = 2130837553;
 			
 			// aapt resource value: 0x7f020032
-			public const int WeatherStatus521d = 2130837554;
+			public const int WeatherStatus520n = 2130837554;
 			
 			// aapt resource value: 0x7f020033
-			public const int WeatherStatus521n = 2130837555;
+			public const int WeatherStatus521d = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int WeatherStatus522d = 2130837556;
+			public const int WeatherStatus521n = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int WeatherStatus522n = 2130837557;
+			public const int WeatherStatus522d = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int WeatherStatus600d = 2130837558;
+			public const int WeatherStatus522n = 2130837558;
 			
 			// aapt resource value: 0x7f020037
-			public const int WeatherStatus600n = 2130837559;
+			public const int WeatherStatus600d = 2130837559;
 			
 			// aapt resource value: 0x7f020038
-			public const int WeatherStatus601d = 2130837560;
+			public const int WeatherStatus600n = 2130837560;
 			
 			// aapt resource value: 0x7f020039
-			public const int WeatherStatus601n = 2130837561;
+			public const int WeatherStatus601d = 2130837561;
 			
 			// aapt resource value: 0x7f02003a
-			public const int WeatherStatus602d = 2130837562;
+			public const int WeatherStatus601n = 2130837562;
 			
 			// aapt resource value: 0x7f02003b
-			public const int WeatherStatus602n = 2130837563;
+			public const int WeatherStatus602d = 2130837563;
 			
 			// aapt resource value: 0x7f02003c
-			public const int WeatherStatus611d = 2130837564;
+			public const int WeatherStatus602n = 2130837564;
 			
 			// aapt resource value: 0x7f02003d
-			public const int WeatherStatus611n = 2130837565;
+			public const int WeatherStatus611d = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int WeatherStatus621d = 2130837566;
+			public const int WeatherStatus611n = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int WeatherStatus621n = 2130837567;
+			public const int WeatherStatus621d = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int WeatherStatus701d = 2130837568;
+			public const int WeatherStatus621n = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int WeatherStatus701n = 2130837569;
+			public const int WeatherStatus701d = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int WeatherStatus711d = 2130837570;
+			public const int WeatherStatus701n = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int WeatherStatus711n = 2130837571;
+			public const int WeatherStatus711d = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int WeatherStatus721d = 2130837572;
+			public const int WeatherStatus711n = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int WeatherStatus721n = 2130837573;
+			public const int WeatherStatus721d = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int WeatherStatus731d = 2130837574;
+			public const int WeatherStatus721n = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int WeatherStatus731n = 2130837575;
+			public const int WeatherStatus731d = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int WeatherStatus741d = 2130837576;
+			public const int WeatherStatus731n = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int WeatherStatus741n = 2130837577;
+			public const int WeatherStatus741d = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int WeatherStatus800d = 2130837578;
+			public const int WeatherStatus741n = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int WeatherStatus800n = 2130837579;
+			public const int WeatherStatus800d = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int WeatherStatus801d = 2130837580;
+			public const int WeatherStatus800n = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int WeatherStatus801n = 2130837581;
+			public const int WeatherStatus801d = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int WeatherStatus802d = 2130837582;
+			public const int WeatherStatus801n = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int WeatherStatus802n = 2130837583;
+			public const int WeatherStatus802d = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int WeatherStatus803d = 2130837584;
+			public const int WeatherStatus802n = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int WeatherStatus803n = 2130837585;
+			public const int WeatherStatus803d = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int WeatherStatus804d = 2130837586;
+			public const int WeatherStatus803n = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int WeatherStatus804n = 2130837587;
+			public const int WeatherStatus804d = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int WeatherStatus900d = 2130837588;
+			public const int WeatherStatus804n = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int WeatherStatus900n = 2130837589;
+			public const int WeatherStatus900d = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int WeatherStatus901d = 2130837590;
+			public const int WeatherStatus900n = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int WeatherStatus901n = 2130837591;
+			public const int WeatherStatus901d = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int WeatherStatus902d = 2130837592;
+			public const int WeatherStatus901n = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int WeatherStatus902n = 2130837593;
+			public const int WeatherStatus902d = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int WeatherStatus903d = 2130837594;
+			public const int WeatherStatus902n = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int WeatherStatus903n = 2130837595;
+			public const int WeatherStatus903d = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int WeatherStatus904d = 2130837596;
+			public const int WeatherStatus903n = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int WeatherStatus904n = 2130837597;
+			public const int WeatherStatus904d = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int WeatherStatus905d = 2130837598;
+			public const int WeatherStatus904n = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int WeatherStatus905n = 2130837599;
+			public const int WeatherStatus905d = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int WeatherStatus906d = 2130837600;
+			public const int WeatherStatus905n = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int WeatherStatus906n = 2130837601;
+			public const int WeatherStatus906d = 2130837601;
+			
+			// aapt resource value: 0x7f020062
+			public const int WeatherStatus906n = 2130837602;
 			
 			static Drawable()
 			{
@@ -351,47 +517,134 @@ namespace Weather.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060004
-			public const int MyButton = 2131099652;
+			// aapt resource value: 0x7f070020
+			public const int MyButton = 2131165216;
 			
-			// aapt resource value: 0x7f060003
-			public const int editTextCity = 2131099651;
+			// aapt resource value: 0x7f07000d
+			public const int button_add_response = 2131165197;
 			
-			// aapt resource value: 0x7f06000b
-			public const int horizontalScrollHourlyForecast = 2131099659;
+			// aapt resource value: 0x7f070008
+			public const int button_attachment = 2131165192;
 			
-			// aapt resource value: 0x7f060007
-			public const int imageViewCurrentWeather = 2131099655;
+			// aapt resource value: 0x7f070012
+			public const int button_login = 2131165202;
 			
-			// aapt resource value: 0x7f060001
-			public const int imageViewForecastImage = 2131099649;
+			// aapt resource value: 0x7f07000e
+			public const int button_refresh = 2131165198;
 			
-			// aapt resource value: 0x7f06000c
-			public const int linearLayoutHourlyForecast = 2131099660;
+			// aapt resource value: 0x7f070009
+			public const int button_send = 2131165193;
 			
-			// aapt resource value: 0x7f060006
-			public const int linearLayoutWeather = 2131099654;
+			// aapt resource value: 0x7f070016
+			public const int button_update = 2131165206;
 			
-			// aapt resource value: 0x7f06000d
-			public const int progressBarLoading = 2131099661;
+			// aapt resource value: 0x7f07001f
+			public const int editTextCity = 2131165215;
 			
-			// aapt resource value: 0x7f060005
-			public const int textViewCity = 2131099653;
+			// aapt resource value: 0x7f070027
+			public const int horizontalScrollHourlyForecast = 2131165223;
 			
-			// aapt resource value: 0x7f060008
-			public const int textViewCurrentTemp = 2131099656;
+			// aapt resource value: 0x7f070023
+			public const int imageViewCurrentWeather = 2131165219;
 			
-			// aapt resource value: 0x7f06000a
-			public const int textViewDescription = 2131099658;
+			// aapt resource value: 0x7f07001d
+			public const int imageViewForecastImage = 2131165213;
 			
-			// aapt resource value: 0x7f060000
-			public const int textViewHour = 2131099648;
+			// aapt resource value: 0x7f070029
+			public const int imageViewKitty = 2131165225;
 			
-			// aapt resource value: 0x7f060002
-			public const int textViewTemp = 2131099650;
+			// aapt resource value: 0x7f070004
+			public const int input_email = 2131165188;
 			
-			// aapt resource value: 0x7f060009
-			public const int textViewTempRange = 2131099657;
+			// aapt resource value: 0x7f070006
+			public const int input_message = 2131165190;
+			
+			// aapt resource value: 0x7f070003
+			public const int input_name = 2131165187;
+			
+			// aapt resource value: 0x7f070011
+			public const int input_password = 2131165201;
+			
+			// aapt resource value: 0x7f070005
+			public const int input_subject = 2131165189;
+			
+			// aapt resource value: 0x7f070018
+			public const int label_author = 2131165208;
+			
+			// aapt resource value: 0x7f070019
+			public const int label_date = 2131165209;
+			
+			// aapt resource value: 0x7f07000b
+			public const int label_last_updated = 2131165195;
+			
+			// aapt resource value: 0x7f070000
+			public const int label_message = 2131165184;
+			
+			// aapt resource value: 0x7f07001a
+			public const int label_text = 2131165210;
+			
+			// aapt resource value: 0x7f070014
+			public const int label_title = 2131165204;
+			
+			// aapt resource value: 0x7f070015
+			public const int label_version = 2131165205;
+			
+			// aapt resource value: 0x7f070028
+			public const int linearLayoutHourlyForecast = 2131165224;
+			
+			// aapt resource value: 0x7f070022
+			public const int linearLayoutWeather = 2131165218;
+			
+			// aapt resource value: 0x7f07001b
+			public const int list_attachments = 2131165211;
+			
+			// aapt resource value: 0x7f07000f
+			public const int list_feedback_messages = 2131165199;
+			
+			// aapt resource value: 0x7f07002a
+			public const int progressBarLoading = 2131165226;
+			
+			// aapt resource value: 0x7f070021
+			public const int textViewCity = 2131165217;
+			
+			// aapt resource value: 0x7f070024
+			public const int textViewCurrentTemp = 2131165220;
+			
+			// aapt resource value: 0x7f070026
+			public const int textViewDescription = 2131165222;
+			
+			// aapt resource value: 0x7f07001c
+			public const int textViewHour = 2131165212;
+			
+			// aapt resource value: 0x7f07001e
+			public const int textViewTemp = 2131165214;
+			
+			// aapt resource value: 0x7f070025
+			public const int textViewTempRange = 2131165221;
+			
+			// aapt resource value: 0x7f070010
+			public const int text_headline = 2131165200;
+			
+			// aapt resource value: 0x7f070013
+			public const int view_header = 2131165203;
+			
+			// aapt resource value: 0x7f070017
+			public const int web_update_details = 2131165207;
+			
+			// aapt resource value: 0x7f070007
+			public const int wrapper_attachments = 2131165191;
+			
+			// aapt resource value: 0x7f070002
+			public const int wrapper_feedback = 2131165186;
+			
+			// aapt resource value: 0x7f070001
+			public const int wrapper_feedback_scroll = 2131165185;
+			
+			// aapt resource value: 0x7f07000a
+			public const int wrapper_messages = 2131165194;
+			
+			// aapt resource value: 0x7f07000c
+			public const int wrapper_messages_buttons = 2131165196;
 			
 			static Id()
 			{
@@ -407,10 +660,28 @@ namespace Weather.Android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int HourlyForecast = 2130903040;
+			public const int hockeyapp_activity_expiry_info = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int hockeyapp_activity_feedback = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int hockeyapp_activity_login = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int hockeyapp_activity_update = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int hockeyapp_fragment_update = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int hockeyapp_view_feedback_message = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int HourlyForecast = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int Main = 2130903047;
 			
 			static Layout()
 			{
@@ -425,11 +696,227 @@ namespace Weather.Android
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040049
+			public const int ApplicationName = 2130968649;
+			
+			// aapt resource value: 0x7f040048
+			public const int Hello = 2130968648;
+			
 			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			public const int hockeyapp_crash_dialog_app_name_fallback = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int hockeyapp_crash_dialog_message = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int hockeyapp_crash_dialog_negative_button = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int hockeyapp_crash_dialog_neutral_button = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int hockeyapp_crash_dialog_positive_button = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int hockeyapp_crash_dialog_title = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int hockeyapp_dialog_error_message = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int hockeyapp_dialog_error_title = 2130968584;
+			
+			// aapt resource value: 0x7f040009
+			public const int hockeyapp_dialog_negative_button = 2130968585;
+			
+			// aapt resource value: 0x7f04000a
+			public const int hockeyapp_dialog_positive_button = 2130968586;
+			
+			// aapt resource value: 0x7f04000b
+			public const int hockeyapp_download_failed_dialog_message = 2130968587;
+			
+			// aapt resource value: 0x7f04000c
+			public const int hockeyapp_download_failed_dialog_negative_button = 2130968588;
+			
+			// aapt resource value: 0x7f04000d
+			public const int hockeyapp_download_failed_dialog_positive_button = 2130968589;
+			
+			// aapt resource value: 0x7f04000e
+			public const int hockeyapp_download_failed_dialog_title = 2130968590;
+			
+			// aapt resource value: 0x7f04000f
+			public const int hockeyapp_error_no_network_message = 2130968591;
+			
+			// aapt resource value: 0x7f040010
+			public const int hockeyapp_expiry_info_text = 2130968592;
+			
+			// aapt resource value: 0x7f040011
+			public const int hockeyapp_expiry_info_title = 2130968593;
+			
+			// aapt resource value: 0x7f040012
+			public const int hockeyapp_feedback_attach_file = 2130968594;
+			
+			// aapt resource value: 0x7f040013
+			public const int hockeyapp_feedback_attach_picture = 2130968595;
+			
+			// aapt resource value: 0x7f040014
+			public const int hockeyapp_feedback_attachment_button_text = 2130968596;
+			
+			// aapt resource value: 0x7f040015
+			public const int hockeyapp_feedback_attachment_error = 2130968597;
+			
+			// aapt resource value: 0x7f040016
+			public const int hockeyapp_feedback_attachment_loading = 2130968598;
+			
+			// aapt resource value: 0x7f040017
+			public const int hockeyapp_feedback_email_hint = 2130968599;
+			
+			// aapt resource value: 0x7f040018
+			public const int hockeyapp_feedback_failed_text = 2130968600;
+			
+			// aapt resource value: 0x7f040019
+			public const int hockeyapp_feedback_failed_title = 2130968601;
+			
+			// aapt resource value: 0x7f04001a
+			public const int hockeyapp_feedback_fetching_feedback_text = 2130968602;
+			
+			// aapt resource value: 0x7f04001b
+			public const int hockeyapp_feedback_generic_error = 2130968603;
+			
+			// aapt resource value: 0x7f04001c
+			public const int hockeyapp_feedback_last_updated_text = 2130968604;
+			
+			// aapt resource value: 0x7f04001d
+			public const int hockeyapp_feedback_max_attachments_allowed = 2130968605;
+			
+			// aapt resource value: 0x7f04001e
+			public const int hockeyapp_feedback_message_hint = 2130968606;
+			
+			// aapt resource value: 0x7f04001f
+			public const int hockeyapp_feedback_name_hint = 2130968607;
+			
+			// aapt resource value: 0x7f040020
+			public const int hockeyapp_feedback_refresh_button_text = 2130968608;
+			
+			// aapt resource value: 0x7f040021
+			public const int hockeyapp_feedback_response_button_text = 2130968609;
+			
+			// aapt resource value: 0x7f040022
+			public const int hockeyapp_feedback_select_file = 2130968610;
+			
+			// aapt resource value: 0x7f040023
+			public const int hockeyapp_feedback_select_picture = 2130968611;
+			
+			// aapt resource value: 0x7f040024
+			public const int hockeyapp_feedback_send_button_text = 2130968612;
+			
+			// aapt resource value: 0x7f040025
+			public const int hockeyapp_feedback_send_generic_error = 2130968613;
+			
+			// aapt resource value: 0x7f040026
+			public const int hockeyapp_feedback_send_network_error = 2130968614;
+			
+			// aapt resource value: 0x7f040027
+			public const int hockeyapp_feedback_sending_feedback_text = 2130968615;
+			
+			// aapt resource value: 0x7f040028
+			public const int hockeyapp_feedback_subject_hint = 2130968616;
+			
+			// aapt resource value: 0x7f040029
+			public const int hockeyapp_feedback_title = 2130968617;
+			
+			// aapt resource value: 0x7f04002a
+			public const int hockeyapp_feedback_validate_email_empty = 2130968618;
+			
+			// aapt resource value: 0x7f04002b
+			public const int hockeyapp_feedback_validate_email_error = 2130968619;
+			
+			// aapt resource value: 0x7f04002c
+			public const int hockeyapp_feedback_validate_name_error = 2130968620;
+			
+			// aapt resource value: 0x7f04002d
+			public const int hockeyapp_feedback_validate_subject_error = 2130968621;
+			
+			// aapt resource value: 0x7f04002e
+			public const int hockeyapp_feedback_validate_text_error = 2130968622;
+			
+			// aapt resource value: 0x7f04002f
+			public const int hockeyapp_login_email_hint = 2130968623;
+			
+			// aapt resource value: 0x7f040030
+			public const int hockeyapp_login_headline_text = 2130968624;
+			
+			// aapt resource value: 0x7f040031
+			public const int hockeyapp_login_headline_text_email_only = 2130968625;
+			
+			// aapt resource value: 0x7f040032
+			public const int hockeyapp_login_login_button_text = 2130968626;
+			
+			// aapt resource value: 0x7f040033
+			public const int hockeyapp_login_missing_credentials_toast = 2130968627;
+			
+			// aapt resource value: 0x7f040034
+			public const int hockeyapp_login_password_hint = 2130968628;
+			
+			// aapt resource value: 0x7f040035
+			public const int hockeyapp_paint_dialog_message = 2130968629;
+			
+			// aapt resource value: 0x7f040036
+			public const int hockeyapp_paint_dialog_negative_button = 2130968630;
+			
+			// aapt resource value: 0x7f040037
+			public const int hockeyapp_paint_dialog_neutral_button = 2130968631;
+			
+			// aapt resource value: 0x7f040038
+			public const int hockeyapp_paint_dialog_positive_button = 2130968632;
+			
+			// aapt resource value: 0x7f040039
+			public const int hockeyapp_paint_indicator_toast = 2130968633;
+			
+			// aapt resource value: 0x7f04003a
+			public const int hockeyapp_paint_menu_clear = 2130968634;
+			
+			// aapt resource value: 0x7f04003b
+			public const int hockeyapp_paint_menu_save = 2130968635;
+			
+			// aapt resource value: 0x7f04003c
+			public const int hockeyapp_paint_menu_undo = 2130968636;
+			
+			// aapt resource value: 0x7f04003d
+			public const int hockeyapp_permission_dialog_negative_button = 2130968637;
+			
+			// aapt resource value: 0x7f04003e
+			public const int hockeyapp_permission_dialog_positive_button = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int hockeyapp_permission_update_message = 2130968639;
+			
+			// aapt resource value: 0x7f040040
+			public const int hockeyapp_permission_update_title = 2130968640;
+			
+			// aapt resource value: 0x7f040041
+			public const int hockeyapp_update_button = 2130968641;
+			
+			// aapt resource value: 0x7f040042
+			public const int hockeyapp_update_dialog_message = 2130968642;
+			
+			// aapt resource value: 0x7f040043
+			public const int hockeyapp_update_dialog_negative_button = 2130968643;
+			
+			// aapt resource value: 0x7f040044
+			public const int hockeyapp_update_dialog_positive_button = 2130968644;
+			
+			// aapt resource value: 0x7f040045
+			public const int hockeyapp_update_dialog_title = 2130968645;
+			
+			// aapt resource value: 0x7f040046
+			public const int hockeyapp_update_mandatory_toast = 2130968646;
+			
+			// aapt resource value: 0x7f040047
+			public const int hockeyapp_update_version_details_label = 2130968647;
 			
 			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			public const int library_name = 2130968576;
 			
 			static String()
 			{
@@ -445,25 +932,34 @@ namespace Weather.Android
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int base_text_block_style = 2131034112;
-			
-			// aapt resource value: 0x7f050006
-			public const int button_text = 2131034118;
-			
-			// aapt resource value: 0x7f050005
-			public const int caption_text_block_style = 2131034117;
+			public const int HockeyApp_ButtonStyle = 2131034112;
 			
 			// aapt resource value: 0x7f050001
-			public const int header_text_style = 2131034113;
+			public const int HockeyApp_EditTextStyle = 2131034113;
 			
 			// aapt resource value: 0x7f050002
-			public const int sub_header_text_style = 2131034114;
-			
-			// aapt resource value: 0x7f050004
-			public const int sub_title_text_style = 2131034116;
+			public const int HockeyApp_SingleLineInputStyle = 2131034114;
 			
 			// aapt resource value: 0x7f050003
-			public const int title_text_style = 2131034115;
+			public const int base_text_block_style = 2131034115;
+			
+			// aapt resource value: 0x7f050009
+			public const int button_text = 2131034121;
+			
+			// aapt resource value: 0x7f050008
+			public const int caption_text_block_style = 2131034120;
+			
+			// aapt resource value: 0x7f050004
+			public const int header_text_style = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int sub_header_text_style = 2131034117;
+			
+			// aapt resource value: 0x7f050007
+			public const int sub_title_text_style = 2131034119;
+			
+			// aapt resource value: 0x7f050006
+			public const int title_text_style = 2131034118;
 			
 			static Style()
 			{
