@@ -40,15 +40,13 @@ namespace Weather.Android
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             
-            //throw new Exception("Test exception");
-
             //ShowDiagInfo($"Location providers: {string.Join(", ", _locationProvider)}");
 
             //_locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
 
             InitializeComponents();
 
-            //HockeyApp.MetricsManager.TrackEvent("Application is initialized");
+            HockeyApp.MetricsManager.TrackEvent("Application is initialized");
 
             _buttonShowWeather.Click += _buttonShowWeather_Click;
 
