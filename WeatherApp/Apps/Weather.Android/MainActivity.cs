@@ -51,6 +51,7 @@ namespace Weather.Android
 
             _editTextCity = FindViewById<EditText>(Resource.Id.editTextCity);
             _buttonShowWeather = FindViewById<Button>(Resource.Id.MyButton);
+            _buttonShowWeather.RequestFocus();
 
             _buttonShowWeather.Click += _buttonShowWeather_Click;
 
@@ -65,27 +66,29 @@ namespace Weather.Android
                 FindViewById<HorizontalScrollView>(Resource.Id.horizontalScrollHourlyForecast);
             _linearLayoutHourlyForecast = FindViewById<LinearLayout>(Resource.Id.linearLayoutHourlyForecast);
 
-            //await DisplayWeatherAsync("Athens");
+            await DisplayWeatherAsync("Kiev");
 
-            var coords = new Coordinates
-            {
-                Longtitude = 50.4601m,
-                Latitude = -30.5148m
-            };
+            //var coords = new Coordinates
+            //{
+            //    Longtitude = 50.4601m,
+            //    Latitude = -30.5148m
+            //};
 
-            //var coords = await GetCurrentCoords();
+            ////var coords = await GetCurrentCoords();
 
-            await DisplayWeatherAsync(coords);
+            //await DisplayWeatherAsync(coords);
 
-            //_locationManager.RemoveUpdates(this);
+            ////_locationManager.RemoveUpdates(this);
         }
 
         private void ShowDiagInfo(string message)
         {
+#if DEBUG
             var dialog = new AlertDialog.Builder(this);
             dialog.SetTitle("Diagnostics");
             dialog.SetMessage(message);
             RunOnUiThread(() => { dialog.Show(); });
+#endif
         }
 
         private void ToggleLoadingState(bool isLoading)
