@@ -517,6 +517,9 @@ namespace Weather.Android
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f070023
+			public const int Main_ButtonWeatherInCurrentLocation = 2131165219;
+			
 			// aapt resource value: 0x7f070022
 			public const int MyButton = 2131165218;
 			
@@ -544,17 +547,17 @@ namespace Weather.Android
 			// aapt resource value: 0x7f070021
 			public const int editTextCity = 2131165217;
 			
-			// aapt resource value: 0x7f070029
-			public const int horizontalScrollHourlyForecast = 2131165225;
+			// aapt resource value: 0x7f07002a
+			public const int horizontalScrollHourlyForecast = 2131165226;
 			
-			// aapt resource value: 0x7f070025
-			public const int imageViewCurrentWeather = 2131165221;
+			// aapt resource value: 0x7f070026
+			public const int imageViewCurrentWeather = 2131165222;
 			
 			// aapt resource value: 0x7f07001f
 			public const int imageViewForecastImage = 2131165215;
 			
-			// aapt resource value: 0x7f07002b
-			public const int imageViewKitty = 2131165227;
+			// aapt resource value: 0x7f07002c
+			public const int imageViewKitty = 2131165228;
 			
 			// aapt resource value: 0x7f070006
 			public const int input_email = 2131165190;
@@ -592,11 +595,11 @@ namespace Weather.Android
 			// aapt resource value: 0x7f070017
 			public const int label_version = 2131165207;
 			
-			// aapt resource value: 0x7f07002a
-			public const int linearLayoutHourlyForecast = 2131165226;
+			// aapt resource value: 0x7f07002b
+			public const int linearLayoutHourlyForecast = 2131165227;
 			
-			// aapt resource value: 0x7f070024
-			public const int linearLayoutWeather = 2131165220;
+			// aapt resource value: 0x7f070025
+			public const int linearLayoutWeather = 2131165221;
 			
 			// aapt resource value: 0x7f07001d
 			public const int list_attachments = 2131165213;
@@ -604,23 +607,23 @@ namespace Weather.Android
 			// aapt resource value: 0x7f070011
 			public const int list_feedback_messages = 2131165201;
 			
-			// aapt resource value: 0x7f07002d
-			public const int menuItemAbout = 2131165229;
+			// aapt resource value: 0x7f07002e
+			public const int menuItemAbout = 2131165230;
 			
-			// aapt resource value: 0x7f07002c
-			public const int progressBarLoading = 2131165228;
+			// aapt resource value: 0x7f07002d
+			public const int progressBarLoading = 2131165229;
 			
 			// aapt resource value: 0x7f070000
 			public const int scrollView1 = 2131165184;
 			
-			// aapt resource value: 0x7f070023
-			public const int textViewCity = 2131165219;
+			// aapt resource value: 0x7f070024
+			public const int textViewCity = 2131165220;
 			
-			// aapt resource value: 0x7f070026
-			public const int textViewCurrentTemp = 2131165222;
+			// aapt resource value: 0x7f070027
+			public const int textViewCurrentTemp = 2131165223;
 			
-			// aapt resource value: 0x7f070028
-			public const int textViewDescription = 2131165224;
+			// aapt resource value: 0x7f070029
+			public const int textViewDescription = 2131165225;
 			
 			// aapt resource value: 0x7f07001e
 			public const int textViewHour = 2131165214;
@@ -628,8 +631,8 @@ namespace Weather.Android
 			// aapt resource value: 0x7f070020
 			public const int textViewTemp = 2131165216;
 			
-			// aapt resource value: 0x7f070027
-			public const int textViewTempRange = 2131165223;
+			// aapt resource value: 0x7f070028
+			public const int textViewTempRange = 2131165224;
 			
 			// aapt resource value: 0x7f070012
 			public const int text_headline = 2131165202;

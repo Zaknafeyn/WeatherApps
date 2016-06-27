@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Android.Locations;
 using Android.OS;
+using Android.Util;
 using Services.Portable.DTO;
 
 namespace Weather.Android
@@ -29,21 +30,35 @@ namespace Weather.Android
 
         async Task<Address> ReverseGeocodeCurrentLocation()
         {
-            Geocoder geocoder = new Geocoder(this);
-            IList<Address> addressList =
+            var geocoder = new Geocoder(this);
+            Log.Debug(_mainActivityTag, $"ReverseGeocodeCurrentLocation ... ");
+            var addressList =
                 await geocoder.GetFromLocationAsync(_currentLocation.Latitude, _currentLocation.Longitude, 10);
 
+            Log.Debug(_mainActivityTag, $"Count of addresses: {addressList.Count}");
             var address = addressList.FirstOrDefault();
 
             return address;
         }
 
-
-        async Task<Coordinates> GetCurrentCoords()
+        async Task<Coordinates?> GetCurrentCoords()
         {
-            InitializeLocationManager();
+            //InitializeLocationManager();
+
+            if (_currentLocation != null)
+                return new Coordinates
+                {
+                    Longtitude = (decimal)_currentLocation.Longitude,
+                    Latitude = (decimal)_currentLocation.Latitude
+                };
+
+            return null;
+
 
             var address = await ReverseGeocodeCurrentLocation();
+
+            if (address == null)
+                return null;
 
             return new Coordinates
             {
@@ -54,7 +69,24 @@ namespace Weather.Android
 
         public void OnLocationChanged(Location location)
         {
-            //throw new NotImplementedException();
+            _currentLocation = location;
+            Log.Debug(_mainActivityTag, "Location changed");
+            Log.Debug(_mainActivityTag, $"{_currentLocation.Latitude:f6},{_currentLocation.Longitude:f6}");
+
+
+            if (_currentLocation == null)
+            {
+                //_locationText.Text = "Unable to determine your location. Try again in a short while.";
+            }
+            else
+            {
+                //var coords = await GetCurrentCoords();
+                //await DisplayWeatherAsync(coords);
+
+                //_locationText.Text = string.Format("{0:f6},{1:f6}", _currentLocation.Latitude, _currentLocation.Longitude);
+                //var address = await ReverseGeocodeCurrentLocation();
+                //DisplayAddress(address);
+            }
         }
 
         public void OnProviderDisabled(string provider)

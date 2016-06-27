@@ -15,6 +15,7 @@ namespace Weather.Android
         private TextView _textViewTempRange;
         private HorizontalScrollView _horizontalScrollHourlyForecast;
         private LinearLayout _linearLayoutHourlyForecast;
+        private Button _main_ButtonWeatherInCurrentLocation;
 
         private void InitializeComponents()
         {
@@ -32,6 +33,10 @@ namespace Weather.Android
             _horizontalScrollHourlyForecast =
                 FindViewById<HorizontalScrollView>(Resource.Id.horizontalScrollHourlyForecast);
             _linearLayoutHourlyForecast = FindViewById<LinearLayout>(Resource.Id.linearLayoutHourlyForecast);
+            _main_ButtonWeatherInCurrentLocation = FindViewById<Button>(Resource.Id.Main_ButtonWeatherInCurrentLocation);
+            _main_ButtonWeatherInCurrentLocation.Click += _main_ButtonWeatherInCurrentLocation_Click;
         }
+
+        
     }
 }

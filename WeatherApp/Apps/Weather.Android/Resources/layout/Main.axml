@@ -24,6 +24,12 @@
             android:layout_height="wrap_content"
             android:text="@string/Hello"
             android:shadowColor="#ffe4c4ff" />
+      <Button
+            android:id="@+id/Main_ButtonWeatherInCurrentLocation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Weather in current location"
+            android:shadowColor="#ffe4c4ff" />
         <TextView
             android:text=""
             style="@style/header_text_style"

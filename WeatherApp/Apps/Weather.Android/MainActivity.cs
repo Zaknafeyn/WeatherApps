@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Util;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
 using Java.Net;
@@ -26,6 +27,8 @@ namespace Weather.Android
         private readonly WeatherApi _weatherApi = new WeatherApi();
         private const string HockeyAppId = "d852457aea42476bb9a9377774b314e5";
 
+        private const string _mainActivityTag = "Main Activity";
+
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -33,16 +36,14 @@ namespace Weather.Android
             CrashManager.Register(this);
             MetricsManager.Register(this, Application);
 
+            Log.Debug(_mainActivityTag, "Debug message");
+
             HockeyApp.MetricsManager.TrackEvent("Application is initializing...");
 
             InitializeLocationManager();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            
-            //ShowDiagInfo($"Location providers: {string.Join(", ", _locationProvider)}");
-
-            //_locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
 
             InitializeComponents();
 
@@ -53,19 +54,18 @@ namespace Weather.Android
             await DisplayWeatherAsync("Kiev");
 
             ShowImg();
+        }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+        }
 
-            //var coords = new Coordinates
-            //{
-            //    Longtitude = 50.4601m,
-            //    Latitude = -30.5148m
-            //};
-
-            ////var coords = await GetCurrentCoords();
-
-            //await DisplayWeatherAsync(coords);
-
-            ////_locationManager.RemoveUpdates(this);
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _locationManager.RemoveUpdates(this);
         }
 
         private void ShowImg()
@@ -129,9 +129,8 @@ namespace Weather.Android
         private void ToggleLoadingState(bool isLoading)
         {
             _buttonShowWeather.Enabled = !isLoading;
+            _main_ButtonWeatherInCurrentLocation.Enabled = !isLoading;
 
-            //_imageViewCurrentWeather.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
-            //_textViewCurrentTemp.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
             _linearLayoutWeather.Visibility = isLoading ? ViewStates.Gone : ViewStates.Visible;
 
             _progressBar.Visibility = isLoading ? ViewStates.Visible : ViewStates.Gone;
@@ -229,6 +228,22 @@ namespace Weather.Android
         private async void _buttonShowWeather_Click(object sender, EventArgs e)
         {
             await ShowWeatherAsync(_editTextCity.Text);
+        }
+
+        private async void _main_ButtonWeatherInCurrentLocation_Click(object sender, System.EventArgs e)
+        {
+            Log.Debug(_mainActivityTag, "Requesting current coords");
+            var coords = await GetCurrentCoords();
+
+            if (coords == null)
+            {
+                ShowDiagInfo("Cannot detect current address");
+                return;
+            }
+
+            Log.Debug(_mainActivityTag, $"Lon: {coords.Value.Longtitude}, Lat: {coords.Value.Latitude}");
+
+            await DisplayWeatherAsync(coords.Value);
         }
     }
 }
