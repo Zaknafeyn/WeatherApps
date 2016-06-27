@@ -96,6 +96,25 @@ namespace Weather.Android
             //imageViewKitty.SetImageBitmap(bmp);
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.Menu, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            //ShowDiagInfo(item.TitleFormatted.ToString());
+
+            switch (item.ItemId)
+            {
+                case Resource.Id.menuItemAbout:
+                    StartActivity(typeof(AboutActivity));
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
 
         private void ShowDiagInfo(string message)
         {
