@@ -6,6 +6,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Locations;
+using Android.Nfc;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -185,6 +186,7 @@ namespace Weather.Android
 
         async Task ShowWeatherAsync(Coordinates coords)
         {
+            Log.Debug(_mainActivityTag, "Show weaather by coord");
             var cityWeatherTask =  _weatherApi.GetWeatherByCoordAsync(coords);
             var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCoordsAsync(coords);
 
@@ -192,6 +194,11 @@ namespace Weather.Android
 
             var cityWeather = cityWeatherTask.Result;
             var cityForecastWeather = cityForecastWeatherTask.Result;
+
+            var cityWeatherStatus = cityWeather == null ? "null" : "not null";
+            Log.Debug(_mainActivityTag, $"City weather is {cityWeatherStatus}");
+            var cityForecastWeatherStatus = cityForecastWeather == null ? "null" : "not null";
+            Log.Debug(_mainActivityTag, $"City weather is {cityForecastWeatherStatus}");
 
             ShowWeather(cityWeather);
             ShowForecast(cityForecastWeather);
@@ -230,7 +237,7 @@ namespace Weather.Android
             await ShowWeatherAsync(_editTextCity.Text);
         }
 
-        private async void _main_ButtonWeatherInCurrentLocation_Click(object sender, System.EventArgs e)
+        private async void _main_ButtonWeatherInCurrentLocation_Click(object sender, EventArgs e)
         {
             Log.Debug(_mainActivityTag, "Requesting current coords");
             var coords = await GetCurrentCoords();
