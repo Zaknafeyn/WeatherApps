@@ -7,7 +7,19 @@
     android:minWidth="25px"
     tools:context=".MainActivity"
     android:minHeight="25px">
-    <item android:id="@+id/menuItemAbout"
-          android:icon="@drawable/icon"
-          android:title="About" />
+    <item
+        android:id="@+id/menuItemAbout"
+        android:icon="@drawable/Info"
+        android:showAsAction="ifRoom|withText"
+        android:title="About" />
+    <item
+        android:id="@+id/menuItemDrawerTest"
+        android:icon="@drawable/Experimental"
+        android:title="Drawable Test"
+        android:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menuItemSettings"
+        android:icon="@drawable/settingsIcon"
+        android:title="Settings"
+        android:showAsAction="ifRoom" />
 </menu>

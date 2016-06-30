@@ -1,34 +1,53 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Android.Animation;
 using Android.App;
 using Android.Content;
-using Android.Graphics;
 using Android.Locations;
-using Android.Nfc;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Android.Util;
+using Android.Views;
+using Android.Widget;
+using Autofac;
+using Autofac.Extras.CommonServiceLocator;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
-using Java.Net;
+using Microsoft.Practices.ServiceLocation;
 using Services.Portable;
 using Services.Portable.API;
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
+using Weather.Android.AppServices;
 
-namespace Weather.Android
+namespace Weather.Android.Activities
 {
     [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon")]
     public partial class MainActivity : Activity, ILocationListener
     {
+        private const string MainActivityTag = "Main Activity";
+        private ISettings _settings;
         private readonly WeatherApi _weatherApi = new WeatherApi();
-        private const string HockeyAppId = "d852457aea42476bb9a9377774b314e5";
 
-        private const string _mainActivityTag = "Main Activity";
+        public MainActivity()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterInstance(Application.Context).As<Context>();
+
+            builder.RegisterType<StorageService>().SingleInstance().As<IStorageService>();
+
+            builder.RegisterType<Settings>().SingleInstance().As<ISettings>();
+
+            var container = builder.Build();
+            var cls = new AutofacServiceLocator(container);
+
+            ServiceLocator.SetLocatorProvider(() => cls);
+
+            _settings = container.Resolve<ISettings>();
+            _settings.ReadSettings();
+        }
+
+        public sealed override Context ApplicationContext => base.ApplicationContext;
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -37,7 +56,7 @@ namespace Weather.Android
             CrashManager.Register(this);
             MetricsManager.Register(this, Application);
 
-            Log.Debug(_mainActivityTag, "Debug message");
+            Log.Debug(MainActivityTag, "Debug message");
 
             HockeyApp.MetricsManager.TrackEvent("Application is initializing...");
 
@@ -60,7 +79,15 @@ namespace Weather.Android
         protected override void OnResume()
         {
             base.OnResume();
+
+            InvalidateOptionsMenu();
+
+            ShowDiagInfo("Requesting location updates");
+            Log.Debug(MainActivityTag, "Requesting location updates");
+
             _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+
+            _currentLocation = _locationManager.GetLastKnownLocation(_locationProvider);
         }
 
         protected override void OnPause()
@@ -99,8 +126,21 @@ namespace Weather.Android
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
+            //if (menu.Size() > 0)
+            //{
+            //    var menuItem = menu.FindItem(Resource.Id.menuItemDrawerTest);
+            //    menuItem?.SetVisible(_settings.EnableTestDrawer);
+            //}
+
             MenuInflater.Inflate(Resource.Layout.Menu, menu);
             return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            var menuItem = menu.FindItem(Resource.Id.menuItemDrawerTest);
+            menuItem?.SetVisible(_settings.EnableTestDrawer);
+            return base.OnPrepareOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -112,6 +152,12 @@ namespace Weather.Android
                 case Resource.Id.menuItemAbout:
                     StartActivity(typeof(AboutActivity));
                     break;
+                case Resource.Id.menuItemDrawerTest:
+                    StartActivity(typeof(DrawerTestActivity));
+                    break;
+                case Resource.Id.menuItemSettings:
+                    StartActivity(typeof(SettingsActivity));
+                    break;
             }
 
             return base.OnOptionsItemSelected(item);
@@ -120,10 +166,12 @@ namespace Weather.Android
         private void ShowDiagInfo(string message)
         {
 #if DEBUG
-            var dialog = new AlertDialog.Builder(this);
-            dialog.SetTitle("Diagnostics");
-            dialog.SetMessage(message);
-            RunOnUiThread(() => { dialog.Show(); });
+            Toast.MakeText(this.ApplicationContext, $"Diagnostics: {message}", ToastLength.Short).Show();
+
+            //var dialog = new AlertDialog.Builder(this);
+            //dialog.SetTitle("Diagnostics");
+            //dialog.SetMessage(message);
+            //RunOnUiThread(() => { dialog.Show(); });
 #endif
         }
 
@@ -186,8 +234,8 @@ namespace Weather.Android
 
         async Task ShowWeatherAsync(Coordinates coords)
         {
-            Log.Debug(_mainActivityTag, "Show weaather by coord");
-            var cityWeatherTask =  _weatherApi.GetWeatherByCoordAsync(coords);
+            Log.Debug(MainActivityTag, "Show weaather by coord");
+            var cityWeatherTask = _weatherApi.GetWeatherByCoordAsync(coords);
             var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCoordsAsync(coords);
 
             await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
@@ -196,9 +244,9 @@ namespace Weather.Android
             var cityForecastWeather = cityForecastWeatherTask.Result;
 
             var cityWeatherStatus = cityWeather == null ? "null" : "not null";
-            Log.Debug(_mainActivityTag, $"City weather is {cityWeatherStatus}");
+            Log.Debug(MainActivityTag, $"City weather is {cityWeatherStatus}");
             var cityForecastWeatherStatus = cityForecastWeather == null ? "null" : "not null";
-            Log.Debug(_mainActivityTag, $"City weather is {cityForecastWeatherStatus}");
+            Log.Debug(MainActivityTag, $"City weather is {cityForecastWeatherStatus}");
 
             ShowWeather(cityWeather);
             ShowForecast(cityForecastWeather);
@@ -225,11 +273,11 @@ namespace Weather.Android
             _imageViewCurrentWeather.SetImageResource(drawableId);
             _textViewDescription.Text = weatherStatus.Description;
 
-	        var isMinMaxTempEqual = cityWeather.Main.TempMin == cityWeather.Main.TempMax;
+            var isMinMaxTempEqual = cityWeather.Main.TempMin == cityWeather.Main.TempMax;
 
-	        _textViewTempRange.Visibility = isMinMaxTempEqual ? ViewStates.Gone : ViewStates.Visible;
-			_textViewTempRange.Text =
-		        $"{cityWeather.Main.TempMin.DisplayTemperature()} .. {cityWeather.Main.TempMax.DisplayTemperature()}";
+            _textViewTempRange.Visibility = isMinMaxTempEqual ? ViewStates.Gone : ViewStates.Visible;
+            _textViewTempRange.Text =
+                $"{cityWeather.Main.TempMin.DisplayTemperature()} .. {cityWeather.Main.TempMax.DisplayTemperature()}";
         }
 
         private async void _buttonShowWeather_Click(object sender, EventArgs e)
@@ -239,7 +287,11 @@ namespace Weather.Android
 
         private async void _main_ButtonWeatherInCurrentLocation_Click(object sender, EventArgs e)
         {
-            Log.Debug(_mainActivityTag, "Requesting current coords");
+            Log.Debug(MainActivityTag, "Requesting current coords");
+
+
+
+
             var coords = await GetCurrentCoords();
 
             if (coords == null)
@@ -248,7 +300,9 @@ namespace Weather.Android
                 return;
             }
 
-            Log.Debug(_mainActivityTag, $"Lon: {coords.Value.Longtitude}, Lat: {coords.Value.Latitude}");
+            var logMsg = $"Lon: {coords.Value.Longtitude}, Lat: {coords.Value.Latitude}";
+            ShowDiagInfo(logMsg);
+            Log.Debug(MainActivityTag, logMsg);
 
             await DisplayWeatherAsync(coords.Value);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace Services.Portable
@@ -29,7 +30,7 @@ namespace Services.Portable
 
         public static string DisplayTemperature(this decimal tempValue)
         {
-            return $"{tempValue.NormalizeTemperature()}º";
+            return $"{tempValue.NormalizeTemperature().ToString(CultureInfo.InvariantCulture)}º";
         }
     }
 }

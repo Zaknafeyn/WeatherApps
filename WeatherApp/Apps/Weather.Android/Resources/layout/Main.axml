@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/Hello"
             android:shadowColor="#ffe4c4ff" />
-      <Button
+        <Button
             android:id="@+id/Main_ButtonWeatherInCurrentLocation"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -92,7 +92,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/horizontalScrollHourlyForecast"
-                android:layout_gravity="center"
                 android:scrollbars="none">
                 <LinearLayout
                     android:orientation="horizontal"
@@ -100,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center" />
+                    tools:visibility="visible" />
             </HorizontalScrollView>
             <ImageView
                 android:src="@drawable/weatherstatus221d"
@@ -108,7 +107,7 @@
                 android:id="@+id/imageViewKitty"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                tools:visibility="visible"
+                tools:visibility="gone"
                 android:layout_width="match_parent" />
         </LinearLayout>
         <ProgressBar

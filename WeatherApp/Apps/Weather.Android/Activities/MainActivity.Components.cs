@@ -1,6 +1,6 @@
 ﻿using Android.Widget;
 
-namespace Weather.Android
+namespace Weather.Android.Activities
 {
     public partial class MainActivity
     {

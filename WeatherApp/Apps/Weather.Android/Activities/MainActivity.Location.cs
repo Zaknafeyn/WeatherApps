@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Android.Locations;
 using Android.OS;
 using Android.Util;
 using Services.Portable.DTO;
 
-namespace Weather.Android
+namespace Weather.Android.Activities
 {
     public partial class MainActivity
     {
@@ -18,12 +16,13 @@ namespace Weather.Android
         void InitializeLocationManager()
         {
             _locationManager = (LocationManager)GetSystemService(LocationService);
-            Criteria criteriaForLocationService = new Criteria
+            var criteriaForLocationService = new Criteria
             {
-                Accuracy = Accuracy.Fine
+                Accuracy = Accuracy.Coarse,
+                PowerRequirement = Power.Low,
             };
 
-            IList<string> acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
+            var acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
 
             _locationProvider = acceptableLocationProviders.Any() ? acceptableLocationProviders.First() : string.Empty;
         }
@@ -31,11 +30,11 @@ namespace Weather.Android
         async Task<Address> ReverseGeocodeCurrentLocation()
         {
             var geocoder = new Geocoder(this);
-            Log.Debug(_mainActivityTag, $"ReverseGeocodeCurrentLocation ... ");
+            Log.Debug(MainActivityTag, $"ReverseGeocodeCurrentLocation ... ");
             var addressList =
                 await geocoder.GetFromLocationAsync(_currentLocation.Latitude, _currentLocation.Longitude, 10);
 
-            Log.Debug(_mainActivityTag, $"Count of addresses: {addressList.Count}");
+            Log.Debug(MainActivityTag, $"Count of addresses: {addressList.Count}");
             var address = addressList.FirstOrDefault();
 
             return address;
@@ -43,8 +42,6 @@ namespace Weather.Android
 
         async Task<Coordinates?> GetCurrentCoords()
         {
-            //InitializeLocationManager();
-
             if (_currentLocation != null)
                 return new Coordinates
                 {
@@ -53,7 +50,6 @@ namespace Weather.Android
                 };
 
             return null;
-
 
             var address = await ReverseGeocodeCurrentLocation();
 
@@ -70,8 +66,8 @@ namespace Weather.Android
         public void OnLocationChanged(Location location)
         {
             _currentLocation = location;
-            Log.Debug(_mainActivityTag, "Location changed");
-            Log.Debug(_mainActivityTag, $"{_currentLocation.Latitude:f6},{_currentLocation.Longitude:f6}");
+            Log.Debug(MainActivityTag, "Location changed");
+            Log.Debug(MainActivityTag, $"{_currentLocation.Latitude:f6},{_currentLocation.Longitude:f6}");
 
 
             if (_currentLocation == null)
@@ -91,17 +87,17 @@ namespace Weather.Android
 
         public void OnProviderDisabled(string provider)
         {
-            //throw new NotImplementedException();
+            ShowDiagInfo($"Provider {provider} - disabled");
         }
 
         public void OnProviderEnabled(string provider)
         {
-            //throw new NotImplementedException();
+            ShowDiagInfo($"Provider {provider} - enabled");
         }
 
         public void OnStatusChanged(string provider, Availability status, Bundle extras)
         {
-            //throw new NotImplementedException();
+            ShowDiagInfo($"Provider {provider} - status changed. Status - {status}");
         }
     }
 }
