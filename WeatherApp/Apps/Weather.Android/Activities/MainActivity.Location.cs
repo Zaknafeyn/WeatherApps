@@ -7,7 +7,7 @@ using Services.Portable.DTO;
 
 namespace Weather.Android.Activities
 {
-    public partial class MainActivity
+    public partial class MainActivity : ILocationListener
     {
         Location _currentLocation;
         LocationManager _locationManager;

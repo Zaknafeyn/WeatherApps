@@ -6,6 +6,7 @@ using Android.App;
 using Android.Content;
 using Android.Locations;
 using Android.OS;
+using Android.Support.V4.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -23,7 +24,7 @@ using Weather.Android.AppServices;
 namespace Weather.Android.Activities
 {
     [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon")]
-    public partial class MainActivity : Activity, ILocationListener
+    public partial class MainActivity : FragmentActivity
     {
         private const string MainActivityTag = "Main Activity";
         private ISettings _settings;
@@ -126,13 +127,7 @@ namespace Weather.Android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            //if (menu.Size() > 0)
-            //{
-            //    var menuItem = menu.FindItem(Resource.Id.menuItemDrawerTest);
-            //    menuItem?.SetVisible(_settings.EnableTestDrawer);
-            //}
-
-            MenuInflater.Inflate(Resource.Layout.Menu, menu);
+            MenuInflater.Inflate(Resource.Menu.menu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -157,6 +152,9 @@ namespace Weather.Android.Activities
                     break;
                 case Resource.Id.menuItemSettings:
                     StartActivity(typeof(SettingsActivity));
+                    break;
+                case Resource.Id.menuItemRefresh:
+                    DisplayWeatherAsync(_editTextCity.Text);
                     break;
             }
 
@@ -219,26 +217,30 @@ namespace Weather.Android.Activities
 
         async Task ShowWeatherAsync(string city)
         {
+            Log.Debug(MainActivityTag, "Show weather by city name");
 
             var cityWeatherTask = _weatherApi.GetWeatherByCityNameAsync(city);
             var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCityNameAsync(city);
 
-            await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
-
-            var cityWeather = cityWeatherTask.Result;
-            var cityForecastWeather = cityForecastWeatherTask.Result;
-
-            ShowWeather(cityWeather);
-            ShowForecast(cityForecastWeather);
+            await ShowWeatherAsync(cityWeatherTask, cityForecastWeatherTask);
         }
 
         async Task ShowWeatherAsync(Coordinates coords)
         {
-            Log.Debug(MainActivityTag, "Show weaather by coord");
+            Log.Debug(MainActivityTag, "Show weather by coord");
             var cityWeatherTask = _weatherApi.GetWeatherByCoordAsync(coords);
             var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCoordsAsync(coords);
 
             await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
+
+            await ShowWeatherAsync(cityWeatherTask, cityForecastWeatherTask);
+        }
+
+        async Task ShowWeatherAsync(Task<CityWeatherResult> cityWeatherTask,  Task<CityWeatherForecastResult> cityForecastWeatherTask)
+        {
+            var delayTask = Task.Delay(1000); 
+
+            await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask, delayTask);
 
             var cityWeather = cityWeatherTask.Result;
             var cityForecastWeather = cityForecastWeatherTask.Result;
@@ -250,6 +252,8 @@ namespace Weather.Android.Activities
 
             ShowWeather(cityWeather);
             ShowForecast(cityForecastWeather);
+
+            _textViewUpdated.Text = "Updated just now";
         }
 
         void ShowForecast(CityWeatherForecastResult cityForecastWeather)

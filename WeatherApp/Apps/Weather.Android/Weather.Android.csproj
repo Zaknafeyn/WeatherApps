@@ -98,11 +98,18 @@
   <ItemGroup>
     <Compile Include="Activities\AboutActivity.cs" />
     <Compile Include="Activities\AutofacActivity.cs" />
-    <Compile Include="Activities\DrawerTestActivity.cs" />
+    <Compile Include="Experimental\SwipePage\AppSectionsPagerAdapter.cs" />
+    <Compile Include="Activities\Experimental\DrawerTestActivity.cs" />
+    <Compile Include="Activities\Experimental\CollectionDemoActivity.cs" />
+    <Compile Include="Activities\Experimental\MainActivity.Experimental.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="AppServices\DictionaryStorageService.cs" />
     <Compile Include="AppServices\ISettings.cs" />
     <Compile Include="AppServices\Settings.cs" />
+    <Compile Include="Experimental\SwipePage\DemoCollectionPagerAdapter.cs" />
+    <Compile Include="Experimental\SwipePage\DemoObjectFragment.cs" />
+    <Compile Include="Experimental\SwipePage\DummySectionFragment.cs" />
+    <Compile Include="Experimental\SwipePage\LaunchpadSectionFragment.cs" />
     <Compile Include="Experimental\ViewHolder.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="HourlyForecastPanel.cs" />
@@ -131,7 +138,7 @@
     <AndroidResource Include="Resources\layout\HourlyForecast.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Menu.axml">
+    <AndroidResource Include="Resources\menu\menu.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\About.axml">
@@ -146,6 +153,13 @@
     <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\swipePage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_collection_object.axml" />
+    <AndroidResource Include="Resources\layout\fragment_section_dummy.axml" />
+    <AndroidResource Include="Resources\layout\fragment_section_launchpad.axml" />
+    <AndroidResource Include="Resources\layout\activity_collection_demo.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -470,6 +484,10 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Experimental.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

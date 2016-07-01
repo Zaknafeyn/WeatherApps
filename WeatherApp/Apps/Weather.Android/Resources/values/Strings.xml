@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Show weather</string>
-    <string name="ApplicationName">Weather</string>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
+  <string name="Hello">Show weather</string>
+  <string name="ApplicationName">Weather</string>
+  <string name="drawer_open">Open navigation drawer</string>
+  <string name="drawer_close">Close navigation drawer</string>
+
+  <!--Demo swipe-->
+  <string name="app_name">Effective Navigation</string>
+  <string name="dummy_section_text">Section %1d is just a dummy section.</string>
+  <string name="demo_external_activity">Demo External Activity</string>
+  <string name="demo_collection">Demo Collection</string>
+  <!--Demo swipe-->
 
   <string-array name="planets_array">
     <item>Mercury</item>
