@@ -35,7 +35,7 @@ namespace Weather.Android.Activities
                 FindViewById<HorizontalScrollView>(Resource.Id.horizontalScrollHourlyForecast);
             _linearLayoutHourlyForecast = FindViewById<LinearLayout>(Resource.Id.linearLayoutHourlyForecast);
             _main_ButtonWeatherInCurrentLocation = FindViewById<Button>(Resource.Id.Main_ButtonWeatherInCurrentLocation);
-            _main_ButtonWeatherInCurrentLocation.Click += _main_ButtonWeatherInCurrentLocation_Click;
+            _main_ButtonWeatherInCurrentLocation.Click += Main_ButtonWeatherInCurrentLocation_Click;
 
             _textViewUpdated = FindViewById<TextView>(Resource.Id.textViewUpdated);
         }

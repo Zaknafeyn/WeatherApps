@@ -70,7 +70,7 @@ namespace Weather.Android.Activities
 
             HockeyApp.MetricsManager.TrackEvent("Application is initialized");
 
-            _buttonShowWeather.Click += _buttonShowWeather_Click;
+            _buttonShowWeather.Click += ButtonShowWeather_Click;
 
             await DisplayWeatherAsync("Kiev");
 
@@ -284,12 +284,12 @@ namespace Weather.Android.Activities
                 $"{cityWeather.Main.TempMin.DisplayTemperature()} .. {cityWeather.Main.TempMax.DisplayTemperature()}";
         }
 
-        private async void _buttonShowWeather_Click(object sender, EventArgs e)
+        private async void ButtonShowWeather_Click(object sender, EventArgs e)
         {
-            await ShowWeatherAsync(_editTextCity.Text);
+            await DisplayWeatherAsync(_editTextCity.Text);
         }
 
-        private async void _main_ButtonWeatherInCurrentLocation_Click(object sender, EventArgs e)
+        private async void Main_ButtonWeatherInCurrentLocation_Click(object sender, EventArgs e)
         {
             Log.Debug(MainActivityTag, "Requesting current coords");
 
