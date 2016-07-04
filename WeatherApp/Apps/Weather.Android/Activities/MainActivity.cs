@@ -20,6 +20,7 @@ using Services.Portable.API;
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 using Weather.Android.AppServices;
+using Android.Views.Animations;
 
 namespace Weather.Android.Activities
 {
@@ -140,8 +141,6 @@ namespace Weather.Android.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            //ShowDiagInfo(item.TitleFormatted.ToString());
-
             switch (item.ItemId)
             {
                 case Resource.Id.menuItemAbout:
@@ -154,11 +153,29 @@ namespace Weather.Android.Activities
                     StartActivity(typeof(SettingsActivity));
                     break;
                 case Resource.Id.menuItemRefresh:
-                    DisplayWeatherAsync(_editTextCity.Text);
+                    RefreshMenuAction(item);
                     break;
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        async void RefreshMenuAction(IMenuItem menuItem)
+        {
+            var u = AnimationUtils.LoadAnimation(this, Resource.Animation.rotate_image);
+            using (var imageView = new ImageView(this))
+            {
+                imageView.SetImageResource(Resource.Drawable.ic_sync_white_24dp);
+                imageView.SetMinimumHeight(100);
+                imageView.StartAnimation(u);
+
+                var actionView = menuItem.ActionView;
+                menuItem.SetActionView(imageView);
+
+                await DisplayWeatherAsync(_editTextCity.Text);
+
+                menuItem.SetActionView(actionView);
+            }
         }
 
         private void ShowDiagInfo(string message)
@@ -193,7 +210,7 @@ namespace Weather.Android.Activities
             }
             catch (Exception ex)
             {
-                _editTextCity.Text = ex.Message;
+                ShowDiagInfo(ex.Message);
             }
             finally
             {
@@ -236,9 +253,9 @@ namespace Weather.Android.Activities
             await ShowWeatherAsync(cityWeatherTask, cityForecastWeatherTask);
         }
 
-        async Task ShowWeatherAsync(Task<CityWeatherResult> cityWeatherTask,  Task<CityWeatherForecastResult> cityForecastWeatherTask)
+        async Task ShowWeatherAsync(Task<CityWeatherResult> cityWeatherTask, Task<CityWeatherForecastResult> cityForecastWeatherTask)
         {
-            var delayTask = Task.Delay(1000); 
+            var delayTask = Task.Delay(1000);
 
             await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask, delayTask);
 
@@ -253,7 +270,7 @@ namespace Weather.Android.Activities
             ShowWeather(cityWeather);
             ShowForecast(cityForecastWeather);
 
-            _textViewUpdated.Text = "Updated just now";
+            _textViewUpdated.Text = $"Last update: {cityWeather?.RefreshTime.GetTimeDiffString()}" ;
         }
 
         void ShowForecast(CityWeatherForecastResult cityForecastWeather)
@@ -312,4 +329,3 @@ namespace Weather.Android.Activities
         }
     }
 }
-

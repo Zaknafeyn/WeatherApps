@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Services.Portable.DTO.Api.WeatherDetails;
 
@@ -6,6 +7,8 @@ namespace Services.Portable.DTO.Api
 {
     public class CityWeatherResult
     {
+        public DateTime RefreshTime { get; private set; } = DateTime.Now;
+
         [JsonProperty("coord")]
         public Coord Coord { get; set; }
 

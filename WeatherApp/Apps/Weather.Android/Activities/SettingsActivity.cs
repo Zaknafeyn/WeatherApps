@@ -16,7 +16,7 @@ using Weather.Android.AppServices;
 
 namespace Weather.Android.Activities
 {
-    [Activity(Label = "Settings", Icon = "@drawable/settingsIcon")]
+    [Activity(Label = "Settings", Icon = "@drawable/ic_settings_black_24dp")]
     public class SettingsActivity : Activity
     {
         private ISettings _settings;

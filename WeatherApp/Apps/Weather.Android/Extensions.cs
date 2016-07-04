@@ -1,4 +1,5 @@
-﻿using Android.Content.Res;
+﻿using System;
+using Android.Content.Res;
 using Android.Runtime;
 using Java.Lang;
 
@@ -22,6 +23,19 @@ namespace Weather.Android
         public static ICharSequence ToCharSequence(this string str)
         {
             return CharSequence.ArrayFromStringArray(new[] { str })[0];
+        }
+
+        public static string GetTimeDiffString(this DateTime dateTime)
+        {
+            var elapsedTime = DateTime.Now.Subtract(dateTime);
+            if (elapsedTime.TotalMinutes < 20)
+                return "just now";
+            if (elapsedTime.TotalMinutes < 60)
+                return $"{elapsedTime.TotalMinutes} minutes ago";
+            if (elapsedTime.TotalHours < 24)
+                return $"{elapsedTime.TotalHours} hours ago";
+
+            return $"{elapsedTime.TotalDays} days ago";
         }
     }
 }

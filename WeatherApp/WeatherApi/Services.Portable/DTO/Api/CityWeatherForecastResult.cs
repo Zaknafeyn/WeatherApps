@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Services.Portable.DTO.Api.WeatherDetails;
 using Services.Portable.DTO.Api.WeatherForecast;
@@ -7,6 +8,8 @@ namespace Services.Portable.DTO.Api
 {
     public class CityWeatherForecastResult
     {
+        public DateTime RefreshTime { get; private set; } = DateTime.Now;
+
         [JsonProperty("city")]
         public City City { get; set; }
 
