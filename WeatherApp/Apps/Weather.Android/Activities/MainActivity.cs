@@ -7,6 +7,8 @@ using Android.Content;
 using Android.Locations;
 using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -24,8 +26,8 @@ using Android.Views.Animations;
 
 namespace Weather.Android.Activities
 {
-    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon")]
-    public partial class MainActivity : FragmentActivity
+    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    public partial class MainActivity : AppCompatActivity
     {
         private const string MainActivityTag = "Main Activity";
         private ISettings _settings;
@@ -58,7 +60,7 @@ namespace Weather.Android.Activities
             CrashManager.Register(this);
             MetricsManager.Register(this, Application);
 
-            Log.Debug(MainActivityTag, "Debug message");
+            Log.Debug(MainActivityTag, "Creating main activity");
 
             HockeyApp.MetricsManager.TrackEvent("Application is initializing...");
 
@@ -66,6 +68,10 @@ namespace Weather.Android.Activities
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_actionbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Hello from Appcompat Toolbar";
 
             InitializeComponents();
 
@@ -76,6 +82,8 @@ namespace Weather.Android.Activities
             await DisplayWeatherAsync("Kiev");
 
             ShowImg();
+
+            Log.Debug(MainActivityTag, "Main activity has been created");
         }
 
         protected override void OnResume()
@@ -128,12 +136,14 @@ namespace Weather.Android.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
+            Log.Debug(MainActivityTag, "Creating menu");
             MenuInflater.Inflate(Resource.Menu.menu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
+            Log.Debug(MainActivityTag, "Preparing menu");
             var menuItem = menu.FindItem(Resource.Id.menuItemDrawerTest);
             menuItem?.SetVisible(_settings.EnableTestDrawer);
             return base.OnPrepareOptionsMenu(menu);
