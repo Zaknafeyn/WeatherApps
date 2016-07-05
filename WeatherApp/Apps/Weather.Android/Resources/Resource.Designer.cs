@@ -902,29 +902,29 @@ namespace Weather.Android
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0045
-			public const int abc_background_cache_hint_selector_material_dark = 2131427397;
+			// aapt resource value: 0x7f0b004c
+			public const int abc_background_cache_hint_selector_material_dark = 2131427404;
 			
-			// aapt resource value: 0x7f0b0046
-			public const int abc_background_cache_hint_selector_material_light = 2131427398;
+			// aapt resource value: 0x7f0b004d
+			public const int abc_background_cache_hint_selector_material_light = 2131427405;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int abc_input_method_navigation_guard = 2131427328;
 			
-			// aapt resource value: 0x7f0b0047
-			public const int abc_primary_text_disable_only_material_dark = 2131427399;
+			// aapt resource value: 0x7f0b004e
+			public const int abc_primary_text_disable_only_material_dark = 2131427406;
 			
-			// aapt resource value: 0x7f0b0048
-			public const int abc_primary_text_disable_only_material_light = 2131427400;
+			// aapt resource value: 0x7f0b004f
+			public const int abc_primary_text_disable_only_material_light = 2131427407;
 			
-			// aapt resource value: 0x7f0b0049
-			public const int abc_primary_text_material_dark = 2131427401;
+			// aapt resource value: 0x7f0b0050
+			public const int abc_primary_text_material_dark = 2131427408;
 			
-			// aapt resource value: 0x7f0b004a
-			public const int abc_primary_text_material_light = 2131427402;
+			// aapt resource value: 0x7f0b0051
+			public const int abc_primary_text_material_light = 2131427409;
 			
-			// aapt resource value: 0x7f0b004b
-			public const int abc_search_url_text = 2131427403;
+			// aapt resource value: 0x7f0b0052
+			public const int abc_search_url_text = 2131427410;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int abc_search_url_text_normal = 2131427329;
@@ -935,11 +935,11 @@ namespace Weather.Android
 			// aapt resource value: 0x7f0b0003
 			public const int abc_search_url_text_selected = 2131427331;
 			
-			// aapt resource value: 0x7f0b004c
-			public const int abc_secondary_text_material_dark = 2131427404;
+			// aapt resource value: 0x7f0b0053
+			public const int abc_secondary_text_material_dark = 2131427411;
 			
-			// aapt resource value: 0x7f0b004d
-			public const int abc_secondary_text_material_light = 2131427405;
+			// aapt resource value: 0x7f0b0054
+			public const int abc_secondary_text_material_light = 2131427412;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int accent_material_dark = 2131427332;
@@ -982,6 +982,18 @@ namespace Weather.Android
 			
 			// aapt resource value: 0x7f0b0011
 			public const int button_material_light = 2131427345;
+			
+			// aapt resource value: 0x7f0b0045
+			public const int colorAccent = 2131427397;
+			
+			// aapt resource value: 0x7f0b004b
+			public const int colorControlHighlight = 2131427403;
+			
+			// aapt resource value: 0x7f0b0046
+			public const int colorPrimary = 2131427398;
+			
+			// aapt resource value: 0x7f0b0048
+			public const int colorPrimaryDark = 2131427400;
 			
 			// aapt resource value: 0x7f0b0012
 			public const int dim_foreground_disabled_material_dark = 2131427346;
@@ -1079,6 +1091,9 @@ namespace Weather.Android
 			// aapt resource value: 0x7f0b0027
 			public const int material_grey_900 = 2131427367;
 			
+			// aapt resource value: 0x7f0b004a
+			public const int navigationBarColor = 2131427402;
+			
 			// aapt resource value: 0x7f0b0044
 			public const int orange = 2131427396;
 			
@@ -1130,17 +1145,23 @@ namespace Weather.Android
 			// aapt resource value: 0x7f0b0037
 			public const int switch_thumb_disabled_material_light = 2131427383;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int switch_thumb_material_dark = 2131427406;
+			// aapt resource value: 0x7f0b0055
+			public const int switch_thumb_material_dark = 2131427413;
 			
-			// aapt resource value: 0x7f0b004f
-			public const int switch_thumb_material_light = 2131427407;
+			// aapt resource value: 0x7f0b0056
+			public const int switch_thumb_material_light = 2131427414;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int switch_thumb_normal_material_dark = 2131427384;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int switch_thumb_normal_material_light = 2131427385;
+			
+			// aapt resource value: 0x7f0b0047
+			public const int textColorPrimary = 2131427399;
+			
+			// aapt resource value: 0x7f0b0049
+			public const int windowBackground = 2131427401;
 			
 			static Color()
 			{

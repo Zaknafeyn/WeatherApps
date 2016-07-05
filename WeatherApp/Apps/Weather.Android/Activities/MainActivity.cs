@@ -26,7 +26,8 @@ using Android.Views.Animations;
 
 namespace Weather.Android.Activities
 {
-    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    //[Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme.Base")]
     public partial class MainActivity : AppCompatActivity
     {
         private const string MainActivityTag = "Main Activity";
@@ -72,6 +73,9 @@ namespace Weather.Android.Activities
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_actionbar);
             SetSupportActionBar(toolbar);
             SupportActionBar.Title = "Hello from Appcompat Toolbar";
+
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            //SupportActionBar.SetDisplayShowHomeEnabled(true);
 
             InitializeComponents();
 
@@ -173,6 +177,7 @@ namespace Weather.Android.Activities
         async void RefreshMenuAction(IMenuItem menuItem)
         {
             var u = AnimationUtils.LoadAnimation(this, Resource.Animation.rotate_image);
+
             using (var imageView = new ImageView(this))
             {
                 imageView.SetImageResource(Resource.Drawable.ic_sync_white_24dp);
