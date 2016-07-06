@@ -9,6 +9,7 @@
             android:layout_height="wrap_content"
             android:scrollbars="none">
 
+ 
   <LinearLayout
       android:orientation="vertical"
       android:layout_width="match_parent"
@@ -123,6 +124,7 @@
           tools:visibility="gone"
           android:layout_width="match_parent" />
     </LinearLayout>
+    
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

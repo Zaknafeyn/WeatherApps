@@ -8,10 +8,8 @@ using Android.Locations;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V7.App;
-using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
-using Android.Widget;
 using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using HockeyApp.Android;
@@ -23,11 +21,13 @@ using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 using Weather.Android.AppServices;
 using Android.Views.Animations;
+using Android.Widget;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Weather.Android.Activities
 {
     //[Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
-    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme.Base")]
+    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
     public partial class MainActivity : AppCompatActivity
     {
         private const string MainActivityTag = "Main Activity";
