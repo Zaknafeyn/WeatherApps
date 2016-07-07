@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using Autofac;
@@ -29,7 +30,6 @@ namespace Weather.Android.Activities
     public class SettingsActivity : AppCompatActivity
     {
         private ISettings _settings;
-        private ToggleButton _toggleButtonEnableTestDrawer;
 
         public SettingsActivity()
         {
@@ -43,12 +43,9 @@ namespace Weather.Android.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            Init();
-            return;
             // Create your application here
-            SetContentView(Resource.Layout.Settings);
 
-            _toggleButtonEnableTestDrawer = FindViewById<ToggleButton>(Resource.Id.toggleButtonEnableTestDrawer);
+            Init();
         }
 
         private void Init()
@@ -66,28 +63,8 @@ namespace Weather.Android.Activities
         private void SetupViewPager(ViewPager viewPager)
         {
             var adapter = new SettingsAdapter(SupportFragmentManager);
-            adapter.AddFragment(new SettingsCardContentFragment(), "Settings");
+            adapter.AddFragment(new SettingsCardContentFragment(_settings), "Settings");
             viewPager.Adapter = adapter;
-        }
-
-        //protected override void OnResume()
-        //{
-        //    base.OnResume();
-
-        //    _toggleButtonEnableTestDrawer.Checked = _settings.EnableTestDrawer;
-        //    _toggleButtonEnableTestDrawer.CheckedChange += ToggleButtonEnableTestDrawer_CheckedChange;
-        //}
-
-        private void ToggleButtonEnableTestDrawer_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
-        {
-            _settings.EnableTestDrawer = e.IsChecked;
-        }
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-            _settings.SaveSettings();
-            _toggleButtonEnableTestDrawer.CheckedChange -= ToggleButtonEnableTestDrawer_CheckedChange;
         }
     }
 }

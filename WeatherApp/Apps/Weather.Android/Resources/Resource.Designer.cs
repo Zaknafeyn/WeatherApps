@@ -2771,20 +2771,20 @@ namespace Weather.Android
 			// aapt resource value: 0x7f0600b3
 			public const int media_actions = 2131099827;
 			
-			// aapt resource value: 0x7f0600c8
-			public const int menuItemAbout = 2131099848;
-			
-			// aapt resource value: 0x7f0600c5
-			public const int menuItemAddCity = 2131099845;
-			
-			// aapt resource value: 0x7f0600c6
-			public const int menuItemDrawerTest = 2131099846;
+			// aapt resource value: 0x7f0600c7
+			public const int menuItemAbout = 2131099847;
 			
 			// aapt resource value: 0x7f0600c4
-			public const int menuItemRefresh = 2131099844;
+			public const int menuItemAddCity = 2131099844;
 			
-			// aapt resource value: 0x7f0600c7
-			public const int menuItemSettings = 2131099847;
+			// aapt resource value: 0x7f0600c5
+			public const int menuItemDrawerTest = 2131099845;
+			
+			// aapt resource value: 0x7f0600c3
+			public const int menuItemRefresh = 2131099843;
+			
+			// aapt resource value: 0x7f0600c6
+			public const int menuItemSettings = 2131099846;
 			
 			// aapt resource value: 0x7f06001d
 			public const int middle = 2131099677;
@@ -2891,17 +2891,17 @@ namespace Weather.Android
 			// aapt resource value: 0x7f060068
 			public const int select_dialog_listview = 2131099752;
 			
-			// aapt resource value: 0x7f0600c0
-			public const int settings_appbar = 2131099840;
+			// aapt resource value: 0x7f0600be
+			public const int settings_appbar = 2131099838;
+			
+			// aapt resource value: 0x7f0600bd
+			public const int settings_content = 2131099837;
 			
 			// aapt resource value: 0x7f0600bf
-			public const int settings_content = 2131099839;
+			public const int settings_toolbar = 2131099839;
 			
-			// aapt resource value: 0x7f0600c1
-			public const int settings_toolbar = 2131099841;
-			
-			// aapt resource value: 0x7f0600c2
-			public const int settings_viewpager = 2131099842;
+			// aapt resource value: 0x7f0600c0
+			public const int settings_viewpager = 2131099840;
 			
 			// aapt resource value: 0x7f060053
 			public const int shortcut = 2131099731;
@@ -2948,6 +2948,9 @@ namespace Weather.Android
 			// aapt resource value: 0x7f060065
 			public const int submit_area = 2131099749;
 			
+			// aapt resource value: 0x7f0600c1
+			public const int switchCompatEnableTestDrawer = 2131099841;
+			
 			// aapt resource value: 0x7f06000d
 			public const int tabMode = 2131099661;
 			
@@ -2974,9 +2977,6 @@ namespace Weather.Android
 			
 			// aapt resource value: 0x7f0600aa
 			public const int textViewDescription = 2131099818;
-			
-			// aapt resource value: 0x7f0600bd
-			public const int textViewHeader = 2131099837;
 			
 			// aapt resource value: 0x7f06009f
 			public const int textViewHour = 2131099807;
@@ -3005,14 +3005,11 @@ namespace Weather.Android
 			// aapt resource value: 0x7f060048
 			public const int title_template = 2131099720;
 			
-			// aapt resource value: 0x7f0600be
-			public const int toggleButtonEnableTestDrawer = 2131099838;
-			
 			// aapt resource value: 0x7f06006e
 			public const int toolbar = 2131099758;
 			
-			// aapt resource value: 0x7f0600c3
-			public const int toolbar_actionbar = 2131099843;
+			// aapt resource value: 0x7f0600c2
+			public const int toolbar_actionbar = 2131099842;
 			
 			// aapt resource value: 0x7f060032
 			public const int top = 2131099698;
@@ -3311,22 +3308,19 @@ namespace Weather.Android
 			public const int select_dialog_singlechoice_material = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int Settings = 2130903107;
+			public const int settings_layout = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int settings_layout = 2130903108;
+			public const int settings_option_item = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int settings_option_item = 2130903109;
+			public const int support_simple_spinner_dropdown_item = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int support_simple_spinner_dropdown_item = 2130903110;
+			public const int swipePage = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int swipePage = 2130903111;
-			
-			// aapt resource value: 0x7f030048
-			public const int toolbar_actionbar = 2130903112;
+			public const int toolbar_actionbar = 2130903111;
 			
 			static Layout()
 			{

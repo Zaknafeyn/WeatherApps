@@ -1,4 +1,6 @@
-﻿namespace Weather.Android.AppServices
+﻿using System.Threading.Tasks;
+
+namespace Weather.Android.AppServices
 {
     public class Settings : ISettings
     {
@@ -23,6 +25,16 @@
         public void SaveSettings()
         {
             _storageService.SaveValue("EnableTestDrawer", EnableTestDrawer);
+        }
+
+        public async Task ReadSettingsAsync()
+        {
+            await Task.Run(() => ReadSettings());
+        }
+
+        public async Task SaveSettingsAsync()
+        {
+            await Task.Run(() => SaveSettings());
         }
 
         public bool EnableExperimentalFeatures { get; set; }

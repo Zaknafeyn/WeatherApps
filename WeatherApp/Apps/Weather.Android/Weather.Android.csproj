@@ -124,10 +124,10 @@
     <Compile Include="Activities\AboutActivity.cs" />
     <Compile Include="Adapters\AboutAdapter.cs" />
     <Compile Include="Activities\AutofacActivity.cs" />
-    <Compile Include="Activities\Experimental\CardContentFragment .cs" />
-    <Compile Include="Activities\Experimental\ListContentFragment.cs" />
-    <Compile Include="Activities\Experimental\SettingsCardContentFragment.cs" />
-    <Compile Include="Activities\Experimental\TitleContentFragment.cs" />
+    <Compile Include="Fragments\CardContentFragment .cs" />
+    <Compile Include="Fragments\ListContentFragment.cs" />
+    <Compile Include="Fragments\SettingsCardContentFragment.cs" />
+    <Compile Include="Fragments\TitleContentFragment.cs" />
     <Compile Include="Adapters\SettingsAdapter.cs" />
     <Compile Include="Experimental\SwipePage\AppSectionsPagerAdapter.cs" />
     <Compile Include="Activities\Experimental\DrawerTestActivity.cs" />
@@ -175,9 +175,6 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\drawer_list_item.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\swipePage.axml">

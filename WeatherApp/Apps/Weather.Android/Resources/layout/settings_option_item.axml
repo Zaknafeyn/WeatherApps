@@ -17,6 +17,7 @@
 
       <android.support.v7.widget.SwitchCompat
         android:layout_width="wrap_content"
+        android:id="@+id/switchCompatEnableTestDrawer"
         android:text="Experimental features"
         android:textOn="Enable"
         android:textOff="Disable"

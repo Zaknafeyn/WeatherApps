@@ -7,6 +7,8 @@ namespace Weather.Android.Activities.Experimental
 {
     public class CardContentFragment : Fragment
     {
+
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             return inflater.Inflate(R.Layout.about_item_card, null);
