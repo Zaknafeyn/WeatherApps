@@ -7,7 +7,9 @@ using Android.Content;
 using Android.Locations;
 using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Autofac;
@@ -22,7 +24,12 @@ using Services.Portable.DTO.Api;
 using Weather.Android.AppServices;
 using Android.Views.Animations;
 using Android.Widget;
+using Weather.Android.Activities.Experimental;
+using Weather.Android.Adapters;
+using Weather.Android.Fragments;
+using R = Weather.Android.Resource;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+
 
 namespace Weather.Android.Activities
 {
@@ -67,12 +74,15 @@ namespace Weather.Android.Activities
 
             InitializeLocationManager();
 
+            
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            //SetContentView(R.Layout.Main);
+            SetContentView(R.Layout.main_layout);
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_actionbar);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.Title = "Hello from Appcompat Toolbar";
+            //var toolbar = FindViewById<Toolbar>(R.Id.toolbar_actionbar);
+            //SetSupportActionBar(toolbar);
+            //SupportActionBar.Title = "Hello from Appcompat Toolbar";
+
 
             //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             //SupportActionBar.SetDisplayShowHomeEnabled(true);
@@ -83,11 +93,30 @@ namespace Weather.Android.Activities
 
             _buttonShowWeather.Click += ButtonShowWeather_Click;
 
-            await DisplayWeatherAsync("Kiev");
+            //await DisplayWeatherAsync("Kiev");
 
             ShowImg();
 
+            var viewPager = FindViewById<ViewPager>(R.Id.main_pager);
+            await SetupRecyclerView(viewPager);
+
             Log.Debug(MainActivityTag, "Main activity has been created");
+        }
+
+        private async Task SetupRecyclerView(ViewPager viewPager)
+        {
+            var adapter = new MainWeatherAdapter(SupportFragmentManager);
+
+            var cityWeatherTask = _weatherApi.GetWeatherByCityNameAsync("kiev");
+            var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCityNameAsync("kiev");
+
+            await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
+
+            var cityWeather = cityWeatherTask.Result;
+            var cityForecastWeather = cityForecastWeatherTask.Result;
+
+            adapter.AddFragment(new CityWeatherCardFragment(cityWeather, cityForecastWeather), "Main");
+            viewPager.Adapter = adapter;
         }
 
         protected override void OnResume()
@@ -132,8 +161,8 @@ namespace Weather.Android.Activities
             //var kittyUrl = new URL("http://24.media.tumblr.com/tumblr_m2wxvgkow61r73wdao1_500.png");
             //var bmp = BitmapFactory.DecodeStream(kittyUrl.OpenConnection().InputStream);
 
-            var imageViewKitty = FindViewById<ImageView>(Resource.Id.imageViewKitty);
-            imageViewKitty.Visibility = ViewStates.Gone;
+            //var imageViewKitty = FindViewById<ImageView>(Resource.Id.imageViewKitty);
+            //imageViewKitty.Visibility = ViewStates.Gone;
 
             //imageViewKitty.SetImageBitmap(bmp);
         }

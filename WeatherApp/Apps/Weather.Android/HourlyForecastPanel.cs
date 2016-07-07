@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Services.Portable;
 using Services.Portable.DTO.Api.WeatherForecast;
+using R = Weather.Android.Resource;
 
 namespace Weather.Android
 {

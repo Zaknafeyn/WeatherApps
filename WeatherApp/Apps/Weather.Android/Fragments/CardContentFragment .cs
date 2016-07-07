@@ -3,12 +3,10 @@ using Android.Support.V4.App;
 using Android.Views;
 using R = Weather.Android.Resource;
 
-namespace Weather.Android.Activities.Experimental
+namespace Weather.Android.Fragments
 {
     public class CardContentFragment : Fragment
     {
-
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             return inflater.Inflate(R.Layout.about_item_card, null);

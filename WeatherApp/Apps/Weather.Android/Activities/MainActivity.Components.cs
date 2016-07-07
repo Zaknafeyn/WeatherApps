@@ -1,4 +1,5 @@
 ﻿using Android.Widget;
+using R = Weather.Android.Resource;
 
 namespace Weather.Android.Activities
 {

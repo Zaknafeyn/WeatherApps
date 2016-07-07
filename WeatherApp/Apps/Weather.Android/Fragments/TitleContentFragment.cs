@@ -3,7 +3,7 @@ using Android.Support.V4.App;
 using Android.Views;
 using R = Weather.Android.Resource;
 
-namespace Weather.Android.Activities.Experimental
+namespace Weather.Android.Fragments
 {
     public class TitleContentFragment : Fragment
     {

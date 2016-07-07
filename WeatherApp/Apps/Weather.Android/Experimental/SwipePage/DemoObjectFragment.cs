@@ -2,6 +2,7 @@
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using R = Weather.Android.Resource;
 
 namespace Weather.Android.Experimental.SwipePage
 {

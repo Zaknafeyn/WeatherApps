@@ -5,6 +5,8 @@ using Android.Support.V4.View;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Weather.Android.Activities.Experimental;
+using Weather.Android.Adapters;
+using Weather.Android.Fragments;
 using R = Weather.Android.Resource;
 
 namespace Weather.Android.Activities
@@ -21,7 +23,7 @@ namespace Weather.Android.Activities
             Init();
             return;
 
-            SetContentView(Resource.Layout.about_material);
+            SetContentView(R.Layout.about_material);
 
             //var version = FindViewById<TextView>(Resource.Id.about_textViewVersion);
 

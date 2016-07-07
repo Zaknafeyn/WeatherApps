@@ -1,6 +1,7 @@
 ﻿using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using R = Weather.Android.Resource;
 
 namespace Weather.Android.Experimental
 {

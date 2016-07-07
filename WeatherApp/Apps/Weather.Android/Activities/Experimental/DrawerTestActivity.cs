@@ -7,8 +7,9 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using Weather.Android.Experimental;
+using R = Weather.Android.Resource;
 
-namespace Weather.Android.Activities
+namespace Weather.Android.Activities.Experimental
 {
     [Activity(Label = "Weather - test drawable", Icon = "@drawable/icon")]
     public class DrawerTestActivity : Activity, IItemClickListener
@@ -22,25 +23,25 @@ namespace Weather.Android.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.DrawerTest);
+            SetContentView(R.Layout.DrawerTest);
             // Create your application here
 
-            _titles = Resources.GetStringArray(Resource.Array.planets_array).ToList();
+            _titles = Resources.GetStringArray(R.Array.planets_array).ToList();
 
-            _drawerList = FindViewById<RecyclerView>(Resource.Id.left_drawer);
+            _drawerList = FindViewById<RecyclerView>(R.Id.left_drawer);
             _drawerList.HasFixedSize = true;
             _drawerList.SetLayoutManager(new LinearLayoutManager(this));
             _drawerList.SetAdapter(new MenuAdapter(_titles.ToArray(), this));
 
-            _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            _drawerLayout = FindViewById<DrawerLayout>(R.Id.drawer_layout);
 
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
 
             _drawerToggle = new MyActionBarDrawerToggle(this, _drawerLayout,
-                Resource.Drawable.ic_drawer,
-                Resource.String.ApplicationName,
-                Resource.String.Hello);
+                R.Drawable.ic_drawer,
+                R.String.ApplicationName,
+                R.String.Hello);
 
             _drawerLayout?.AddDrawerListener(_drawerToggle); 
             //.SetDrawerListener(_drawerToggle);
@@ -62,7 +63,7 @@ namespace Weather.Android.Activities
 
             var fragmentManager = FragmentManager;
             var ft = fragmentManager.BeginTransaction();
-            ft.Replace(Resource.Id.content_frame, fragment);
+            ft.Replace(R.Id.content_frame, fragment);
             ft.Commit();
 
             // update selected item title, then close the drawer

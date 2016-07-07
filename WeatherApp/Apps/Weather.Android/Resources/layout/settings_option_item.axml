@@ -4,26 +4,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="2dp">
-  <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-      android:elevation="8dp"
-      android:layout_width="match_parent"
-      android:padding ="@dimen/md_keylines"
-      android:layout_height="wrap_content">
-    <LinearLayout 
-      android:orientation="horizontal"
-      android:layout_width="match_parent"
-      android:padding ="@dimen/md_keylines"
-      android:layout_height="wrap_content">
-
-      <android.support.v7.widget.SwitchCompat
-        android:layout_width="wrap_content"
-        android:id="@+id/switchCompatEnableTestDrawer"
-        android:text="Experimental features"
-        android:textOn="Enable"
-        android:textOff="Disable"
-        android:layout_height="wrap_content"
-        android:checked="true"/>
-    </LinearLayout>
-
-  </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:elevation="2dp"
+        android:layout_margin="@dimen/md_keylines"
+        android:layout_width="match_parent"
+        android:padding="@dimen/md_keylines"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:padding="@dimen/md_keylines"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:id="@+id/switchCompatEnableTestDrawer"
+                android:text="Experimental features"
+                android:textOn="Enable"
+                android:textOff="Disable"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

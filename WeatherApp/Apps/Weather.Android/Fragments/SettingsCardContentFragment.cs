@@ -5,7 +5,7 @@ using Android.Views;
 using Weather.Android.AppServices;
 using R = Weather.Android.Resource;
 
-namespace Weather.Android.Activities.Experimental
+namespace Weather.Android.Fragments
 {
     public class SettingsCardContentFragment : Fragment
     {

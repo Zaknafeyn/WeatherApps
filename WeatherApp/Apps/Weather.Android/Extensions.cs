@@ -1,7 +1,7 @@
 ﻿using System;
-using Android.Content.Res;
 using Android.Runtime;
 using Java.Lang;
+using R = Android.Content.Res.Resources;
 
 namespace Weather.Android
 {
@@ -13,7 +13,7 @@ namespace Weather.Android
             return $"WeatherStatus{weatherStatus.Id}{dayOrNight}";
         }
 
-        public static int GetWeatherIconResourceId(this Resources resources, Services.Portable.DTO.Api.WeatherDetails.Weather weatherStatus, string packageName)
+        public static int GetWeatherIconResourceId(this R resources, Services.Portable.DTO.Api.WeatherDetails.Weather weatherStatus, string packageName)
         {
             var iconName = weatherStatus.GetWeatherIconName();
             var iconId = resources.GetIdentifier(iconName.ToLower(), "drawable", packageName);

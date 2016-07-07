@@ -2,6 +2,7 @@
 using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Weather.Android.Experimental.SwipePage;
+using R = Weather.Android.Resource;
 using FragmentTransaction = Android.App.FragmentTransaction;
 
 namespace Weather.Android.Activities

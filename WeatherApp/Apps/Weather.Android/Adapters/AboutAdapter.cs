@@ -3,7 +3,7 @@ using Android.Support.V4.App;
 using Java.Lang;
 using String = System.String;
 
-namespace Weather.Android.Activities
+namespace Weather.Android.Adapters
 {
     class AboutAdapter : FragmentPagerAdapter
     {
