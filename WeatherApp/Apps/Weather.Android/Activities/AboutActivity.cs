@@ -4,12 +4,11 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
-using Weather.Android.Activities.Experimental;
-using Weather.Android.Adapters;
-using Weather.Android.Fragments;
-using R = Weather.Android.Resource;
+using Weather.AndroidApp.Adapters;
+using Weather.AndroidApp.Fragments;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Activities
+namespace Weather.AndroidApp.Activities
 {
     [Activity(Label = "About", Theme = "@style/MyTheme")]
     public class AboutActivity : AppCompatActivity

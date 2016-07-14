@@ -24,6 +24,7 @@ using Services.Portable.DTO.Api;
 using Weather.Android.AppServices;
 using Android.Views.Animations;
 using Android.Widget;
+using Services.Portable.Service;
 using Weather.Android.Activities.Experimental;
 using Weather.Android.Adapters;
 using Weather.Android.Fragments;
@@ -34,12 +35,12 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 namespace Weather.Android.Activities
 {
     //[Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
-    [Activity(Label = "Weather", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
+    [Activity(Label = "Weather", MainLauncher = false, Icon = "@drawable/icon", Theme = "@style/MyTheme")]
     public partial class MainActivity : AppCompatActivity
     {
         private const string MainActivityTag = "Main Activity";
         private ISettings _settings;
-        private readonly WeatherApi _weatherApi = new WeatherApi();
+        private readonly IWeatherService _weatherService;
 
         public MainActivity()
         {
@@ -49,12 +50,15 @@ namespace Weather.Android.Activities
             builder.RegisterType<StorageService>().SingleInstance().As<IStorageService>();
 
             builder.RegisterType<Settings>().SingleInstance().As<ISettings>();
+            builder.RegisterModule<ServiceApiModule>();
 
             var container = builder.Build();
             var cls = new AutofacServiceLocator(container);
 
             ServiceLocator.SetLocatorProvider(() => cls);
 
+            //_weatherService = container.Resolve<IWeatherService>();
+            _weatherService = new WeatherService();
             _settings = container.Resolve<ISettings>();
             _settings.ReadSettings();
         }
@@ -74,14 +78,14 @@ namespace Weather.Android.Activities
 
             InitializeLocationManager();
 
-            
+
             // Set our view from the "main" layout resource
             //SetContentView(R.Layout.Main);
             SetContentView(R.Layout.main_layout);
 
-            //var toolbar = FindViewById<Toolbar>(R.Id.toolbar_actionbar);
-            //SetSupportActionBar(toolbar);
-            //SupportActionBar.Title = "Hello from Appcompat Toolbar";
+            var toolbar = FindViewById<Toolbar>(R.Id.toolbar_actionbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Hello from Appcompat Toolbar";
 
 
             //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
@@ -98,24 +102,16 @@ namespace Weather.Android.Activities
             ShowImg();
 
             var viewPager = FindViewById<ViewPager>(R.Id.main_pager);
-            await SetupRecyclerView(viewPager);
+            SetupViewPager(viewPager);
 
             Log.Debug(MainActivityTag, "Main activity has been created");
         }
 
-        private async Task SetupRecyclerView(ViewPager viewPager)
+        private void SetupViewPager(ViewPager viewPager)
         {
             var adapter = new MainWeatherAdapter(SupportFragmentManager);
 
-            var cityWeatherTask = _weatherApi.GetWeatherByCityNameAsync("kiev");
-            var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCityNameAsync("kiev");
-
-            await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
-
-            var cityWeather = cityWeatherTask.Result;
-            var cityForecastWeather = cityForecastWeatherTask.Result;
-
-            adapter.AddFragment(new CityWeatherCardFragment(cityWeather, cityForecastWeather), "Main");
+            adapter.AddFragment(new CityWeatherCardFragment(_weatherService, PackageName), "Main");
             viewPager.Adapter = adapter;
         }
 
@@ -128,6 +124,8 @@ namespace Weather.Android.Activities
             ShowDiagInfo("Requesting location updates");
             Log.Debug(MainActivityTag, "Requesting location updates");
 
+            if (string.IsNullOrEmpty(_locationProvider))
+                return;
             _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
 
             _currentLocation = _locationManager.GetLastKnownLocation(_locationProvider);
@@ -280,8 +278,11 @@ namespace Weather.Android.Activities
         {
             Log.Debug(MainActivityTag, "Show weather by city name");
 
-            var cityWeatherTask = _weatherApi.GetWeatherByCityNameAsync(city);
-            var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCityNameAsync(city);
+            //var cityWeatherTask = _weatherApi.GetWeatherByCityNameAsync(city);
+            //var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCityNameAsync(city);
+
+            var cityWeatherTask = _weatherService.GetWeatherByCityNameAsync(city);
+            var cityForecastWeatherTask = _weatherService.GetWeatherForecastByCityNameAsync(city);
 
             await ShowWeatherAsync(cityWeatherTask, cityForecastWeatherTask);
         }
@@ -289,8 +290,9 @@ namespace Weather.Android.Activities
         async Task ShowWeatherAsync(Coordinates coords)
         {
             Log.Debug(MainActivityTag, "Show weather by coord");
-            var cityWeatherTask = _weatherApi.GetWeatherByCoordAsync(coords);
-            var cityForecastWeatherTask = _weatherApi.GetWeatherForecastByCoordsAsync(coords);
+
+            var cityWeatherTask = _weatherService.GetWeatherByCoordsAsync(coords);
+            var cityForecastWeatherTask = _weatherService.GetWeatherForecastByCoordsAsync(coords);
 
             await Task.WhenAll(cityWeatherTask, cityForecastWeatherTask);
 

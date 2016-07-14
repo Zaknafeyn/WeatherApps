@@ -1,20 +1,22 @@
-﻿using System;
-using System.Threading.Tasks;
-using Services.Interfaces;
+﻿using System.Threading.Tasks;
 using Services.Portable.API;
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 
-namespace Services.Service
+namespace Services.Portable.Service
 {
-    public class WeatherSevice : IWeatherSevice
+    public class WeatherService : IWeatherService
     {
-
         private readonly WeatherApi _weatherApi;
 
-        public WeatherSevice()
+        public WeatherService()
         {
             _weatherApi = new WeatherApi();
+        }
+
+        internal WeatherService(WeatherApi weatherApi)
+        {
+            _weatherApi = weatherApi;
         }
 
         public async Task<CityWeatherResult> GetWeatherByCityNameAsync(string cityName)

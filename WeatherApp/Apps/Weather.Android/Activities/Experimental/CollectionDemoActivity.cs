@@ -1,9 +1,9 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
-using Weather.Android.Experimental.SwipePage;
+using Weather.AndroidApp.Experimental.SwipePage;
 
-namespace Weather.Android.Activities.Experimental
+namespace Weather.AndroidApp.Activities.Experimental
 {
     public class CollectionDemoActivity : FragmentActivity
     {

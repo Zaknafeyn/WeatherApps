@@ -13,6 +13,7 @@ using Services.Interfaces;
 using Services.Portable;
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
+using Services.Portable.Service;
 using WeatherModule.DataConverters;
 using WeatherModule.Models;
 
@@ -20,7 +21,7 @@ namespace WeatherModule.ViewModels
 {
     public class WeatherViewModel : BindableBase
     {
-        private readonly IWeatherSevice _weatherSevice;
+        private readonly IWeatherService _weatherService;
         private readonly IEventAggregator _eventAggregator;
         private readonly ILocalStorageService _localStorage;
         private bool _isBusy;
@@ -34,9 +35,9 @@ namespace WeatherModule.ViewModels
         private decimal _windSpeed;
         private WeatherForecastModel _weatherForecastTomorrow;
 
-        public WeatherViewModel(IWeatherSevice weatherSevice, IEventAggregator eventAggregator, ILocalStorageService localStorage)
+        public WeatherViewModel(IWeatherService weatherService, IEventAggregator eventAggregator, ILocalStorageService localStorage)
         {
-            _weatherSevice = weatherSevice;
+            _weatherService = weatherService;
             _eventAggregator = eventAggregator;
             _localStorage = localStorage;
 
@@ -140,8 +141,8 @@ namespace WeatherModule.ViewModels
             {
                 IsBusy = true;
 
-                var weatherTask = _weatherSevice.GetWeatherByCityNameAsync(cityName);
-                var weatherForecastTask = _weatherSevice.GetWeatherForecastByCityNameAsync(cityName);
+                var weatherTask = _weatherService.GetWeatherByCityNameAsync(cityName);
+                var weatherForecastTask = _weatherService.GetWeatherForecastByCityNameAsync(cityName);
                 await Task.WhenAll(weatherTask, weatherForecastTask);
 
                 var weather = weatherTask.Result;
@@ -161,8 +162,8 @@ namespace WeatherModule.ViewModels
             {
                 IsBusy = true;
 
-                var weatherTask = _weatherSevice.GetWeatherByCityIdAsync(cityId);
-                var weatherForecastTask = _weatherSevice.GetWeatherForecastByCityIdAsync(cityId);
+                var weatherTask = _weatherService.GetWeatherByCityIdAsync(cityId);
+                var weatherForecastTask = _weatherService.GetWeatherForecastByCityIdAsync(cityId);
                 await Task.WhenAll(weatherTask, weatherForecastTask);
 
                 var weather = weatherTask.Result;

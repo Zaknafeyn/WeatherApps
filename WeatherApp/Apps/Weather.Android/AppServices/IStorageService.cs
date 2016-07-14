@@ -1,4 +1,4 @@
-﻿namespace Weather.Android.AppServices
+﻿namespace Weather.AndroidApp.AppServices
 {
     public interface IStorageService
     {

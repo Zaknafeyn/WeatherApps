@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 
-namespace Weather.Android.Experimental
+namespace Weather.AndroidApp.Experimental
 {
     public class MenuFragment : Fragment
     {

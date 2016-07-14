@@ -1,9 +1,9 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
-using R = Weather.Android.Resource;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Fragments
+namespace Weather.AndroidApp.Fragments
 {
     public class TitleContentFragment : Fragment
     {

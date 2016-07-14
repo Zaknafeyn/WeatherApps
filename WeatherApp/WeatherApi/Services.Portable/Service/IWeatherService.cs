@@ -2,9 +2,9 @@
 using Services.Portable.DTO;
 using Services.Portable.DTO.Api;
 
-namespace Services.Interfaces
+namespace Services.Portable.Service
 {
-    public interface IWeatherSevice
+    public interface IWeatherService
     {
         Task<CityWeatherResult> GetWeatherByCityNameAsync(string cityName);
         Task<CityWeatherResult> GetWeatherByCityIdAsync(int cityId);

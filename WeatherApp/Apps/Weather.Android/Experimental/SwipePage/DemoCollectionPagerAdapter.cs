@@ -4,7 +4,7 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Java.Lang;
 
-namespace Weather.Android.Experimental.SwipePage
+namespace Weather.AndroidApp.Experimental.SwipePage
 {
     public class DemoCollectionPagerAdapter : FragmentStatePagerAdapter
     {

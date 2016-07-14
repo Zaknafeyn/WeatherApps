@@ -3,7 +3,7 @@ using Android.Runtime;
 using Java.Lang;
 using R = Android.Content.Res.Resources;
 
-namespace Weather.Android
+namespace Weather.AndroidApp
 {
     internal static class Extensions
     {

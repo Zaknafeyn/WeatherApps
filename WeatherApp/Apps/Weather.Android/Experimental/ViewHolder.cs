@@ -1,7 +1,7 @@
 ﻿using Android.Support.V7.Widget;
 using Android.Widget;
 
-namespace Weather.Android.Experimental
+namespace Weather.AndroidApp.Experimental
 {
     public class ViewHolder : RecyclerView.ViewHolder
     {

@@ -1,10 +1,9 @@
 ﻿using Android.Support.V4.App;
 using Android.Support.V4.Widget;
 using Android.Views;
-using Weather.Android.Activities;
-using Weather.Android.Activities.Experimental;
+using Weather.AndroidApp.Activities.Experimental;
 
-namespace Weather.Android.Experimental
+namespace Weather.AndroidApp.Experimental
 {
     internal class MyActionBarDrawerToggle : ActionBarDrawerToggle
     {

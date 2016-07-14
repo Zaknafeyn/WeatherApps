@@ -2,7 +2,7 @@
 using Android.OS;
 using Autofac;
 
-namespace Weather.Android.Activities
+namespace Weather.AndroidApp.Activities
 {
     public abstract class AutofacActivity : Activity
     {

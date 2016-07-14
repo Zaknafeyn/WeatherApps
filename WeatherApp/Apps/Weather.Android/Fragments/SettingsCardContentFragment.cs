@@ -2,10 +2,10 @@
 using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Weather.Android.AppServices;
-using R = Weather.Android.Resource;
+using Weather.AndroidApp.AppServices;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Fragments
+namespace Weather.AndroidApp.Fragments
 {
     public class SettingsCardContentFragment : Fragment
     {

@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using Services.Interfaces;
 using Services.Portable;
+using Services.Portable.Service;
 using Services.Service;
 
 namespace Services
@@ -23,8 +24,8 @@ namespace Services
             localStorage.Read();
 
             //_unityContainer.RegisterInstance(new RestClient());
-            //_unityContainer.RegisterType(typeof(IWeatherSevice), typeof(WeatherSevice));
-            _unityContainer.RegisterInstance(typeof(IWeatherSevice), new WeatherSevice());
+            //_unityContainer.RegisterType(typeof(IWeatherService), typeof(weatherService));
+            _unityContainer.RegisterInstance(typeof(IWeatherService), new WeatherService());
             _unityContainer.RegisterInstance(typeof(ILocalStorageService), localStorage);
             _unityContainer.RegisterType(typeof(ILogger), typeof(DebugLogger));
         }

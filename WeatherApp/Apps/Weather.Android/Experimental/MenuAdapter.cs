@@ -1,9 +1,9 @@
 ﻿using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using R = Weather.Android.Resource;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Experimental
+namespace Weather.AndroidApp.Experimental
 {
     public class MenuAdapter : RecyclerView.Adapter
     {
@@ -19,8 +19,8 @@ namespace Weather.Android.Experimental
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var vi = LayoutInflater.From(parent.Context);
-            var v = vi.Inflate(Resource.Layout.drawer_list_item, parent, false);
-            var tv = v.FindViewById<TextView>(Resource.Id.text1);
+            var v = vi.Inflate(R.Layout.drawer_list_item, parent, false);
+            var tv = v.FindViewById<TextView>(R.Id.text1);
             return new ViewHolder(tv);
         }
 

@@ -1,32 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
-using Android.Support.V7.Widget;
-using Android.Views;
-using Android.Widget;
-using Autofac;
-using Autofac.Extras.CommonServiceLocator;
 using Microsoft.Practices.ServiceLocation;
-using Weather.Android.Activities.Experimental;
-using Weather.Android.Adapters;
-using Weather.Android.AppServices;
-using Weather.Android.Fragments;
+using Weather.AndroidApp.Adapters;
+using Weather.AndroidApp.AppServices;
+using Weather.AndroidApp.Fragments;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-using Fragment = Android.Support.V4.App.Fragment;
-using FragmentManager = Android.Support.V4.App.FragmentManager;
-using R = Weather.Android.Resource;
-using String = System.String;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Activities
+namespace Weather.AndroidApp.Activities
 {
     [Activity(Label = "Settings", Icon = "@drawable/ic_settings_black_24dp", Theme = "@style/MyTheme")]
     public class SettingsActivity : AppCompatActivity

@@ -4,7 +4,7 @@ using Services.Portable.DTO.Api;
 
 namespace Services.Portable.API
 {
-    public class WeatherApi
+    internal class WeatherApi
     {
         private readonly RestClient _restClient;
 

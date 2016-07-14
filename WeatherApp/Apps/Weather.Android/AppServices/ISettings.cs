@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Weather.Android.AppServices
+namespace Weather.AndroidApp.AppServices
 {
     public interface ISettings
     {

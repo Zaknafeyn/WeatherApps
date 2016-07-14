@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Android.Support.V4.App;
-using Java.Lang;
-using String = System.String;
+﻿using Android.Support.V4.App;
 
-namespace Weather.Android.Adapters
+namespace Weather.AndroidApp.Adapters
 {
     public class MainWeatherAdapter : SettingsAdapter
     {

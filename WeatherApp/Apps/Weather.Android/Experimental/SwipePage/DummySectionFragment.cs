@@ -2,9 +2,9 @@
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-using R = Weather.Android.Resource;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Experimental.SwipePage
+namespace Weather.AndroidApp.Experimental.SwipePage
 {
     public class DummySectionFragment : Fragment
     {
@@ -12,9 +12,9 @@ namespace Weather.Android.Experimental.SwipePage
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View rootView = inflater.Inflate(Resource.Layout.fragment_section_dummy, container, false);
+            View rootView = inflater.Inflate(R.Layout.fragment_section_dummy, container, false);
             Bundle args = Arguments;
-            rootView.FindViewById<TextView>(Resource.Id.text1).Text =  GetString(Resource.String.dummy_section_text, args.GetInt(ARG_SECTION_NUMBER));
+            rootView.FindViewById<TextView>(R.Id.text1).Text =  GetString(R.String.dummy_section_text, args.GetInt(ARG_SECTION_NUMBER));
             return rootView;
         }
     }

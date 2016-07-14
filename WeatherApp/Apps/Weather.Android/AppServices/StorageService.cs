@@ -1,7 +1,7 @@
 ﻿using Android.Content;
 using Newtonsoft.Json;
 
-namespace Weather.Android.AppServices
+namespace Weather.AndroidApp.AppServices
 {
     public class StorageService : IStorageService
     {

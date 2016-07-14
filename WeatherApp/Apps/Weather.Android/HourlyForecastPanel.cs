@@ -7,9 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Services.Portable;
 using Services.Portable.DTO.Api.WeatherForecast;
-using R = Weather.Android.Resource;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android
+namespace Weather.AndroidApp
 {
 	public class HourlyForecastPanel : LinearLayout
 	{
@@ -43,11 +43,11 @@ namespace Weather.Android
 		    _ctx = ctx;
 
             var inflater = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
-			inflater.Inflate(Resource.Layout.HourlyForecast, this);
+			inflater.Inflate(R.Layout.HourlyForecast, this);
 
-			_imageViewForecastImage = FindViewById<ImageView>(Resource.Id.imageViewForecastImage);
-		    _textViewHour = FindViewById<TextView>(Resource.Id.textViewHour);
-		    _textViewTemp = FindViewById<TextView>(Resource.Id.textViewTemp);
+			_imageViewForecastImage = FindViewById<ImageView>(R.Id.imageViewForecastImage);
+		    _textViewHour = FindViewById<TextView>(R.Id.textViewHour);
+		    _textViewTemp = FindViewById<TextView>(R.Id.textViewTemp);
 		}
 
 		public void SetWeather(WeatherForecastItem weatherForecastItem)

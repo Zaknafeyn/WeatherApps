@@ -1,6 +1,6 @@
 ﻿using Android.Views;
 
-namespace Weather.Android.Experimental
+namespace Weather.AndroidApp.Experimental
 {
     public interface IItemClickListener
     {

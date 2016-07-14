@@ -6,10 +6,10 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using Weather.Android.Experimental;
-using R = Weather.Android.Resource;
+using Weather.AndroidApp.Experimental;
+using R = Weather.AndroidApp.Resource;
 
-namespace Weather.Android.Activities.Experimental
+namespace Weather.AndroidApp.Activities.Experimental
 {
     [Activity(Label = "Weather - test drawable", Icon = "@drawable/icon")]
     public class DrawerTestActivity : Activity, IItemClickListener
