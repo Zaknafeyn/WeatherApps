@@ -81,27 +81,27 @@ namespace Weather.AndroidApp.Activities
 
             _progressBar.Visibility = ViewStates.Visible;
 
-            var fragment = SupportFragmentManager.FindFragmentById(R.Id.@select);
-            SupportFragmentManager.BeginTransaction().Hide(fragment).CommitAllowingStateLoss();
-            SupportFragmentManager.ExecutePendingTransactions();
+            var cityWeatherFragment = SupportFragmentManager.FindFragmentById(R.Id.cityWeatherFragment);
+            var cityForecastFragment = SupportFragmentManager.FindFragmentById(R.Id.cityForecastFragment);
+            
+            SupportFragmentManager.HideFragment(cityWeatherFragment, cityForecastFragment);
 
             var weatherTask = _weatherService.GetWeatherByCityNameAsync("Kiev");
-            var delayTask = Task.Delay(1500);
-            await Task.WhenAll(weatherTask, delayTask);
+            var weatherForecastTask = _weatherService.GetWeatherForecastByCityNameAsync("Kiev");
+            var delayTask = Task.Delay(2500);
+            await Task.WhenAll(weatherTask, weatherForecastTask, delayTask);
             var weather = weatherTask.Result;
+            var weatherForecast = weatherForecastTask.Result;
 
             _progressBar.Visibility = ViewStates.Gone;
 
-            SupportFragmentManager
-                .BeginTransaction()
-                .SetCustomAnimations(R.Animator.fade_in, R.Animator.fade_out)
-                .Show(fragment)
-                .CommitAllowingStateLoss();
+            var updatableForecastFragment = (IUpdateFragment) cityForecastFragment;
+            updatableForecastFragment.Update(weatherForecast);
 
-            SupportFragmentManager.ExecutePendingTransactions();
-
-            var updatableFragment = (IUpdateFragment)fragment;
+            var updatableFragment = (IUpdateFragment)cityWeatherFragment;
             updatableFragment.Update(weather);
+
+            SupportFragmentManager.ShowFragment(cityWeatherFragment, cityForecastFragment);
 
             HockeyApp.MetricsManager.TrackEvent("Application is initialized");
         }

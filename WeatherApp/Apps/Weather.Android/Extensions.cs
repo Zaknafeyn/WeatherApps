@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.Runtime;
+using Android.Support.V4.App;
 using Java.Lang;
 using R = Android.Content.Res.Resources;
 
@@ -36,6 +38,54 @@ namespace Weather.AndroidApp
                 return $"{elapsedTime.TotalHours} hours ago";
 
             return $"{elapsedTime.TotalDays} days ago";
+        }
+
+        public static void ShowFragment(this FragmentManager supportFragmentManager, params int[] fragmentIds)
+        {
+            var fragments = new List<Fragment>();
+            foreach (var fragmentId in fragmentIds)
+            {
+                fragments.Add(supportFragmentManager.FindFragmentById(fragmentId));
+            }
+            ShowFragment(supportFragmentManager, fragments.ToArray());
+        }
+
+        public static void ShowFragment(this FragmentManager supportFragmentManager, params Fragment[] fragments)
+        {
+            var transaction = supportFragmentManager
+                .BeginTransaction()
+                .SetCustomAnimations(Resource.Animator.fade_in, Resource.Animator.fade_out);
+
+            foreach (var fragment in fragments)
+            {
+                transaction = transaction.Show(fragment);
+            }
+
+            transaction.CommitAllowingStateLoss();
+
+            supportFragmentManager.ExecutePendingTransactions();
+        }
+
+        public static void HideFragment(this FragmentManager supportFragmentManager, params Fragment[] fragments)
+        {
+            var transaction = supportFragmentManager.BeginTransaction();
+            foreach (var fragment in fragments)
+            {
+                transaction = transaction.Hide(fragment);
+            }
+            transaction.CommitAllowingStateLoss();
+            supportFragmentManager.ExecutePendingTransactions();
+        }
+
+        public static void HideFragment(this FragmentManager supportFragmentManager, params int[] fragmentIds)
+        {
+            var fragments = new List<Fragment>();
+            foreach (var fragmentId in fragmentIds)
+            {
+                fragments.Add(supportFragmentManager.FindFragmentById(fragmentId));
+            }
+
+            HideFragment(supportFragmentManager, fragments.ToArray());
         }
     }
 }

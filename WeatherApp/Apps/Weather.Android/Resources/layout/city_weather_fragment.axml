@@ -29,7 +29,7 @@
               android:text="23"
               style="@style/TextViewDisplay4" />
     <ImageView android:src="@drawable/weatherstatus200d"
-               android:layout_width="160dp"
+               android:layout_width="200dp"
                android:layout_height="wrap_content"
                android:layout_alignParentRight="true"
                android:id="@+id/imageViewCurrentWeather"

@@ -125,8 +125,10 @@
     <Compile Include="Activities\NewMainActivity.cs" />
     <Compile Include="Adapters\AboutAdapter.cs" />
     <Compile Include="Activities\AutofacActivity.cs" />
+    <Compile Include="Adapters\ForecastWeatherAdapter.cs" />
     <Compile Include="Adapters\MainWeatherAdapter.cs" />
     <Compile Include="Fragments\CardContentFragment .cs" />
+    <Compile Include="Fragments\CityForecatsCardFragment.cs" />
     <Compile Include="Fragments\CityWeatherCardFragment.cs" />
     <Compile Include="Fragments\ListContentFragment.cs" />
     <Compile Include="Fragments\SettingsCardContentFragment.cs" />
@@ -158,11 +160,18 @@
     <Compile Include="Experimental\MenuAdapter.cs" />
     <Compile Include="Experimental\MenuFragment.cs" />
     <Compile Include="Interfaces\IUpdateFragment.cs" />
+    <Compile Include="Models\WeatheForecastItem.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Experimental\MyActionBarDrawerToggle.cs" />
     <Compile Include="AppServices\IStorageService.cs" />
     <Compile Include="AppServices\StorageService.cs" />
+    <AndroidResource Include="Resources\layout\city_forecast_fragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\city_forecats_list_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\Roboto-Black.ttf" />
