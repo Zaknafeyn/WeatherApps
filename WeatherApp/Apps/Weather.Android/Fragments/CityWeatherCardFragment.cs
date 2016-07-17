@@ -16,8 +16,11 @@ namespace Weather.AndroidApp.Fragments
     {
         private TextView _city;
         private TextView _cityDescr;
-        private TextView _temp;
+        private TextView _textViewTemperature;
         private ImageView _imageViewCurrentWeather;
+		
+		private TextView _textViewWindy;
+		private TextView _textViewHumidity;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -25,8 +28,10 @@ namespace Weather.AndroidApp.Fragments
 
             _city = view.FindViewById<TextView>(R.Id.textViewCityName);
             _cityDescr = view.FindViewById<TextView>(R.Id.textViewDateTimeDetails);
-            _temp = view.FindViewById<TextView>(R.Id.textViewTemperature);
+            _textViewTemperature = view.FindViewById<TextView>(R.Id.textViewTemperature);
             _imageViewCurrentWeather = view.FindViewById<ImageView>(R.Id.imageViewCurrentWeather);
+            _textViewWindy = view.FindViewById<TextView>(R.Id.textViewWindy);
+            _textViewHumidity = view.FindViewById<TextView>(R.Id.textViewHumidity);
 
             return view;
         }
@@ -43,10 +48,13 @@ namespace Weather.AndroidApp.Fragments
             _city.Text = data.Name;
             var date = DateTime.Now.ToString("ddd, t", CultureInfo.InvariantCulture);
             _cityDescr.Text = $"{date}, {weatherStatus.Description}";
-            _temp.Text = $"{data.Main.Temp.DisplayTemperature()}";
+            _textViewTemperature.Text = $"{data.Main.Temp.DisplayTemperature()}";
 
             var drawableId = Resources.GetWeatherIconResourceId(weatherStatus, GetPackageName());
             _imageViewCurrentWeather.SetImageResource(drawableId);
+
+            _textViewHumidity.Text = data.Main.Humidity.DisplayHumidity();
+            _textViewWindy.Text = data.Wind.Speed.DisplayWindy();
         }
 
         public void Update(object data)

@@ -7,6 +7,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
+using Android.Views.Animations;
 using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using HockeyApp.Android;
@@ -14,6 +15,7 @@ using HockeyApp.Android.Metrics;
 using Microsoft.Practices.ServiceLocation;
 using Android.Widget;
 using Services.Portable.Service;
+using Weather.AndroidApp.Activities.Experimental;
 using Weather.AndroidApp.AppServices;
 using Weather.AndroidApp.Fragments;
 using Weather.AndroidApp.Interfaces;
@@ -26,6 +28,7 @@ namespace Weather.AndroidApp.Activities
     public class NewMainActivity : AppCompatActivity
     {
         private readonly IWeatherService _weatherService;
+        private IAppLogger _appLogger;
         private ISettings _settings;
 
         private ProgressBar _progressBar;
@@ -36,11 +39,19 @@ namespace Weather.AndroidApp.Activities
 
             var builder = new ContainerBuilder();
             builder.RegisterInstance(Application.Context).As<Context>();
+            //builder.RegisterInstance(Application).As<Application>();
 
             builder.RegisterType<StorageService>().SingleInstance().As<IStorageService>();
 
             builder.RegisterType<Settings>().SingleInstance().As<ISettings>();
+
+#if DebugWithMock
+            builder.RegisterType<WeatherServiceMock>().As<IWeatherService>();
+            //builder.RegisterType<AppLogger>().As<IAppLogger>().SingleInstance();
+#else
             builder.RegisterType<WeatherService>().As<IWeatherService>();
+            builder.RegisterType<HockeyAppLogger>().As<IAppLogger>().SingleInstance();
+#endif
             //builder.RegisterModule<ServiceApiModule>();
 
             var container = builder.Build();
@@ -49,8 +60,9 @@ namespace Weather.AndroidApp.Activities
             ServiceLocator.SetLocatorProvider(() => cls);
 
             _weatherService = container.Resolve<IWeatherService>();
-            //_weatherService = new WeatherService();
             _settings = container.Resolve<ISettings>();
+            _appLogger = container.Resolve<IAppLogger>();
+
             _settings.ReadSettings();
 
         }
@@ -59,16 +71,16 @@ namespace Weather.AndroidApp.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            if (IsNetworkConnected())
-                Toast.MakeText(this, "Internet is available", ToastLength.Long);
-            else
-                Toast.MakeText(this, "Internet is NOT available", ToastLength.Long);
+#if !DebugWithMock
 
-            CrashManager.Register(this);
-            MetricsManager.Register(this, Application);
+            //_appLogger.Init(this, Application);
 
-            HockeyApp.MetricsManager.TrackEvent("Application is initializing...");
+            //CrashManager.Register(this);
+            //MetricsManager.Register(this, Application);
 
+            //HockeyApp.MetricsManager.TrackEvent("Application is initializing...");
+
+#endif
             // Create your application here
 
             SetContentView(R.Layout.main_layout);
@@ -83,7 +95,7 @@ namespace Weather.AndroidApp.Activities
 
             var cityWeatherFragment = SupportFragmentManager.FindFragmentById(R.Id.cityWeatherFragment);
             var cityForecastFragment = SupportFragmentManager.FindFragmentById(R.Id.cityForecastFragment);
-            
+
             SupportFragmentManager.HideFragment(cityWeatherFragment, cityForecastFragment);
 
             var weatherTask = _weatherService.GetWeatherByCityNameAsync("Kiev");
@@ -95,7 +107,7 @@ namespace Weather.AndroidApp.Activities
 
             _progressBar.Visibility = ViewStates.Gone;
 
-            var updatableForecastFragment = (IUpdateFragment) cityForecastFragment;
+            var updatableForecastFragment = (IUpdateFragment)cityForecastFragment;
             updatableForecastFragment.Update(weatherForecast);
 
             var updatableFragment = (IUpdateFragment)cityWeatherFragment;
@@ -103,15 +115,73 @@ namespace Weather.AndroidApp.Activities
 
             SupportFragmentManager.ShowFragment(cityWeatherFragment, cityForecastFragment);
 
-            HockeyApp.MetricsManager.TrackEvent("Application is initialized");
+#if !DebugWithMock
+            //HockeyApp.MetricsManager.TrackEvent("Application is initialized");
+            _appLogger.Log("Application is initialized");
+#endif
         }
 
-        private bool IsNetworkConnected()
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            var cm = (ConnectivityManager)GetSystemService(ConnectivityService);
-
-            return cm?.ActiveNetworkInfo != null;
+            _appLogger.Log("Creating menu");
+            MenuInflater.Inflate(R.Menu.menu, menu);
+            return base.OnCreateOptionsMenu(menu);
         }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            _appLogger.Log("Preparing menu");
+            var menuItem = menu.FindItem(Resource.Id.menuItemDrawerTest);
+            menuItem?.SetVisible(_settings.EnableTestDrawer);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.menuItemAbout:
+                    StartActivity(typeof(AboutActivity));
+                    break;
+                case Resource.Id.menuItemDrawerTest:
+                    StartActivity(typeof(DrawerTestActivity));
+                    break;
+                case Resource.Id.menuItemSettings:
+                    StartActivity(typeof(SettingsActivity));
+                    break;
+                //case Resource.Id.menuItemRefresh:
+                //    RefreshMenuAction(item);
+                //    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
+        //async void RefreshMenuAction(IMenuItem menuItem)
+        //{
+        //    var u = AnimationUtils.LoadAnimation(this, Resource.Animation.rotate_image);
+
+        //    using (var imageView = new ImageView(this))
+        //    {
+        //        imageView.SetImageResource(Resource.Drawable.ic_sync_white_24dp);
+        //        imageView.SetMinimumHeight(100);
+        //        imageView.StartAnimation(u);
+
+        //        var actionView = menuItem.ActionView;
+        //        menuItem.SetActionView(imageView);
+
+        //        await DisplayWeatherAsync(_editTextCity.Text);
+
+        //        menuItem.SetActionView(actionView);
+        //    }
+        //}
+
+        //private bool IsNetworkConnected()
+        //{
+        //    var cm = (ConnectivityManager)GetSystemService(ConnectivityService);
+
+        //    return cm?.ActiveNetworkInfo != null;
+        //}
 
     }
 }

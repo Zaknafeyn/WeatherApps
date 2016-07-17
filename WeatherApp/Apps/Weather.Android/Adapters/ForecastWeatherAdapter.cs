@@ -19,7 +19,7 @@ namespace Weather.AndroidApp.Adapters
                 ImageForecast = v.FindViewById<ImageView>(Resource.Id.imageViewForecastWeather);
                 DayName = v.FindViewById<TextView>(Resource.Id.textViewWeekDay);
                 TempDay = v.FindViewById<TextView>(Resource.Id.textViewDayTemp);
-                TempNignt = v.FindViewById<TextView>(Resource.Id.textViewNightTemp);
+                TempNight = v.FindViewById<TextView>(Resource.Id.textViewNightTemp);
             }
 
             public ImageView ImageForecast { get; }
@@ -28,17 +28,17 @@ namespace Weather.AndroidApp.Adapters
 
             public TextView TempDay { get; }
 
-            public TextView TempNignt { get; }
+            public TextView TempNight { get; }
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            var myHolder = (ViewHolder)holder;
+            var forefactWeatherHolder = (ViewHolder)holder;
             var item = _forecastItems[position];
-            myHolder.DayName.Text = item.Day.ToString("ddd", CultureInfo.InvariantCulture);
-            myHolder.TempDay.Text = item.TempDay.DisplayTemperature();
-            myHolder.TempDay.Text = item.TempNight.DisplayTemperature();
-            myHolder.ImageForecast.SetImageResource(item.DateImageResourceId);
+            forefactWeatherHolder.DayName.Text = item.Day.ToString("ddd", CultureInfo.InvariantCulture);
+            forefactWeatherHolder.TempDay.Text = item.TempDay.DisplayTemperature();
+            forefactWeatherHolder.TempNight.Text = item.TempNight.DisplayTemperature();
+            forefactWeatherHolder.ImageForecast.SetImageResource(item.DateImageResourceId);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

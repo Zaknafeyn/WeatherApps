@@ -56,6 +56,7 @@
     <Compile Include="RecentCities.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="ServiceApiModule.cs" />
+    <Compile Include="Service\WeatherServiceMock.cs" />
     <Compile Include="Service\IWeatherService.cs" />
     <Compile Include="Service\WeatherService.cs" />
     <Compile Include="WeatherUriBuilder\WeatherOptions.cs" />

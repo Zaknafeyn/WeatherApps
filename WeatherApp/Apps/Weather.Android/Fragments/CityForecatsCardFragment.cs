@@ -14,7 +14,7 @@ using Weather.AndroidApp.Models;
 
 namespace Weather.AndroidApp.Fragments
 {
-    public class CityForecatsCardFragment : Fragment, IUpdateFragment<CityWeatherForecastResult >
+    public class CityForecatsCardFragment : Fragment, IUpdateFragment<CityWeatherForecastResult>
     {
         private ForecastWeatherAdapter _adapter;
 
@@ -56,21 +56,20 @@ namespace Weather.AndroidApp.Fragments
 
         private IEnumerable<WeatheForecastItem> GetDailyForecats(CityWeatherForecastResult forecast)
         {
-            //int skipItemsCount = 0;
-            //var currentHour = DateTime.Now.Hour;
-            //if (currentHour > 0 && currentHour < 6)
-            //    skipItemsCount = 8 + 3;
-            //else if (currentHour < 18)
-            //    skipItemsCount = 8 + 0;
-            //else
-            //    skipItemsCount = 8-3;
+            var dailyForecast = from f in forecast.HourlyForecast
+                                group f by f.Dt.ToShortDateString()
+                                into dailyForecastGroup
+                                select dailyForecastGroup;
 
-            for (int i = 0; i < 5; i++)
+            foreach (var dForecastGroup in dailyForecast.Skip(1))
             {
-                var dayItems = forecast.HourlyForecast.Skip(i*8 - 1).Take(8);
-                
-                var day = dayItems.First();
-                var night = dayItems.Skip(4).First();
+                var days = dForecastGroup.OrderBy(x => x.Dt).ToList();
+
+                var night = days.Skip(2).FirstOrDefault();
+                var day = days.Skip(6).FirstOrDefault();
+
+                if (day == null || night == null)
+                    yield break;
 
                 var weather = day.Weather.First();
 
@@ -78,7 +77,7 @@ namespace Weather.AndroidApp.Fragments
                 {
                     TempNight = night.Main.Temp,
                     TempDay = day.Main.Temp,
-                    Day = DateTime.Now.AddDays(i + 1),
+                    Day = DateTime.Parse(dForecastGroup.Key),
                     DateImageName = weather.GetWeatherIconName(),
                     DateImageResourceId = Activity.Resources.GetWeatherIconResourceId(weather, Activity.PackageName)
                 };

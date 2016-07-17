@@ -32,5 +32,16 @@ namespace Services.Portable
         {
             return $"{tempValue.NormalizeTemperature().ToString(CultureInfo.InvariantCulture)}º";
         }
+
+        public static string DisplayHumidity(this decimal humidityValue)
+        {
+            return $"{humidityValue.ToString(CultureInfo.InvariantCulture)}%";
+        }
+
+        public static string DisplayWindy(this decimal windyValue)
+        {
+            var valueInKmPerH = windyValue*1000/3600;
+            return $"{windyValue.ToString(CultureInfo.InvariantCulture)} km / h";
+        }
     }
 }
